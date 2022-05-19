@@ -15,10 +15,10 @@
             <div class="col-auto my-auto">
                 <div class="h-100">
                     <h5 class="mb-1">
-                        Afris Nurfal Aziz
+                        {{ Auth::user()->name }}
                     </h5>
                     <p class="mb-0 font-weight-bold text-sm">
-                        Admin 01
+                        Admin
                     </p>
                 </div>
             </div>
@@ -43,21 +43,21 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Username</label>
-                                <input class="form-control" type="text" value="afris">
+                                <input class="form-control" type="text" value="{{ Auth::user()->name }}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Email</label>
-                                <input class="form-control" type="email" value="afrisazizi@gmail.com">
+                                <input class="form-control" type="email" value="{{ Auth::user()->email }}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Full name</label>
-                                <input class="form-control" type="text" value="Afris Nurfal Aziz">
+                                <input class="form-control" type="text" value="{{ Auth::user()->name }}">
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Phone Number</label>
-                                    <input class="form-control" type="text" value="085233685030">
+                                    <input class="form-control" type="text" value="{{ Auth::user()->phone }}">
                                 </div>
                             </div>
 

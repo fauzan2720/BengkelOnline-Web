@@ -43,7 +43,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link me-2" href="{{ url('/') }}">
+                                    <a class="nav-link me-2" href="{{ url('/login') }}">
                                         <i class="fas fa-key opacity-6 text-dark me-1"></i>
                                         Login
                                     </a>
@@ -68,22 +68,25 @@
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">
                                     <h4 class="font-weight-bolder">Login</h4>
+                                    @if (session()->has('error'))
+                                        <p class="text-danger">{{ session('error') }}</p>
+                                    @endif
+                                    {{-- @if (session()->has('success'))
+                                        <p class="text-success">{{ session('success') }}</p>
+                                    @endif --}}
                                     <p class="mb-0">Enter your email and password to login</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form">
+                                    <form action="" method="POST">
+                                        @csrf
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email">
+                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
+                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
                                         </div>
-                                        <!-- <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe">
-                                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                                        </div> -->
                                         <div class="text-center">
-                                            <button type="button" class="btn btn-lg btn btn-lg w-100 mt-4 mb-0">Login</button>
+                                            <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Login</button>
                                         </div>
                                     </form>
                                 </div>

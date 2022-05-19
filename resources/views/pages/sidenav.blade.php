@@ -4,6 +4,7 @@
         <a class="navbar-brand m-0" href=" {{ url('/dashboard') }} ">
             <img src="../assets/img/DAG.png" style="width: 60px;" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold">Bengkel Online</span>
+            <p>Hai!, {{ Auth::user()->name }}</p>
         </a>
     </div>
 
@@ -89,12 +90,15 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ ($title === "Logout") ? 'active' : '' }}" href="{{ url('/logout') }}">
+                <form action="/logout" method="POST">
+                    @csrf
+                 <a class="nav-link {{ ($title === "Logout") ? 'active' : '' }}" href="{{ url('/login') }}" name="logout">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-power-off text-danger text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Logout</span>
-                </a>
+                 </a>
+                </form>
             </li>
         </ul>
     </div>

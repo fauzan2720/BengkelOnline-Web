@@ -71,6 +71,9 @@
                         <div class="card-header text-center pt-4">
                             <h5>Register with</h5>
                         </div>
+                        @if (session()->has('diky_success'))
+                            <p class="text-successs">{{ session('diky_success') }}</p>
+                        @endif
                         <div class="row px-xl-5 px-sm-4 px-3">
 
                             <!-- Logo Google -->
@@ -97,20 +100,24 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form role="form">
+                            <form role="form" action="" method="POST">
+                                @csrf
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Name" aria-label="Name">
+                                    <input type="text" name="name" class="form-control" placeholder="Name" aria-label="Name">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                                    <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Password" aria-label="Password">
+                                    <input type="number" name="phone" class="form-control" placeholder="628123456789" aria-label="Phone">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password">
                                 </div>
                                 <div class="text-center">
-                                    <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Register</button>
+                                    <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Register</button>
                                 </div>
-                                <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ url('/') }}" class="text-dark font-weight-bolder">Login</a></p>
+                                <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ url('/login') }}" class="text-dark font-weight-bolder">Login</a></p>
                             </form>
                         </div>
                     </div>

@@ -14,15 +14,15 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Data User</p>
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/data_user') }}">Data User</a>
                                 <h5 class="font-weight-bolder">
-                                    300
+                                   {{ $countDU }}
                                 </h5>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                                <a href="{{ url('/data_user') }}"><i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -37,15 +37,15 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Karyawan</p>
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/data_karyawan') }}">Data Karyawan</a>
                                 <h5 class="font-weight-bolder">
-                                    2,300
+                                    {{ $countDK }}
                                 </h5>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                <i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i>
+                                <a href="{{ url('/data_karyawan') }}"><i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Data Produk</p>
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/data_produk') }}">Data Produk</a>
                                 <h5 class="font-weight-bolder">
                                     362
                                 </h5>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
-                                <i class="fas fa-toolbox text-lg opacity-10" aria-hidden="true"></i>
+                                <a href="{{ url('/data_produk') }}"><i class="fas fa-toolbox text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Delivery Service Online</p>
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/delivery') }}">Delivery Service Online</a>
                                 <h5 class="font-weight-bolder">
                                     430
                                 </h5>
@@ -91,7 +91,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                <i class="fas fa-tools text-lg opacity-10" aria-hidden="true"></i>
+                                <a href="{{ url('/delivery') }}"><i class="fas fa-tools text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Transaksi Service</p>
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/transaksi') }}">Transaksi Service</a>
                                 <h5 class="font-weight-bolder">
                                     430
                                 </h5>
@@ -114,7 +114,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                <i class="fas fa-user-cog text-lg opacity-10" aria-hidden="true"></i>
+                                <a href="{{ url('/transaksi') }}"><i class="fas fa-user-cog text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Riwayat Service</p>
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/data_service') }}">Data Service</a>
                                 <h5 class="font-weight-bolder">
                                     430
                                 </h5>
@@ -137,7 +137,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
-                                <i class="fas fa-history text-lg opacity-10" aria-hidden="true"></i>
+                                <a href="{{ url('/data_service') }}"><i class="fas fa-database text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -152,12 +152,15 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Profil</p>
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/profil') }}">Profil</a>
+                                <h5 class="font-weight-bolder">
+                                    {{ Auth::user()->name }}
+                                </h5>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-dark shadow-dark text-center rounded-circle">
-                                <i class="ni ni-circle-08 text-lg opacity-10" aria-hidden="true"></i>
+                                <a href="{{ url('/profil') }}"><i class="ni ni-circle-08 text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
