@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Juser;
+use App\Models\User;
 use App\Models\Karyawan;
 use App\Models\Produk;
 use Illuminate\Http\Request;
@@ -49,9 +50,26 @@ class HalamanController extends Controller
         return view('pages.data_service')->with('title', $title);
     }
     public function profil(){
+        $dataadmin = DB::table('users')->get();
         $title = 'Data Profil';
-        return view('pages.profil')->with('title', $title);
+        return view('pages.profil', ['dataadmin'=>$dataadmin])->with('title', $title);
     }
+    
+    public function editprofil(Request $request, $id=null)
+	{
+		if($request->isMethod('post')){
+            $data = $request->all();
+            User::where(['id'=>$id])->update([
+                'name'=>$data['name'],
+                'phone'=>$data['phone'],
+                'alamat'=>$data['alamat'],
+                'kecamatan'=>$data['kecamatan'],
+                'kabupaten'=>$data['kabupaten'],
+                'kpos'=>$data['kpos']
+            ]);
+            return redirect()->back()->with('diky_success', 'Update Berhasil');;
+        }
+	}
     public function edit(Request $request, $id=null)
 	{
 		if($request->isMethod('post')){
