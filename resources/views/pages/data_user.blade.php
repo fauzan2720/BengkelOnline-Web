@@ -206,7 +206,7 @@
             <div class="modal-body">
                 <form action="{{url('hapus/'.$data->id)}}" method="POST">
                     {{ csrf_field() }}
-                    Apakah anda ingin menghapus data .... ?
+                    Apakah anda ingin menghapus data ID : {{ $data->id }} | Nama : {{ $data->name }} | Email : {{ $data->email }} | No. Telepone : {{ $data->phone }} ?
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Iya</button>

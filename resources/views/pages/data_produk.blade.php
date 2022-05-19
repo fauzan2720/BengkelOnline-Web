@@ -165,7 +165,7 @@
             <div class="modal-body">
                 <form action="{{url('hapusp/'.$data->id)}}" method="POST">
                     {{ csrf_field() }}
-                    Apakah anda ingin menghapus data .... ?
+                    Apakah anda ingin menghapus data ID : {{ $data->id_produk }} | Produk : {{ $data->produk }} | Harga : {{ $data->harga }} | TRENDS : {{ $data->trend }} ?
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Iya</button>
