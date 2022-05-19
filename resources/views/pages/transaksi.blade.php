@@ -114,20 +114,18 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <div class="dropdown">
-                                        <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Service Komplit
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#">Service RIngan</a></li>
-                                            <li><a class="dropdown-item" href="#">Ganti Oli Mesin</a></li>
-                                            <li><a class="dropdown-item" href="#">Ganti Oli Gardan</a></li>
-                                            <li><a class="dropdown-item" href="#">Ganti ACCU</a></li>
-                                            <li><a class="dropdown-item" href="#">KPB I</a></li>
-                                            <li><a class="dropdown-item" href="#">KPB II</a></li>
-                                            <li><a class="dropdown-item" href="#">KPB III</a></li>
-                                            <li><a class="dropdown-item" href="#">KPB IV</a></li>
-                                        </ul>
+                                    <label for="example-text-input" class="form-control-label">Nama Produk</label>
+                                    <div class="input-group mb-3">
+                                        <select class="form-select" id="inputGroupSelect01">
+                                            <option selected>Service RIngan</option>
+                                            <option value="1">Ganti Oli Mesin</option>
+                                            <option value="2">Ganti Oli Gardan</option>
+                                            <option value="2">Ganti ACCU</option>
+                                            <option value="3">KPB I</option>
+                                            <option value="3">KPB II</option>
+                                            <option value="3">KPB III</option>
+                                            <option value="3">KPB IV</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

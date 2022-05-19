@@ -5,13 +5,13 @@
 @if (session('diky_success'))
 <div class="alert alert-success">
     {{ session('diky_success') }}
-</div> 
+</div>
 @endif
 
 @if (session('diky_hapus'))
 <div class="alert alert-success">
     {{ session('diky_hapus') }}
-</div> 
+</div>
 @endif
 <div class="container-fluid py-4">
     <div class="row">
@@ -106,48 +106,48 @@
             <div class="modal-body">
                 <form action="{{url('editk/'.$data->id)}}" method="POST">
                     {{ csrf_field() }}
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">ID</label>
-                            <input class="form-control" type="text" id="id" name="id" readonly value="{{$data->id}}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">ID</label>
+                                <input class="form-control" type="text" id="id" name="id" readonly value="{{$data->id}}">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">Karyawann</label>
-                            <input class="form-control" type="text" id="name" name="name" value="{{$data->name}}">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Karyawann</label>
+                                <input class="form-control" type="text" id="name" name="name" value="{{$data->name}}">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">No. Telepon</label>
-                            <input class="form-control" type="text" id="phone" name="phone" value="{{$data->phone}}">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">No. Telepon</label>
+                                <input class="form-control" type="text" id="phone" name="phone" value="{{$data->phone}}">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">Status</label>
-                            <input class="form-control" type="text" id="status" name="status" value="{{$data->status}}">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Status</label>
+                                <input class="form-control" type="text" id="status" name="status" value="{{$data->status}}">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">Alamat</label>
-                            <input class="form-control" type="text" id="alamat" name="alamat" value="{{$data->alamat}}">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Alamat</label>
+                                <input class="form-control" type="text" id="alamat" name="alamat" value="{{$data->alamat}}">
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
-        </form>
+            </form>
         </div>
     </div>
 </div>
@@ -156,19 +156,22 @@
 <!-- Hapus Modal -->
 @foreach ($datakaryawan as $data)
 <div class="modal fade" id="hapusmodal-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Yakin Hapus Data?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                <div class="modal-body">
-                    <form action="{{url('hapusk/'.$data->id)}}" method="POST">
-                        {{ csrf_field() }}
-                </div>
+            <div class="modal-body">
+                <form action="{{url('hapusk/'.$data->id)}}" method="POST">
+                    {{ csrf_field() }}
+                    Apakah anda ingin menghapus data .... ?
+            </div>
+            <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Iya</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-        </form>
+            </div>
+            </form>
         </div>
     </div>
 </div>

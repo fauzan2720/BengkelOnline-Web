@@ -5,13 +5,13 @@
 @if (session('diky_success'))
 <div class="alert alert-success">
     {{ session('diky_success') }}
-</div> 
+</div>
 @endif
 
 @if (session('diky_hapus'))
 <div class="alert alert-success">
     {{ session('diky_hapus') }}
-</div> 
+</div>
 @endif
 <div class="container-fluid py-4">
     <div class="row">
@@ -31,10 +31,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @php
-                            $nomer = 1;
-                            @endphp
-                            @foreach ($dataproduk as $dp)
+                                @php
+                                $nomer = 1;
+                                @endphp
+                                @foreach ($dataproduk as $dp)
                                 <tr>
                                     <!-- NO -->
                                     <td class="align-middle text-center text-sm">
@@ -106,48 +106,48 @@
             <div class="modal-body">
                 <form action="{{url('editp/'.$data->id)}}" method="POST">
                     {{ csrf_field() }}
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">ID</label>
-                            <input class="form-control" type="text" id="id_produk" name="id_produk" value="{{$data->id_produk}}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">ID</label>
+                                <input class="form-control" type="text" id="id_produk" name="id_produk" value="{{$data->id_produk}}">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">Produk</label>
-                            <input class="form-control" type="text" id="produk" name="produk" value="{{$data->produk}}">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Produk</label>
+                                <input class="form-control" type="text" id="produk" name="produk" value="{{$data->produk}}">
+                            </div>
                         </div>
-                    </div>
 
-                    {{-- <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                         <div class="form-group">
                             <label for="example-text-input" class="form-control-label">Foto Produk</label>
                             <input class="form-control" type="text" id="id_produk" name="id_produk" value="Isinya">
                         </div>
                     </div> --}}
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">Harga</label>
-                            <input class="form-control" type="text" id="harga" name="harga" value="{{$data->harga}}">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Harga</label>
+                                <input class="form-control" type="text" id="harga" name="harga" value="{{$data->harga}}">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">Trends</label>
-                            <input class="form-control" type="text" id="trend" name="trend" value="{{$data->trend}}">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Trends</label>
+                                <input class="form-control" type="text" id="trend" name="trend" value="{{$data->trend}}">
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
-        </form>
+            </form>
         </div>
     </div>
 </div>
@@ -162,13 +162,16 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Yakin Hapus Data?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                <div class="modal-body">
-                    <form action="{{url('hapusp/'.$data->id)}}" method="POST">
-                        {{ csrf_field() }}
-                </div>
+            <div class="modal-body">
+                <form action="{{url('hapusp/'.$data->id)}}" method="POST">
+                    {{ csrf_field() }}
+                    Apakah anda ingin menghapus data .... ?
+            </div>
+            <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Iya</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-        </form>
+            </div>
+            </form>
         </div>
     </div>
 </div>

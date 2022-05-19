@@ -5,13 +5,13 @@
 @if (session('diky_success'))
 <div class="alert alert-success">
     {{ session('diky_success') }}
-</div> 
+</div>
 @endif
 
 @if (session('diky_hapus'))
 <div class="alert alert-success">
     {{ session('diky_hapus') }}
-</div> 
+</div>
 @endif
 <div class="container-fluid py-4">
     <div class="row">
@@ -54,7 +54,7 @@
                                     <td class="align-middle text-center text-sm">
                                         <div class="d-flex px-2 py-1">
                                             <div>
-                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                                                <img src="https://ui-avatars.com/api/?name={{ $du->name }}&background=random&rounded=true" class="avatar avatar-sm me-3" alt="user1">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <p class="text-xs font-weight-bold mb-0">{{ $du->name }}</p>
@@ -90,8 +90,7 @@
 
                                     <!-- Action -->
                                     <td class="align-middle text-center text-sm">
-                                        <a href="javascript:;" id="tombolubah2" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#editmodal-{{ $du->id }}" data-original-title="Edit user"
-                                        data-id="{{$du->id}}" data-name="{{$du->name}}" data-email="{{$du->email}}" data-phone="{{$du->phone}}" data-pin="{{$du->pin}}" data-password="{{$du->password}}" data-kendaraan="{{$du->kendaraan}}">
+                                        <a href="javascript:;" id="tombolubah2" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#editmodal-{{ $du->id }}" data-original-title="Edit user" data-id="{{$du->id}}" data-name="{{$du->name}}" data-email="{{$du->email}}" data-phone="{{$du->phone}}" data-pin="{{$du->pin}}" data-password="{{$du->password}}" data-kendaraan="{{$du->kendaraan}}">
                                             Edit
                                         </a>
                                         <a class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
@@ -123,9 +122,9 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Edit Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                <div class="modal-body">
-                    <form action="{{url('edit/'.$data->id)}}" method="POST">
-                        {{ csrf_field() }}
+            <div class="modal-body">
+                <form action="{{url('edit/'.$data->id)}}" method="POST">
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -173,7 +172,7 @@
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Password</label>
                                 <input class="form-control" name="password" id="password" type="text" value="{{$data->password}}">
-                            </div>  
+                            </div>
                         </div>
 
                         <div class="col-md-6">
@@ -183,12 +182,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
-        </form>
+            </form>
         </div>
     </div>
 </div>
@@ -197,21 +196,25 @@
 <!-- Hapus Modal -->
 @foreach ($datauser as $data)
 <div class="modal fade" id="hapusmodal-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Yakin Hapus Data?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                <div class="modal-body">
-                    <form action="{{url('hapus/'.$data->id)}}" method="POST">
-                        {{ csrf_field() }}
-                </div>
+
+            <div class="modal-body">
+                <form action="{{url('hapus/'.$data->id)}}" method="POST">
+                    {{ csrf_field() }}
+                    Apakah anda ingin menghapus data .... ?
+            </div>
+            <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Iya</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-        </form>
+            </div>
+            </form>
         </div>
     </div>
 </div>
 @endforeach
-@endsection 
+@endsection

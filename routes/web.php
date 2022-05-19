@@ -25,14 +25,14 @@ Route::get('/transaksi', [HalamanController::class, 'transaksi'])->name('transak
 Route::get('/data_service', [HalamanController::class, 'dataservice'])->name('dataservice');
 Route::get('/profil', [HalamanController::class, 'profil'])->name('profil');
 
-Route::post('/edit/{id}',[HalamanController::class, 'edit']);
-Route::post('/hapus/{id}',[HalamanController::class, 'hapus']);
+Route::post('/edit/{id}', [HalamanController::class, 'edit']);
+Route::post('/hapus/{id}', [HalamanController::class, 'hapus']);
 
-Route::post('/editk/{id}',[HalamanController::class, 'editk']);
-Route::post('/hapusk/{id}',[HalamanController::class, 'hapusk']);
+Route::post('/editk/{id}', [HalamanController::class, 'editk']);
+Route::post('/hapusk/{id}', [HalamanController::class, 'hapusk']);
 
-Route::post('/editp/{id}',[HalamanController::class, 'editp']);
-Route::post('/hapusp/{id}',[HalamanController::class, 'hapusp']);
+Route::post('/editp/{id}', [HalamanController::class, 'editp']);
+Route::post('/hapusp/{id}', [HalamanController::class, 'hapusp']);
 
 
 
