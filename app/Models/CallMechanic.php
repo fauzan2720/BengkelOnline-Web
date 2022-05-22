@@ -10,6 +10,7 @@ class CallMechanic extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'vehicle_id',
         'location_id',
         'product_id',
@@ -17,7 +18,13 @@ class CallMechanic extends Model
         'detail_problem',
         'payment_method',
         'total_payment',
+        'status',
     ];
+
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'user_id', 'id');
+    // }
 
     public function vehicle()
     {

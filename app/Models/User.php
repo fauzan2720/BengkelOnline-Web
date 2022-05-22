@@ -24,10 +24,23 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'fullname',
         'email',
+        'phone_number',
+        'pin_number',
+        'roles',
         'password',
     ];
+
+    public function location()
+    {
+        return $this->hasMany(Location::class, 'user_id', 'id');
+    }
+
+    public function vehicle()
+    {
+        return $this->hasMany(Vehicle::class, 'user_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

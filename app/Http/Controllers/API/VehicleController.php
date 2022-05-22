@@ -60,6 +60,7 @@ class VehicleController extends Controller
                 'user_id' => Auth::user()->id,
                 'vehicle_name' => $request->vehicle_name,
                 'number_plate' => $request->number_plate,
+                'photo_url' => $request->photo_url,
             ]);
 
             $createVehicle = Vehicle::where('number_plate', $request->number_plate)->first();
