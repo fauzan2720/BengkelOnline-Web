@@ -2,19 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\Location;
 use App\Models\Team;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Laravel\Jetstream\Features;
 
-class UserFactory extends Factory
+class LocationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Location::class;
 
     /**
      * Define the model's default state.
@@ -24,14 +24,9 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'fullname' => 'Fauzan Abdillah',
-            'email' => 'fauzan@gmail.com',
-            'email_verified_at' => now(),
-            'phone_number' => '082123123123',
-            'pin_number' => '123123',
-            'roles' => 'ADMIN',
-            'password' => '$2y$10$T.zV9WL6Zf17M47sOD0u4OCq3DZWwgU44i6l1IK/XqwwE3YldorsS', // password
-            // 'remember_token' => '1|1jCXwIvSzxfCwWDhTbJlYy89Jd8Ax06tahj1CBTw',
+            'user_id' => 1,
+            'address' => $this->faker->address,
+            'detail_address' => 'Jember Punya',
         ];
     }
 
