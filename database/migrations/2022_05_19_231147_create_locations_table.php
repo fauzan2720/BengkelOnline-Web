@@ -18,6 +18,7 @@ class CreateLocationsTable extends Migration
             $table->bigInteger('user_id');
             $table->string('address');
             $table->longText('detail_address');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

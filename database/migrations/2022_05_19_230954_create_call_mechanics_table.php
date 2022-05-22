@@ -15,6 +15,7 @@ class CreateCallMechanicsTable extends Migration
     {
         Schema::create('call_mechanics', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id');
             $table->bigInteger('vehicle_id');
             $table->bigInteger('location_id');
             $table->bigInteger('product_id');
@@ -22,6 +23,7 @@ class CreateCallMechanicsTable extends Migration
             $table->longText('detail_problem');
             $table->string('payment_method');
             $table->float('total_payment');
+            $table->string('status');
             $table->timestamps();
         });
     }

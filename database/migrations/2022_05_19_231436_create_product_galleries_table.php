@@ -17,6 +17,7 @@ class CreateProductGalleriesTable extends Migration
             $table->id();
             $table->bigInteger('product_id');
             $table->string('url');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
