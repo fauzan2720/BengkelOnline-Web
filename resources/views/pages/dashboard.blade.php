@@ -4,6 +4,7 @@
 
 @section('container')
 
+<!-- Card Menu -->
 <div class="container-fluid py-4">
     <div class="row">
 
@@ -16,7 +17,7 @@
                             <div class="numbers">
                                 <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/data_user') }}">Data User</a>
                                 <h5 class="font-weight-bolder">
-                                   {{ $countDU }}
+                                    {{ $countDU }}
                                 </h5>
                             </div>
                         </div>
