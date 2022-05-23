@@ -3,7 +3,7 @@
     <span class="mask bg-primary opacity-6"></span>
 </div>
 @section('container')
-
+@foreach ($dataadmin as $data)
 <div class="card shadow-lg mx-4 card-profile-bottom">
     <div class="card-body p-3">
         <div class="row gx-4">
@@ -25,15 +25,20 @@
         </div>
     </div>
 </div>
-
+@if (session('diky_success'))
+<div class="alert alert-success">
+    {{ session('diky_success') }}
+</div>
+@endif
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex align-items-center">
+                        <form action="{{url('editprofil/'.Auth::user()->id)}}" method="POST">
+                            {{ csrf_field() }}
                         <p class="mb-0">Edit Profile</p>
-                        <button class="btn btn-primary btn-sm ms-auto">Save</button>
                     </div>
                 </div>
 
@@ -42,22 +47,22 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">Username</label>
-                                <input class="form-control" type="text" value="{{ Auth::user()->name }}">
+                                <label for="example-text-input" class="form-control-label">ID</label>
+                                <input class="form-control" id="id" name="id" type="text" readonly value="{{ Auth::user()->id }}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Email</label>
-                                <input class="form-control" type="email" value="{{ Auth::user()->email }}">
+                                <input class="form-control" type="email" id="email" name="email" readonly value="{{ Auth::user()->email }}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Full name</label>
-                                <input class="form-control" type="text" value="{{ Auth::user()->name }}">
+                                <input class="form-control" type="text" id="name" name="name" value="{{ Auth::user()->name }}">
                             </div>
                         </div>
                     </div>
@@ -71,40 +76,43 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Phone Number</label>
-                                    <input class="form-control" type="text" value="{{ Auth::user()->phone }}">
+                                    <input class="form-control" type="text" id="phone" name="phone" value="{{ Auth::user()->phone }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Address</label>
-                                <input class="form-control" type="text" value="Dusun Krajan Kidul Desa Sumberejo, Kecamatan Ambulu">
+                                <input class="form-control" type="text" id="alamat" name="alamat" value="{{ Auth::user()->alamat }}">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Kecamatan</label>
-                                <input class="form-control" type="text" value="Ambulu">
+                                <input class="form-control" type="text" id="kecamatan" name="kecamatan" value="{{ Auth::user()->kecamatan }}">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Kabupaten</label>
-                                <input class="form-control" type="text" value="Jember">
+                                <input class="form-control" type="text" id="kabupaten" name="kabupaten" value="{{ Auth::user()->kabupaten }}">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Postal code</label>
-                                <input class="form-control" type="text" value="68172">
+                                <input class="form-control" type="text" id="kpos" name="kpos" value="{{ Auth::user()->kpos }}">
                             </div>
                         </div>
+                        <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
                     </div>
                 </div>
+            </form>
             </div>
         </div>
     </div>
 </div>
+@endforeach
 @endsection
