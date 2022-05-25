@@ -19,9 +19,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number')->unique();
-            $table->integer('pin_number');
+            $table->integer('pin_number')->nullable();
             $table->string('roles')->default('USER');
             $table->string('password');
+            $table->string('alamat')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kabupaten')->nullable();
+            $table->string('kpos')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

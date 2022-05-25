@@ -17,7 +17,7 @@ class CreateTransaksi extends Migration
             $table->id();
             $table->string('no_antrian');
             $table->string('nopol')->unique();
-            $table->string('name');
+            $table->string('fullname');
             $table->string('phone');
             $table->string('norangka');
             $table->string('nomesin');

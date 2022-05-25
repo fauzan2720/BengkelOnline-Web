@@ -63,7 +63,7 @@
                             <div class="numbers">
                                 <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/data_produk') }}">Data Produk</a>
                                 <h5 class="font-weight-bolder">
-                                    362
+                                    {{ $countDP }}
                                 </h5>
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                             <div class="numbers">
                                 <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/profil') }}">Profil</a>
                                 <h5 class="font-weight-bolder">
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->fullname }}
                                 </h5>
                             </div>
                         </div>

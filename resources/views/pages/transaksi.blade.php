@@ -53,7 +53,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Nama</label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Syaifudin Ilma">
+                                    <input class="form-control" id="fullname" name="fullname" type="text" placeholder="Syaifudin Ilma">
                                 </div>
                             </div>
 
