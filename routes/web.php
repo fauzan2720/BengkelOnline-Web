@@ -23,6 +23,7 @@ Route::get('/data_karyawan', [HalamanController::class, 'karyawandata'])->name('
 Route::get('/data_produk', [HalamanController::class, 'dataproduk'])->name('dataproduk');
 Route::get('/delivery', [HalamanController::class, 'delivery'])->name('delivery');
 Route::get('/transaksi', [HalamanController::class, 'transaksi'])->name('transaksi');
+Route::post('/transaksi', [HalamanController::class, 'tambah']);
 Route::get('/data_service', [HalamanController::class, 'dataservice'])->name('dataservice');
 
 Route::get('/profil', [HalamanController::class, 'profil'])->name('profil');

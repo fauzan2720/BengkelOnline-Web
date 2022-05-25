@@ -109,7 +109,7 @@
                                     <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="number" name="phone" class="form-control" placeholder="628123456789" aria-label="Phone">
+                                    <input type="tel" name="phone" class="form-control" placeholder="628123456789" aria-label="Phone">
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password">

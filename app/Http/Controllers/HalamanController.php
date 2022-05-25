@@ -6,6 +6,7 @@ use App\Models\Juser;
 use App\Models\User;
 use App\Models\Karyawan;
 use App\Models\Produk;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -42,8 +43,9 @@ class HalamanController extends Controller
         return view('pages.delivery')->with('title', $title);
     }
     public function transaksi(){
+        $transaksi = DB::table('transaksi')->count();
         $title = 'Transaksi';
-        return view('pages.transaksi')->with('title', $title);
+        return view('pages.transaksi', compact('transaksi'))->with('title', $title);
     }
     public function dataservice(){
         $title = 'Data Service';
@@ -109,7 +111,7 @@ class HalamanController extends Controller
 	{
 		if($request->isMethod('post')){
             Karyawan::where(['id'=>$id])->delete();
-            return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil');
+            return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil')->with('diky_hapus', 'Gagal');
         }
 	}
     public function editp(Request $request, $id=null)
@@ -123,6 +125,32 @@ class HalamanController extends Controller
                 'trend'=>$data['trend']
             ]);
             return redirect()->back()->with('diky_success', 'Update Berhasil');
+        }
+	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function tambah(Request $request)
+	{
+        {
+            $data = $request ->validate([
+                'no_antrian' => 'required|max:255',
+                'nopol' => 'required|max:255',
+                'name' => 'required|max:255',
+                'phone' => 'required|max:255',
+                'norangka' => 'required|max:255',
+                'nomesin' => 'required|max:255',
+                'trakit' => 'required|max:255',
+                'type' => 'required|max:255',
+                'km' => 'required|max:255',
+                'warna' => 'required|max:255',
+                'nproduk' => 'required|max:255',
+                'notes' => 'required|max:255',
+            ]);
+            DB::table('transaksi')->insert($data);
+            return redirect()->back()->with('diky_success', 'Berhasil');
         }
 	}
     public function hapusp(Request $request, $id)
