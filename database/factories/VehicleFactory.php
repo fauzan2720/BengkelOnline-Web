@@ -3,18 +3,18 @@
 namespace Database\Factories;
 
 use App\Models\Team;
-use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Laravel\Jetstream\Features;
 
-class UserFactory extends Factory
+class VehicleFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Vehicle::class;
 
     /**
      * Define the model's default state.
@@ -24,14 +24,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'fullname' => 'Fauzan Abdillah',
-            'email' => 'fauzan@gmail.com',
-            'email_verified_at' => now(),
-            'phone_number' => '082123123123',
-            'pin_number' => '123123',
-            'roles' => 'ADMIN',
-            'password' => '$2y$10$T.zV9WL6Zf17M47sOD0u4OCq3DZWwgU44i6l1IK/XqwwE3YldorsS', // password
-            // 'remember_token' => '1|1jCXwIvSzxfCwWDhTbJlYy89Jd8Ax06tahj1CBTw',
+            'user_id' => 1,
+            'vehicle_name' => 'Vario 160 Street JET',
+            'number_plate' => 'P-5937-JM',
+            'photo_url' => 'https://i0.wp.com/motoblast.org/wp-content/uploads/2022/02/vario-160-STREET-JET1.jpg?fit=1280%2C853&ssl=1',
         ];
     }
 

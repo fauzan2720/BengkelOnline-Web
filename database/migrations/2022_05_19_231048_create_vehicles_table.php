@@ -18,7 +18,8 @@ class CreateVehiclesTable extends Migration
             $table->bigInteger('user_id');
             $table->string('vehicle_name');
             $table->string('number_plate');
-            $table->string('photo_url')->nullable();
+            $table->string('photo_url');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
