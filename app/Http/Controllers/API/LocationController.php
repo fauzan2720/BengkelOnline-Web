@@ -9,36 +9,24 @@ use Illuminate\Support\Facades\Auth;
 
 class LocationController extends Controller
 {
-    public function all(Request $request)
+    public function index(Request $request)
     {
         $id = $request->input('id');
         $limit = $request->input('limit');
 
-        if ($id) {
-            $product = Location::with(['user', 'callMechanics'])->find($id);
+        $location = Location::with(['user', 'callMechanics'])->orderBy('updated_at', 'desc');
 
-            if ($product)
-                return ResponseFormatter::success(
-                    $product,
-                    'Data lokasi user berhasil diambil'
-                );
-            else
-                return ResponseFormatter::error(
-                    null,
-                    'Data lokasi user tidak ada',
-                    404
-                );
+        if ($id) {
+            $location->where('id', '=', $id);
         }
 
-        $product = Location::with(['user', 'callMechanics'])->orderBy('id', 'desc');
-
         return ResponseFormatter::success(
-            $product->paginate($limit),
+            $location->paginate($limit),
             'Data list lokasi user berhasil diambil'
         );
     }
 
-    public function createLocation(Request $request)
+    public function store(Request $request)
     {
         try {
             $request->validate([
@@ -61,5 +49,48 @@ class LocationController extends Controller
                 'error' => $error,
             ], 'Authentication Failed', 500);
         }
+    }
+
+    public function update(Request $request, Location $location)
+    {
+        $request->validate([
+            'address' => ['required', 'string', 'max:100'],
+            'detail_address' => ['required', 'string', 'max:255'],
+        ]);
+
+        $updateLocation = Location::findOrFail($location->id);
+
+        if ($updateLocation) {
+
+            $updateLocation->update([
+                'user_id' => Auth::user()->id,
+                'address' => $request->address,
+                'detail_address' => $request->detail_address,
+            ]);
+
+            return ResponseFormatter::success($updateLocation, 'Kendaraan berhasil diperbarui');
+        }
+
+        return ResponseFormatter::error([
+            'message' => 'Kendaraan gagal diperbarui',
+        ], 'Authentication Failed', 404);
+    }
+
+    public function destroy($id)
+    {
+        $delete = Location::findOrfail($id);
+
+        if ($delete) {
+
+            $delete->delete();
+
+            return ResponseFormatter::success([
+                $delete,
+            ], 'Alamat berhasil dihapus');
+        }
+
+        return ResponseFormatter::error([
+            'message' => 'Alamat gagal dihapus',
+        ], 'Authentication Failed', 404);
     }
 }

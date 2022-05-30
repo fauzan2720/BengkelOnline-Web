@@ -26,6 +26,7 @@ class ProductFactory extends Factory
     {
         return [
             'product_name' => 'Oli Garden',
+            'product_category' => 'Oli',
             'price' => 15000,
             'trends' => 0,
         ];

@@ -18,11 +18,11 @@ class CreateCallMechanicsTable extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('vehicle_id');
             $table->bigInteger('location_id');
-            $table->bigInteger('product_id');
+            $table->bigInteger('product_id')->nullable();
             $table->string('type_of_work');
-            $table->longText('detail_problem');
+            $table->string('detail_problem');
             $table->string('payment_method');
-            $table->float('total_payment');
+            $table->double('total_payment');
             $table->string('status');
             $table->timestamps();
         });

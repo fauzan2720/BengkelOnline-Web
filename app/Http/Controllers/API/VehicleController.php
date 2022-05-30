@@ -9,51 +9,39 @@ use Illuminate\Support\Facades\Auth;
 
 class VehicleController extends Controller
 {
-    public function all(Request $request)
+    public function index(Request $request)
     {
         $id = $request->input('id');
         $limit = $request->input('limit');
         $vehicleName = $request->input('vehicle_name');
         $numberPlate = $request->input('number_plate');
 
-        if ($id) {
-            $product = Vehicle::with(['user', 'callMechanics'])->find($id);
+        $vehicle = Vehicle::with(['user', 'callMechanics'])->orderBy('updated_at', 'desc');
 
-            if ($product)
-                return ResponseFormatter::success(
-                    $product,
-                    'Data kendaraan berhasil diambil'
-                );
-            else
-                return ResponseFormatter::error(
-                    null,
-                    'Data kendaraan tidak ada',
-                    404
-                );
+        if ($id) {
+            $vehicle->where('id', '=', $id);
         }
 
-        $product = Vehicle::with(['user', 'callMechanics'])->orderBy('id', 'desc');
-
         if ($vehicleName) {
-            $product->where('vehicle_name', 'like', '%' . $vehicleName . '%');
+            $vehicle->where('vehicle_name', 'like', '%' . $vehicleName . '%');
         }
 
         if ($numberPlate) {
-            $product->where('number_plate', 'like', '%' . $numberPlate . '%');
+            $vehicle->where('number_plate', 'like', '%' . $numberPlate . '%');
         }
 
         return ResponseFormatter::success(
-            $product->paginate($limit),
+            $vehicle->paginate($limit),
             'Data list kendaraan berhasil diambil'
         );
     }
 
-    public function createVehicle(Request $request)
+    public function store(Request $request)
     {
         try {
             $request->validate([
                 'vehicle_name' => ['required', 'string', 'max:100'],
-                'number_plate' => ['required', 'string', 'min:6', 'max:10', 'unique:vehicles,number_plate'],
+                'number_plate' => ['required', 'string', 'min:6', 'max:11'],
             ]);
 
             Vehicle::create([
@@ -63,10 +51,10 @@ class VehicleController extends Controller
                 'photo_url' => $request->photo_url,
             ]);
 
-            $createVehicle = Vehicle::where('number_plate', $request->number_plate)->first();
+            $create = Vehicle::where('number_plate', $request->number_plate)->first();
 
             return ResponseFormatter::success([
-                $createVehicle,
+                $create,
             ], 'Kendaraan berhasil ditambahkan');
         } catch (Exception $error) {
             return ResponseFormatter::error([
@@ -74,5 +62,63 @@ class VehicleController extends Controller
                 'error' => $error,
             ], 'Authentication Failed', 500);
         }
+    }
+
+    public function show($id)
+    {
+        //find post by ID
+        $post = Vehicle::findOrfail($id);
+
+        //make response JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'Detail Data Post',
+            'data'    => $post
+        ], 200);
+    }
+
+    public function update(Request $request, Vehicle $vehicle)
+    {
+        $request->validate([
+            'vehicle_name' => ['required', 'string', 'max:100'],
+            'number_plate' => ['required', 'string', 'min:6', 'max:10'],
+        ]);
+
+        $updateVehicle = Vehicle::findOrFail($vehicle->id);
+
+        if ($updateVehicle) {
+
+            $updateVehicle->update([
+                'user_id' => Auth::user()->id,
+                'vehicle_name' => $request->vehicle_name,
+                'number_plate' => $request->number_plate,
+                'photo_url' => $request->photo_url
+
+            ]);
+
+            return ResponseFormatter::success($updateVehicle, 'Kendaraan berhasil diperbarui');
+        }
+
+        return ResponseFormatter::error([
+            'message' => 'Kendaraan gagal diperbarui',
+        ], 'Authentication Failed', 404);
+    }
+
+    public function destroy($id)
+    {
+        $delete = Vehicle::findOrfail($id);
+
+        if ($delete) {
+
+            $delete->delete();
+
+            return ResponseFormatter::success([
+                $delete,
+            ], 'Kendaraan berhasil dihapus');
+        }
+
+        return ResponseFormatter::error([
+            'message' => 'Kendaraan gagal dihapus',
+        ], 'Authentication Failed', 404);
     }
 }

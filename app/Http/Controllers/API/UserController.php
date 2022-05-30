@@ -85,8 +85,8 @@ class UserController extends Controller
                 'roles' => 'USER',
             ]);
 
-            // $user = User::where('email', $request->email)->first();
-            $user = User::where('phone_number', $request->phone_number)->first();
+            $user = User::where('email', $request->email)->first();
+            // $user = User::where('phone_number', $request->phone_number)->first();
 
             $tokenResult = $user->createToken('authToken')->plainTextToken;
 
@@ -114,12 +114,25 @@ class UserController extends Controller
     {
         $data = $request->validate([
             'fullname' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users,email'],
-            'phone_number' => ['required', 'string', 'min:11', 'max:13', 'unique:users,phone_number'],
+            'email' => ['string', 'email', 'max:100', 'unique:users,email'],
+            'phone_number' => ['required', 'string', 'min:11', 'max:13'],
             'pin_number' => ['required', 'string', 'min:6', 'max:6'],
             'roles' => ['string', 'in:USER,ADMIN,KARYAWAN'],
+        ]);
+
+        $user = Auth::user();
+        $user->update($data);
+
+        return ResponseFormatter::success($user, 'Profile Updated');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $data = $request->validate([
             'password' => ['string', new Password],
         ]);
+
+        $data['password'] = bcrypt($data['password']);
 
         $user = Auth::user();
         $user->update($data);

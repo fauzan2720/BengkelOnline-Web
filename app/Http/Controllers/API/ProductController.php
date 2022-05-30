@@ -13,6 +13,7 @@ class ProductController extends Controller
         $id = $request->input('id');
         $limit = $request->input('limit');
         $productName = $request->input('product_name');
+        $productCategory = $request->input('product_category');
 
         if ($id) {
             $product = Product::with(['galleries'])->find($id);
@@ -34,6 +35,10 @@ class ProductController extends Controller
 
         if ($productName) {
             $product->where('product_name', 'like', '%' . $productName . '%');
+        }
+
+        if ($productCategory) {
+            $product->where('product_category', '=', $productCategory);
         }
 
         return ResponseFormatter::success(

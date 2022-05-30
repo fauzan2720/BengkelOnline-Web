@@ -44,7 +44,7 @@ class CallMechanicController extends Controller
             'vehicle_id' => 'required',
             'vehicle_id' => 'required',
             'location_id' => 'required',
-            'product_id' => 'required',
+            // 'product_id' => 'required',
             'type_of_work' => 'required',
             'payment_method' => 'required',
             'total_payment' => 'required',
