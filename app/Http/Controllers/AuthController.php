@@ -32,9 +32,9 @@ class AuthController extends Controller
     public function registerStore(Request $request)
     {
         $data = $request ->validate([
-            'name' => 'required|max:255',
+            'fullname' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'phone' => 'required|min:11',
+            'phone_number' => 'required|min:11',
             'password' => 'required|min:4'
         ]);
         $data['password'] = bcrypt($data['password']);

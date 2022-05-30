@@ -6,7 +6,7 @@ use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\DataUserController;
 
 
-Route::get('/', [AuthController::class, 'login'])->name('login');
+Route::get('/', [AuthController::class, 'index'])->name('index');
 Route::post('/', [AuthController::class, 'loginStore'])->name('loginPost');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -23,6 +23,7 @@ Route::get('/data_karyawan', [HalamanController::class, 'karyawandata'])->name('
 Route::get('/data_produk', [HalamanController::class, 'dataproduk'])->name('dataproduk');
 Route::get('/delivery', [HalamanController::class, 'delivery'])->name('delivery');
 Route::get('/transaksi', [HalamanController::class, 'transaksi'])->name('transaksi');
+Route::post('/transaksi', [HalamanController::class, 'tambah']);
 Route::get('/data_service', [HalamanController::class, 'dataservice'])->name('dataservice');
 
 Route::get('/profil', [HalamanController::class, 'profil'])->name('profil');

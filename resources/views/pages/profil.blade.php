@@ -9,16 +9,16 @@
         <div class="row gx-4">
             <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
-                    <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}&background=random&rounded=true" alt="profile_image" class="w-100">
+                    <img src="https://ui-avatars.com/api/?name={{ Auth::user()->fullname }}&background=random&rounded=true" alt="profile_image" class="w-100">
                 </div>
             </div>
             <div class="col-auto my-auto">
                 <div class="h-100">
                     <h5 class="mb-1">
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->fullname }}
                     </h5>
                     <p class="mb-0 font-weight-bold text-sm">
-                        Admin
+                        {{ Auth::user()->roles }}
                     </p>
                 </div>
             </div>
@@ -54,6 +54,13 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">ROLE</label>
+                                <input class="form-control" type="text" id="roles" name="roles" readonly value="{{ Auth::user()->roles }}">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Email</label>
                                 <input class="form-control" type="email" id="email" name="email" readonly value="{{ Auth::user()->email }}">
                             </div>
@@ -62,7 +69,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Full name</label>
-                                <input class="form-control" type="text" id="name" name="name" value="{{ Auth::user()->name }}">
+                                <input class="form-control" type="text" id="fullname" name="fullname" value="{{ Auth::user()->fullname }}">
                             </div>
                         </div>
                     </div>
@@ -76,7 +83,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Phone Number</label>
-                                    <input class="form-control" type="text" id="phone" name="phone" value="{{ Auth::user()->phone }}">
+                                    <input class="form-control" type="text" id="phone_number" name="phone_number" value="{{ Auth::user()->phone_number }}">
                                 </div>
                             </div>
 

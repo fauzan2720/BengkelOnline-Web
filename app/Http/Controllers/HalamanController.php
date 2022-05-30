@@ -6,6 +6,7 @@ use App\Models\Juser;
 use App\Models\User;
 use App\Models\Karyawan;
 use App\Models\Produk;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +17,9 @@ class HalamanController extends Controller
     {
         $countDU = DB::table('data_user')->count();
         $countDK = DB::table('data_karyawan')->count();
+        $countDP = DB::table('data_produk')->count();
         $title = 'Dashboard';
-        return view('pages.dashboard', compact('countDU', 'countDK'))->with('title', $title);
+        return view('pages.dashboard', compact('countDU', 'countDK', 'countDP'))->with('title', $title);
         
     }
     public function datauser()
@@ -42,12 +44,14 @@ class HalamanController extends Controller
         return view('pages.delivery')->with('title', $title);
     }
     public function transaksi(){
+        $transaksi = DB::table('transaksi')->count();
         $title = 'Transaksi';
-        return view('pages.transaksi')->with('title', $title);
+        return view('pages.transaksi', compact('transaksi'))->with('title', $title);
     }
     public function dataservice(){
+        $dataservice = DB::table('transaksi')->get();
         $title = 'Data Service';
-        return view('pages.data_service')->with('title', $title);
+        return view('pages.data_service', ['dataservice'=>$dataservice])->with('title', $title);
     }
     public function profil(){
         $dataadmin = DB::table('users')->get();
@@ -60,8 +64,9 @@ class HalamanController extends Controller
 		if($request->isMethod('post')){
             $data = $request->all();
             User::where(['id'=>$id])->update([
-                'name'=>$data['name'],
-                'phone'=>$data['phone'],
+                'fullname'=>$data['fullname'],
+                'roles'=>$data['roles'],
+                'phone_number'=>$data['phone_number'],
                 'alamat'=>$data['alamat'],
                 'kecamatan'=>$data['kecamatan'],
                 'kabupaten'=>$data['kabupaten'],
@@ -109,7 +114,7 @@ class HalamanController extends Controller
 	{
 		if($request->isMethod('post')){
             Karyawan::where(['id'=>$id])->delete();
-            return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil');
+            return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil')->with('diky_hapus', 'Gagal');
         }
 	}
     public function editp(Request $request, $id=null)
@@ -123,6 +128,32 @@ class HalamanController extends Controller
                 'trend'=>$data['trend']
             ]);
             return redirect()->back()->with('diky_success', 'Update Berhasil');
+        }
+	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function tambah(Request $request)
+	{
+        {
+            $data = $request ->validate([
+                'no_antrian' => 'required|max:255',
+                'nopol' => 'required|max:255',
+                'fullname' => 'required|max:255',
+                'phone' => 'required|max:255',
+                'norangka' => 'required|max:255',
+                'nomesin' => 'required|max:255',
+                'trakit' => 'required|max:255',
+                'type' => 'required|max:255',
+                'km' => 'required|max:255',
+                'warna' => 'required|max:255',
+                'nproduk' => 'required|max:255',
+                'notes' => 'required|max:255',
+            ]);
+            DB::table('transaksi')->insert($data);
+            return redirect()->back()->with('diky_success', 'Berhasil');
         }
 	}
     public function hapusp(Request $request, $id)

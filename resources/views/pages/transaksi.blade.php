@@ -3,18 +3,24 @@
     <span class="mask bg-primary opacity-6"></span>
 </div>
 
+{{-- @foreach ($transaksi as $data) --}}
 @section('container')
 <div class="container-fluid py-4">
+    @if (session('diky_success'))
+<div class="alert alert-success">
+    {{ session('diky_success') }}
+</div>
+@endif
+
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
+                <form action="" method="POST">
+                    {{ csrf_field() }}
+                    @csrf
                 <div class="card-header pb-0">
-                    <div class="d-flex align-items-center">
-                        <h6>Work Order</h6>
-                        <button class="btn btn-primary btn-sm ms-auto">Tambah</button>
-                    </div>
                     <i class="far fa-calendar-alt me-2"></i>
-                    <small>23 - 30 March 2020</small>
+                    <small> @php date("Y-d-m H:i:s"); echo date('d - m - Y'); @endphp</small>
                 </div>
                 <div class="card-body">
                     <!-- No Antrian -->
@@ -22,24 +28,24 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">No Antrian</label>
-                                <input class="form-control" type="text" value="1">
+                                <input class="form-control" readonly name="no_antrian" id="no_antrian" type="text" value="{{ $transaksi+1 }}">
                             </div>
                         </div>
 
                         <!-- ID Service -->
-                        <div class="col-md-2">
+                        {{-- <div class="col-md-2">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">ID Service</label>
-                                <input class="form-control" type="text" value="1">
+                                <input class="form-control" id="id" name="id" type="text" placeholder="" value="">
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row">
                             <!-- No Polisi -->
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">No Polisi</label>
-                                    <input class="form-control" type="text" value="P 6757 KM">
+                                    <input class="form-control" id="nopol" name="nopol" type="text" placeholder="ON 333 TOP">
                                 </div>
                             </div>
 
@@ -47,7 +53,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Nama</label>
-                                    <input class="form-control" type="email" value="Afris">
+                                    <input class="form-control" id="fullname" name="fullname" type="text" placeholder="Syaifudin Ilma">
                                 </div>
                             </div>
 
@@ -55,7 +61,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">No HP</label>
-                                    <input class="form-control" type="text" value="0868637632">
+                                    <input class="form-control" id="phone" name="phone" type="text" placeholder="086837632">
                                 </div>
                             </div>
 
@@ -63,7 +69,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">No Rangka</label>
-                                    <input class="form-control" type="text" value="JGADJJHA">
+                                    <input class="form-control" id="norangka" name="norangka" type="text" placeholder="JGADJJHA">
                                 </div>
                             </div>
 
@@ -71,7 +77,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">No Mesin</label>
-                                    <input class="form-control" type="text" value="6769GHJGH">
+                                    <input class="form-control" id="nomesin" name="nomesin" type="text" placeholder="6769GHJGH">
                                 </div>
                             </div>
 
@@ -79,7 +85,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Tahun Rakit</label>
-                                    <input class="form-control" type="text" value="2020">
+                                    <input class="form-control" id="trakit" name="trakit" type="text" placeholder="2020">
                                 </div>
                             </div>
 
@@ -87,7 +93,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Type</label>
-                                    <input class="form-control" type="text" value="NC62817">
+                                    <input class="form-control" id="type" name="type" type="text" placeholder="NC62817">
                                 </div>
                             </div>
 
@@ -95,7 +101,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">KM</label>
-                                    <input class="form-control" type="text" value="4000">
+                                    <input class="form-control" id="km" name="km" type="text" placeholder="4000">
                                 </div>
                             </div>
 
@@ -103,7 +109,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Warna</label>
-                                    <input class="form-control" type="text" value="Hitam">
+                                    <input class="form-control" id="warna" name="warna" type="text" placeholder="Hitam">
                                 </div>
                             </div>
                         </div>
@@ -116,19 +122,23 @@
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Nama Produk</label>
                                     <div class="input-group mb-3">
-                                        <select class="form-select" id="inputGroupSelect01">
+                                        <select id="nproduk" name="nproduk" class="form-select">
                                             <option selected>Service RIngan</option>
-                                            <option value="1">Ganti Oli Mesin</option>
-                                            <option value="2">Ganti Oli Gardan</option>
-                                            <option value="2">Ganti ACCU</option>
-                                            <option value="3">KPB I</option>
-                                            <option value="3">KPB II</option>
-                                            <option value="3">KPB III</option>
-                                            <option value="3">KPB IV</option>
+                                            <option value="Ganti Oli Mesin">Ganti Oli Mesin</option>
+                                            <option value="Ganti Oli Gardan">Ganti Oli Gardan</option>
+                                            <option value="Ganti ACCU">Ganti ACCU</option>
+                                            <option value="KPB I">KPB I</option>
+                                            <option value="KPB II">KPB II</option>
+                                            <option value="KPB III">KPB III</option>
+                                            <option value="KPB IV">KPB IV</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <h6>Work Order</h6>
+                            <button type="submit" class="btn btn-primary btn-sm ms-auto">Tambah</button>
                         </div>
                     </div>
                 </div>
@@ -145,10 +155,12 @@
                 </div>
                 <div class="card-body pt-4 p-3">
                     <div class="mb-3">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
                     </div>
                 </div>
             </div>
+            {{-- @endforeach --}}
+        </form>
         </div>
     </div>
 </div>

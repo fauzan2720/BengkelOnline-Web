@@ -5,6 +5,7 @@
 <div class="container-fluid py-4">
     <div class="row">
         <!-- Data Proses -->
+        @foreach ($dataservice as $data)
         <div class="col-md-7 mt-4">
             <div class="card">
                 <div class="card-header pb-0 px-3">
@@ -14,19 +15,19 @@
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="d-flex flex-column">
-                                <h6 class="mb-3 text-sm">Usman</h6>
-                                <span class="mb-2 text-xs">No Antrian: <span class="text-dark font-weight-bold ms-sm-2">2</span></span>
-                                <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">6453</span></span>
-                                <span class="mb-2 text-xs">No Polisi: <span class="text-dark ms-sm-2 font-weight-bold">N 6769 OK</span></span>
-                                <span class="mb-2 text-xs">No Telepon: <span class="text-dark ms-sm-2 font-weight-bold">083718378</span></span>
-                                <span class="mb-2 text-xs">No Rangka: <span class="text-dark ms-sm-2 font-weight-bold">7389173</span></span>
-                                <span class="mb-2 text-xs">No Mesiin: <span class="text-dark ms-sm-2 font-weight-bold">2907</span></span>
-                                <span class="mb-2 text-xs">Tahun Terbit: <span class="text-dark ms-sm-2 font-weight-bold">2019</span></span>
-                                <span class="mb-2 text-xs">Type: <span class="text-dark ms-sm-2 font-weight-bold">A</span></span>
-                                <span class="mb-2 text-xs">KM: <span class="text-dark ms-sm-2 font-weight-bold">1444</span></span>
-                                <span class="mb-2 text-xs">Warna: <span class="text-dark ms-sm-2 font-weight-bold">Hitam</span></span>
-                                <span class="mb-2 text-xs">Jenis Service: <span class="text-dark ms-sm-2 font-weight-bold">Service Ringan</span></span>
-                                <span class="text-xs">Keluhan: <span class="text-dark ms-sm-2 font-weight-bold">-</span></span>
+                                <h6 class="mb-3 text-sm">{{$data->fullname}}</h6>
+                                <span class="mb-2 text-xs">No Antrian: <span class="text-dark font-weight-bold ms-sm-2">{{$data->no_antrian}}</span></span>
+                                <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$data->id}}</span></span>
+                                <span class="mb-2 text-xs">No Polisi: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->nopol}}</span></span>
+                                <span class="mb-2 text-xs">No Telepon: <span class="text-dark ms-sm-2 font-weight-bold"></span>{{$data->phone}}</span>
+                                <span class="mb-2 text-xs">No Rangka: <span class="text-dark ms-sm-2 font-weight-bold"></span>{{$data->norangka}}</span>
+                                <span class="mb-2 text-xs">No Mesin: <span class="text-dark ms-sm-2 font-weight-bold"></span>{{$data->nomesin}}</span>
+                                <span class="mb-2 text-xs">Tahun Terbit: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->trakit}}</span></span>
+                                <span class="mb-2 text-xs">Type: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->type}}</span></span>
+                                <span class="mb-2 text-xs">KM: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->km}}</span></span>
+                                <span class="mb-2 text-xs">Warna: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->warna}}</span></span>
+                                <span class="mb-2 text-xs">Jenis Service: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->nproduk}}</span></span>
+                                <span class="text-xs">Keluhan: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->notes}}</span></span>
                             </div>
                             <div class="ms-auto text-end">
                                 <!-- <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-times-circle me-2"></i>Cancel</a> -->
@@ -37,6 +38,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
 
         <!-- Data Selesai -->
         <div class="col-md-5 mt-4">
