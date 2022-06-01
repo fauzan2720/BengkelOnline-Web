@@ -13,6 +13,7 @@
 
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/animate.css" />
     <link rel="stylesheet" href="assets/css/LineIcons.2.0.css" />
@@ -41,7 +42,7 @@
                     <div class="nav-inner">
                         <!-- Navbar -->
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="{{ url('/') }}">
                                 <img src="assets/img/DAG.png" alt="DAG">
                             </a>
                             <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +70,7 @@
                                 </ul>
                             </div>
                             <div class="button add-list-button">
-                                <a href="javascript:void(0)" class="btn">Sign In</a>
+                                <a href="{{ url('/login') }}" class="btn">Sign In</a>
                             </div>
                         </nav>
                     </div>
@@ -110,7 +111,7 @@
                 <div class="col-12">
                     <div class="section-title">
                         <div class="logo wow fadeInUp mb-5 mt-5" data-wow-delay=".4s">
-                            <a href="index.html">
+                            <a href="{{ url('/') }}">
                                 <img src="assets/img/DAG.png" alt="#" width="300px">
                             </a>
                         </div>
@@ -147,7 +148,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="single-feature wow fadeInUp" data-wow-delay=".2s">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fa fa-cogs"></i>
                         <h3>Panggil Mekanik</h3>
                         <p>Ketika pengendara mogok ditengah jalan, pengendara dapat memanggil mekanik dengan memanfaatkan fitur yang tersedia pada aplikasi ini.</p>
                     </div>
@@ -315,7 +316,7 @@
                 <div class="row">
                     <div class="single-footer f-about">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="{{ url('/') }}">
                                 <img src="assets/img/DAG.png" alt="#">
                             </a>
                         </div>
