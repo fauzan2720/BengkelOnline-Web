@@ -14,6 +14,11 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
     public function index()
     {
         return view('pages.login');
@@ -31,7 +36,7 @@ class AuthController extends Controller
 
     public function registerStore(Request $request)
     {
-        $data = $request ->validate([
+        $data = $request->validate([
             'fullname' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'phone_number' => 'required|min:11',
@@ -44,16 +49,16 @@ class AuthController extends Controller
 
     public function loginStore(Request $request)
     {
-        $data = $request ->validate([
+        $data = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        if(Auth::attempt($data)){
+        if (Auth::attempt($data)) {
             $request->session()->regenerate();
-            
+
             return redirect()->intended('/dashboard');
         }
-        
+
         return back()->with('error', 'email atau Password Salah!');
     }
 
