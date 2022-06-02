@@ -25,7 +25,9 @@ Route::get('/data_produk', [HalamanController::class, 'dataproduk'])->name('data
 Route::get('/delivery', [HalamanController::class, 'delivery'])->name('delivery');
 Route::get('/transaksi', [HalamanController::class, 'transaksi'])->name('transaksi');
 Route::post('/transaksi', [HalamanController::class, 'tambah']);
+
 Route::get('/data_service', [HalamanController::class, 'dataservice'])->name('dataservice');
+Route::post('/checktout/{id}', [HalamanController::class, 'checktout'])->name('checktout');
 
 Route::get('/profil', [HalamanController::class, 'profil'])->name('profil');
 Route::post('/editprofil/{id}', [HalamanController::class, 'editprofil'])->name('editprofil');

@@ -49,9 +49,11 @@ class HalamanController extends Controller
         return view('pages.transaksi', compact('transaksi'))->with('title', $title);
     }
     public function dataservice(){
-        $dataservice = DB::table('transaksi')->get();
+        $dataservice = DB::table('transaksi')->where('status','proses')->get();
+        $dataproduk = DB::table('products')->get();
+        $test = DB::table('transaksi')->where('status','done')->get();
         $title = 'Data Service';
-        return view('pages.data_service', ['dataservice'=>$dataservice])->with('title', $title);
+        return view('pages.data_service', ['dataservice'=>$dataservice, 'test'=>$test,'dataproduk'=>$dataproduk])->with('title', $title);
     }
     public function profil(){
         $dataadmin = DB::table('users')->where('roles','ADMIN')->get();

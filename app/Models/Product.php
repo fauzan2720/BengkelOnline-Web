@@ -31,4 +31,8 @@ class Product extends Model
     {
         return $this->hasMany(ProductGallery::class, 'product_id', 'id');
     }
+    static function product($id_produk){
+        $data = Product::where('id', $id_produk)->first();
+        return $data;
+    }
 }

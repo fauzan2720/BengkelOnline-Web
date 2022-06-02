@@ -31,7 +31,7 @@
                             </div>
                             <div class="ms-auto text-end">
                                 <!-- <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-times-circle me-2"></i>Cancel</a> -->
-                                <a class="btn btn-link bg-gradient-warning px-3 mb-0" href="javascript:;" data-bs-toggle="modal" data-bs-target="#bayarmodal"><i class="fas fa-coins me-2" aria-hidden="true"></i>Bayar</a>
+                                <a class="btn btn-link bg-gradient-warning px-3 mb-0" href="javascript:;" data-bs-toggle="modal" data-bs-target="#bayarmodal-{{$data->id}}"><i class="fas fa-coins me-2" aria-hidden="true"></i>Bayar</a>
                             </div>
                         </li>
                     </ul>
@@ -56,6 +56,7 @@
                 </div>
 
                 <!-- Newest -->
+                @foreach ($test as $t)
                 <div class="card-body pt-4 p-3">
                     <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6>
                     <ul class="list-group">
@@ -63,8 +64,8 @@
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-check"></i></button>
                                 <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">Aji Soko Mangan Telo</h6>
-                                    <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">4234232</span></span>
+                                    <h6 class="mb-1 text-dark text-sm">{{$t->fullname}}</h6>
+                                    <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$t->id}}</span></span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center">
@@ -73,13 +74,15 @@
                         </li>
                     </ul>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
 </div>
 
 <!-- Bayar Modal -->
-<div class="modal fade" id="bayarmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+@foreach ($dataservice as $data)
+<div class="modal fade" id="bayarmodal-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,7 +96,7 @@
                             <div class="card-header pb-0">
                                 <div class="d-flex align-items-center">
                                     <div class="col-md-2 d-flex justify-content-end align-items-center">
-                                        <span class="mb-2 text-xs">Nota: <span class="text-dark font-weight-bold ms-sm-2">GJ7878G797</span></span>
+                                        <span class="mb-2 text-xs">Nota: <span class="text-dark font-weight-bold ms-sm-2">{{$data->id}}</span></span>
                                     </div>
                                 </div>
                             </div>
@@ -102,8 +105,13 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">ID Produk</label>
-                                            <input class="form-control" type="text" value="123" aria-label="123" disabled readonly>
+                                            <label for="example-text-input" class="form-control-label">Nama</label>
+                                            <input class="form-control" type="text" value="{{$data->fullname}}" aria-label="123" disabled readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" name="status" id="status" hidden value="done" aria-label="123" disabled readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-7 d-flex justify-content-end align-items-center">
@@ -116,13 +124,11 @@
                                             <div class="form-group">
                                                 <label for="example-text-input" class="form-control-label">Nama Produk</label>
                                                 <div class="input-group mb-3">
-                                                    <select class="form-select" id="inputGroupSelect01">
+                                                    <select class="form-select" name="produk" id="inputGroupSelect01">
+                                                        @foreach ($dataproduk as $datap)
                                                         <option selected>Choose...</option>
-                                                        <option value="1">Karbu</option>
-                                                        <option value="2">Busi</option>
-                                                        <option value="2">Oli</option>
-                                                        <option value="3">Rante</option>
-                                                        <option value="3">Part Lainnya</option>
+                                                        <option value="{{$datap->product_name}}">{{$datap->product_name}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -132,7 +138,7 @@
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label for="example-text-input" class="form-control-label">Jumlah</label>
-                                                <input class="form-control" type="email" value="Afris">
+                                                <input class="form-control" type="email" value="1">
                                             </div>
                                         </div>
                                     </div>
@@ -206,6 +212,7 @@
         </div>
     </div>
 </div>
+@endforeach
 
 
 <!-- Detail Modal -->
