@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Juser;
 use App\Models\User;
 use App\Models\Karyawan;
-use App\Models\Produk;
+use App\Models\Product;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,27 +15,27 @@ class HalamanController extends Controller
 {
     public function dashboard()
     {
-        $countDU = DB::table('data_user')->count();
-        $countDK = DB::table('data_karyawan')->count();
-        $countDP = DB::table('data_produk')->count();
+        $countDU = DB::table('users')->where('roles','USER')->count();
+        $countDK = DB::table('users')->where('roles','MEKANIK')->count();
+        $countDP = DB::table('products')->count();
         $title = 'Dashboard';
         return view('pages.dashboard', compact('countDU', 'countDK', 'countDP'))->with('title', $title);
         
     }
     public function datauser()
     {
-        $datauser = DB::table('data_user')->get();
+        $datauser = DB::table('users')->where('roles','USER')->get();
         $title = 'Data User';
         return view('pages.data_user', ['datauser'=>$datauser])->with('title', $title);;
     }
     public function karyawandata()
     {
-        $datakaryawan = DB::table('data_karyawan')->get();
+        $datakaryawan = DB::table('users')->where('roles','MEKANIK')->get();
         $title = 'Data Karyawan';
         return view('pages.data_karyawan', ['datakaryawan'=>$datakaryawan])->with('title', $title);;
     }
     public function dataproduk(){
-        $dataproduk = DB::table('data_produk')->get();
+        $dataproduk = DB::table('products')->get();
         $title = 'Data Produk';
         return view('pages.data_produk', ['dataproduk'=>$dataproduk])->with('title', $title);;
     }
@@ -54,7 +54,7 @@ class HalamanController extends Controller
         return view('pages.data_service', ['dataservice'=>$dataservice])->with('title', $title);
     }
     public function profil(){
-        $dataadmin = DB::table('users')->get();
+        $dataadmin = DB::table('users')->where('roles','ADMIN')->get();
         $title = 'Data Profil';
         return view('pages.profil', ['dataadmin'=>$dataadmin])->with('title', $title);
     }
@@ -79,13 +79,13 @@ class HalamanController extends Controller
 	{
 		if($request->isMethod('post')){
             $data = $request->all();
-            Juser::where(['id'=>$id])->update([
-                'name'=>$data['name'],
+            User::where(['id'=>$id])->update([
+                'fullname'=>$data['name'],
                 'email'=>$data['email'],
-                'phone'=>$data['phone'],
-                'pin'=>$data['pin'],
+                'phone_number'=>$data['phone'],
+                'pin_number'=>$data['pin'],
                 'password'=>$data['password'],
-                'kendaraan'=>$data['kendaraan']
+                //'kendaraan'=>$data['kendaraan']
             ]);
             return redirect()->back()->with('diky_success', 'Update Berhasil');
         }
@@ -93,7 +93,7 @@ class HalamanController extends Controller
     public function hapus(Request $request, $id)
 	{
 		if($request->isMethod('post')){
-            Juser::where(['id'=>$id])->delete();
+            User::where(['id'=>$id])->delete();
             return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil');
         }
 	}
@@ -101,10 +101,10 @@ class HalamanController extends Controller
 	{
 		if($request->isMethod('post')){
             $data = $request->all();
-            Karyawan::where(['id'=>$id])->update([
-                'name'=>$data['name'],
-                'phone'=>$data['phone'],
-                'status'=>$data['status'],
+            User::where(['id'=>$id])->update([
+                'fullname'=>$data['name'],
+                'phone_number'=>$data['phone'],
+                'roles'=>$data['status'],
                 'alamat'=>$data['alamat']
             ]);
             return redirect()->back()->with('diky_success', 'Update Berhasil');
@@ -113,7 +113,7 @@ class HalamanController extends Controller
     public function hapusk(Request $request, $id)
 	{
 		if($request->isMethod('post')){
-            Karyawan::where(['id'=>$id])->delete();
+            User::where(['id'=>$id])->delete();
             return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil')->with('diky_hapus', 'Gagal');
         }
 	}
@@ -121,11 +121,10 @@ class HalamanController extends Controller
 	{
 		if($request->isMethod('post')){
             $data = $request->all();
-            Produk::where(['id'=>$id])->update([
-                'id_produk'=>$data['id_produk'],
-                'produk'=>$data['produk'],
-                'harga'=>$data['harga'],
-                'trend'=>$data['trend']
+            Product::where(['id'=>$id])->update([
+                'product_name'=>$data['produk'],
+                'price'=>$data['harga'],
+                'trends'=>$data['trend']
             ]);
             return redirect()->back()->with('diky_success', 'Update Berhasil');
         }
@@ -159,7 +158,7 @@ class HalamanController extends Controller
     public function hapusp(Request $request, $id)
 	{
 		if($request->isMethod('post')){
-            Produk::where(['id'=>$id])->delete();
+            Product::where(['id'=>$id])->delete();
             return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil');
         }
 	}

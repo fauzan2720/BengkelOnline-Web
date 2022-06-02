@@ -30,7 +30,7 @@
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">PIN</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Password</th>
                                     <!-- <th class="text-center text-uppercase text-xxs font-weight-bolder">Balance</th> -->
-                                    <th class="text-center text-uppercase text-xxs font-weight-bolder">Kendaraan</th>
+                                    {{-- <th class="text-center text-uppercase text-xxs font-weight-bolder">Kendaraan</th> --}}
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Action</th>
                                 </tr>
                             </thead>
@@ -54,10 +54,10 @@
                                     <td class="align-middle text-center text-sm">
                                         <div class="d-flex px-2 py-1">
                                             <div>
-                                                <img src="https://ui-avatars.com/api/?name={{ $du->name }}&background=random&rounded=true" class="avatar avatar-sm me-3" alt="user1">
+                                                <img src="https://ui-avatars.com/api/?name={{ $du->fullname }}&background=random&rounded=true" class="avatar avatar-sm me-3" alt="user1">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $du->name }}</p>
+                                                <p class="text-xs font-weight-bold mb-0">{{ $du->fullname }}</p>
                                                 <!-- <h6 class="mb-0 text-sm">Afris Nurfal Aziz</h6> -->
                                             </div>
                                         </div>
@@ -70,12 +70,12 @@
 
                                     <!-- No. Telepon -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $du->phone }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $du->phone_number }}</p>
                                     </td>
 
                                     <!-- PIN -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $du->pin }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $du->pin_number }}</p>
                                     </td>
 
                                     <!-- Password -->
@@ -84,13 +84,13 @@
                                     </td>
 
                                     <!-- Kendaraan -->
-                                    <td class="align-middle text-center text-sm">
+                                    {{-- <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0">{{ $du->kendaraan }}</p>
-                                    </td>
+                                    </td> --}}
 
                                     <!-- Action -->
                                     <td class="align-middle text-center text-sm">
-                                        <a href="javascript:;" id="tombolubah2" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#editmodal-{{ $du->id }}" data-original-title="Edit user" data-id="{{$du->id}}" data-name="{{$du->name}}" data-email="{{$du->email}}" data-phone="{{$du->phone}}" data-pin="{{$du->pin}}" data-password="{{$du->password}}" data-kendaraan="{{$du->kendaraan}}">
+                                        <a href="javascript:;" id="tombolubah2" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#editmodal-{{ $du->id }}" data-original-title="Edit user" data-id="{{$du->id}}" data-name="{{$du->fullname}}" data-email="{{$du->email}}" data-phone="{{$du->phone_number}}" data-pin="{{$du->pin_number}}" data-password="{{$du->password}}">
                                             Edit
                                         </a>
                                         <a class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
@@ -136,7 +136,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">User</label>
-                                <input class="form-control" name="name" id="name" type="text" value="{{$data->name}}">
+                                <input class="form-control" name="name" id="name" type="text" value="{{$data->fullname}}">
                             </div>
                         </div>
 
@@ -157,14 +157,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">No. Telepon</label>
-                                <input class="form-control" name="phone" id="phone" type="text" value="{{$data->phone}}">
+                                <input class="form-control" name="phone" id="phone" type="text" value="{{$data->phone_number}}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">PIN</label>
-                                <input class="form-control" name="pin" id="pin" type="text" value="{{$data->pin}}">
+                                <input class="form-control" name="pin" id="pin" type="text" value="{{$data->pin_number}}">
                             </div>
                         </div>
 
@@ -175,12 +175,12 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Kendaraan</label>
                                 <input class="form-control" name="kendaraan" id="kendaraan" type="text" value="{{$data->kendaraan}}">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
             </div>
             <div class="modal-footer">
@@ -206,7 +206,7 @@
             <div class="modal-body">
                 <form action="{{url('hapus/'.$data->id)}}" method="POST">
                     {{ csrf_field() }}
-                    Apakah anda ingin menghapus data ID : {{ $data->id }} | Nama : {{ $data->name }} | Email : {{ $data->email }} | No. Telepone : {{ $data->phone }} ?
+                    Apakah anda ingin menghapus data ID : {{ $data->id }} | Nama : {{ $data->fullname }} | Email : {{ $data->email }} | No. Telepone : {{ $data->phone_number }} ?
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Iya</button>

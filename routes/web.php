@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\DataUserController;
 
-Route::get('/', [AuthController::class, 'welcome'])->name('welcome');
+Route::get('/', [AuthController::class, 'index'])->name('welcome');
 
 // Route::get('/', [AuthController::class, 'index'])->name('index');
 // Route::post('/', [AuthController::class, 'loginStore'])->name('loginPost');

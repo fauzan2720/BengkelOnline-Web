@@ -23,6 +23,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">No.</th>
+                                    <th class="text-center text-uppercase text-xxs font-weight-bolder">ID</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Nama Karyawan</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">No. Telepon</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Status</th>
@@ -42,26 +43,31 @@
                                         <p class="text-xs font-weight-bold mb-0">{{ $nomer++ }}.</p>
                                     </td>
 
+                                    <!-- NO -->
+                                    <td class="align-middle text-center text-sm">
+                                        <p class="text-xs font-weight-bold mb-0">{{ $dk->id }}</p>
+                                    </td>
+
                                     <!-- Karyawan -->
                                     <td class="align-middle text-center text-sm">
                                         <div class="d-flex px-2 py-1">
                                             <div>
-                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                                                <img src="https://ui-avatars.com/api/?name={{ $dk->fullname }}&background=random&rounded=true" class="avatar avatar-sm me-3" alt="user1">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $dk->name }}</p>
+                                                <p class="text-xs font-weight-bold mb-0">{{ $dk->fullname }}</p>
                                             </div>
                                         </div>
                                     </td>
 
                                     <!-- No. Telepon -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $dk->phone }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $dk->phone_number }}</p>
                                     </td>
 
                                     <!-- Status -->
                                     <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-warning">{{ $dk->status }}</span>
+                                        <span class="badge badge-sm bg-gradient-warning">{{ $dk->roles }}</span>
                                     </td>
 
                                     <!-- Alamat -->
@@ -117,21 +123,21 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Karyawann</label>
-                                <input class="form-control" type="text" id="name" name="name" value="{{$data->name}}">
+                                <input class="form-control" type="text" id="name" name="name" value="{{$data->fullname}}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">No. Telepon</label>
-                                <input class="form-control" type="text" id="phone" name="phone" value="{{$data->phone}}">
+                                <input class="form-control" type="text" id="phone" name="phone" value="{{$data->phone_number}}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Status</label>
-                                <input class="form-control" type="text" id="status" name="status" value="{{$data->status}}">
+                                <input class="form-control" type="text" id="status" name="status" value="{{$data->roles}}">
                             </div>
                         </div>
 
@@ -165,7 +171,7 @@
             <div class="modal-body">
                 <form action="{{url('hapusk/'.$data->id)}}" method="POST">
                     {{ csrf_field() }}
-                    Apakah anda ingin menghapus data {{ $data->name }} ?
+                    Apakah anda ingin menghapus data {{ $data->fullname }} ?
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Iya</button>

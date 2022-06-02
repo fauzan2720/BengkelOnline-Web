@@ -4,7 +4,7 @@
         <a class="navbar-brand m-0" href=" {{ url('/dashboard') }} ">
             <img src="../assets/img/DAG.png" style="width: 60px;" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold">Bengkel Online</span>
-            <p>Hai!, {{ Auth::user()->name }}</p>
+            <p>Hai!, {{ Auth::user()->fullname }}</p>
         </a>
     </div>
 

@@ -43,22 +43,22 @@
 
                                     <!-- ID -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $dp->id_produk }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $dp->id }}</p>
                                     </td>
 
                                     <!-- Produk -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $dp->produk }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $dp->product_name }}</p>
                                     </td>
 
                                     <!-- Harga -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $dp->harga }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $dp->price }}</p>
                                     </td>
 
                                     <!-- Trends -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $dp->trend }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $dp->trends }}</p>
                                     </td>
 
                                     <!-- Action -->
@@ -110,14 +110,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">ID</label>
-                                <input class="form-control" type="text" id="id_produk" name="id_produk" value="{{$data->id_produk}}">
+                                <input class="form-control" type="text" id="id_produk" readonly name="id_produk" value="{{$data->id}}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Produk</label>
-                                <input class="form-control" type="text" id="produk" name="produk" value="{{$data->produk}}">
+                                <input class="form-control" type="text" id="produk" name="produk" value="{{$data->product_name}}">
                             </div>
                         </div>
 
@@ -131,14 +131,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Harga</label>
-                                <input class="form-control" type="text" id="harga" name="harga" value="{{$data->harga}}">
+                                <input class="form-control" type="text" id="harga" name="harga" value="{{$data->price}}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Trends</label>
-                                <input class="form-control" type="text" id="trend" name="trend" value="{{$data->trend}}">
+                                <input class="form-control" type="text" id="trend" name="trend" value="{{$data->trends}}">
                             </div>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
             <div class="modal-body">
                 <form action="{{url('hapusp/'.$data->id)}}" method="POST">
                     {{ csrf_field() }}
-                    Apakah anda ingin menghapus data ID : {{ $data->id_produk }} | Produk : {{ $data->produk }} | Harga : {{ $data->harga }} | TRENDS : {{ $data->trend }} ?
+                    Apakah anda ingin menghapus data ID : {{ $data->id }} | Produk : {{ $data->product_name }} | Harga : {{ $data->price }} | TRENDS : {{ $data->trends }} ?
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Iya</button>
