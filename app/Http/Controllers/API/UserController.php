@@ -11,21 +11,11 @@ use Laravel\Fortify\Rules\Password;
 
 class UserController extends Controller
 {
-
-    /**
-     * @param Request $request
-     * @return mixed
-     */
     public function fetch(Request $request)
     {
         return ResponseFormatter::success($request->user(), 'Data profil user berhasil diambil');
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
-     */
     public function login(Request $request)
     {
         try {
@@ -60,11 +50,6 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
-     */
     public function register(Request $request)
     {
         try {
@@ -123,7 +108,13 @@ class UserController extends Controller
         $user = Auth::user();
         $user->update($data);
 
-        return ResponseFormatter::success($user, 'Profile Updated');
+        $tokenResult = $user->createToken('authToken')->plainTextToken;
+
+        return ResponseFormatter::success([
+            'access_token' => $tokenResult,
+            'token_type' => 'Bearer',
+            'user' => $user
+        ], 'Profile Updated');
     }
 
     public function updatePassword(Request $request)
@@ -137,6 +128,12 @@ class UserController extends Controller
         $user = Auth::user();
         $user->update($data);
 
-        return ResponseFormatter::success($user, 'Profile Updated');
+        $tokenResult = $user->createToken('authToken')->plainTextToken;
+
+        return ResponseFormatter::success([
+            'access_token' => $tokenResult,
+            'token_type' => 'Bearer',
+            'user' => $user
+        ], 'Profile Updated');
     }
 }
