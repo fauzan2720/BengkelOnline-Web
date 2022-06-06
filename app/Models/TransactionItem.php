@@ -10,11 +10,13 @@ class TransactionItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'users_id', 'products_id', 'transactions_id', 'quantity'
+        'product_id',
+        'transaction_id',
+        'quantity',
     ];
 
     public function product()
     {
-        return $this->hasOne(Product::class, 'id', 'products_id');
+        return $this->hasOne(Product::class, 'id', 'product_id');
     }
 }
