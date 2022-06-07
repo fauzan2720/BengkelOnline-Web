@@ -16,7 +16,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}" href="{{ url('/dashboard') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        <i class="fas fa-desktop text-primary text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
@@ -25,7 +25,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Data User") ? 'active' : '' }}" href="{{ url('/data_user') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-warning text-sm opacity-10"></i>
+                        <i class="fas fa-users text-warning text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Data User</span>
                 </a>
@@ -34,7 +34,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Data Karyawan") ? 'active' : '' }}" href="{{ url('/data_karyawan') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-badge text-success text-sm opacity-10"></i>
+                        <i class="fas fa-id-badge text-success text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Data Karyawan</span>
                 </a>
@@ -83,7 +83,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Profil") ? 'active' : '' }}" href="{{ url('/profil') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-circle-08 text-dark text-sm opacity-10"></i>
+                        <i class="fas fa-user-headset text-dark text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Profil</span>
                 </a>
@@ -92,12 +92,12 @@
             <li class="nav-item">
                 <form action="/logout" method="POST">
                     @csrf
-                 <a class="nav-link {{ ($title === "Logout") ? 'active' : '' }}" href="{{ url('/login') }}" name="logout">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-power-off text-danger text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Logout</span>
-                 </a>
+                    <a class="nav-link {{ ($title === "Logout") ? 'active' : '' }}" href="{{ url('/login') }}" name="logout">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-power-off text-danger text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Logout</span>
+                    </a>
                 </form>
             </li>
         </ul>
