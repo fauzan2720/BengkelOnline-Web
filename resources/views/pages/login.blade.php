@@ -80,7 +80,7 @@
                             <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://user-images.githubusercontent.com/74905155/165243311-93d1d93e-0536-4369-93a0-53c9e133c842.jpg');
                                 background-size: cover;">
                                 <span class="mask bg-gradient-primary opacity-6"></span>
-                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Welcome Bengkel Online"</h4>
+                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Welcome Admin Bengkel Online"</h4>
                                 <p class="text-white position-relative">Silahkan Login untuk memulai.</p>
                             </div>
                         </div>
