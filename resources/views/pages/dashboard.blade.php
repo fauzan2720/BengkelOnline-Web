@@ -86,7 +86,7 @@
                             <div class="numbers">
                                 <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/delivery') }}">Delivery Service Online</a>
                                 <h5 class="font-weight-bolder">
-                                    430
+                                    {{ $countDD }}
                                 </h5>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                             <div class="numbers">
                                 <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/transaksi') }}">Transaksi Service</a>
                                 <h5 class="font-weight-bolder">
-                                    430
+                                    {{ $countDT }}
                                 </h5>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                             <div class="numbers">
                                 <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/data_service') }}">Data Service</a>
                                 <h5 class="font-weight-bolder">
-                                    430
+                                    {{ $countDDT }}
                                 </h5>
                             </div>
                         </div>

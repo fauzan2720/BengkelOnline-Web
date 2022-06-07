@@ -20,8 +20,11 @@ class HalamanController extends Controller
         $countDU = DB::table('users')->where('roles','USER')->count();
         $countDK = DB::table('users')->where('roles','MEKANIK')->count();
         $countDP = DB::table('products')->count();
+        $countDD = DB::table('call_mechanics')->count();
+        $countDT = DB::table('transaksi')->count();
+        $countDDT = DB::table('transaksi')->where('status','done')->count();
         $title = 'Dashboard';
-        return view('pages.dashboard', compact('countDU', 'countDK', 'countDP'))->with('title', $title);
+        return view('pages.dashboard', compact('countDU', 'countDK', 'countDP', 'countDD', 'countDT', 'countDDT'))->with('title', $title);
         
     }
     public function datauser()
