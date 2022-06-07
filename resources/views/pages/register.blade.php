@@ -12,7 +12,7 @@
     @include('pages.core');
 
     <!-- CSS Files -->
-    <link id="pagestyle" href="../assets/css/style.css?v=2.0.2" rel="stylesheet" />
+    <link id="pagestyle" href="assets/css/style.css?v=2.0.2" rel="stylesheet" />
 
 </head>
 
@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
         <div class="container">
             <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white">
-                <img src="../assets/img/DAG.png" alt="DAG" style="width: 50px;">
+                <img src="assets/img/DAG.png" alt="DAG" style="width: 50px;">
                 AHASS DAG MOTOR
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -183,10 +183,10 @@
     <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
 
     <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -199,7 +199,7 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/dashboard.min.js?v=2.0.2"></script>
+    <script src="assets/js/dashboard.min.js?v=2.0.2"></script>
 </body>
 
 </html>
