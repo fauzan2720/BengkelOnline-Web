@@ -53,7 +53,7 @@
                                 <div class="card-header pb-0 text-start">
                                     <h4 class="font-weight-bolder">Login</h4>
                                     @if (session()->has('error'))
-                                    <p class="text-danger">{{ session('error') }}</p>
+                                        <p class="text-danger">{{ session('error') }}</p>
                                     @endif
                                     {{-- @if (session()->has('success'))
                                         <p class="text-success">{{ session('success') }}</p>

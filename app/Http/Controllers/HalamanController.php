@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Karyawan;
 use App\Models\Product;
 use App\Models\Transaksi;
+use App\Models\Location;
+use App\Models\CallMechanic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -40,8 +42,10 @@ class HalamanController extends Controller
         return view('pages.data_produk', ['dataproduk'=>$dataproduk])->with('title', $title);;
     }
     public function delivery(){
+        $datad = DB::table('call_mechanics')->where('status','proses')->get();
+        $mechanic = DB::table('users')->where('roles','MEKANIK')->get();
         $title = 'Delivery';
-        return view('pages.delivery')->with('title', $title);
+        return view('pages.delivery', ['datadelivery'=>CallMechanic::all()->where('status','proses'), 'location'=>Location::all(), 'mechanic'=>$mechanic])->with('title', $title);
     }
     public function transaksi(){
         $transaksi = DB::table('transaksi')->count();
@@ -139,6 +143,7 @@ class HalamanController extends Controller
     public function tambah(Request $request)
 	{
         {
+            
             $data = $request ->validate([
                 'no_antrian' => 'required|max:255',
                 'nopol' => 'required|max:255',
@@ -157,11 +162,38 @@ class HalamanController extends Controller
             return redirect()->back()->with('diky_success', 'Berhasil');
         }
 	}
+
+    public function tambahproduk(Request $request)
+	{
+        {
+            $datap = $request->all();
+            $data = $request ->validate([
+                'product_id' => $datap['idproduk'],
+                'product_name' => $datap['produkname'],
+                'transaction_id' => $datap['idproduk'],
+                'quantity' => $datap['jumlah'],
+            ]);
+            DB::table('transaction_items')->insert($data);
+            return redirect()->back()->with('diky_success', 'Berhasil');
+        }
+	}
     public function hapusp(Request $request, $id)
 	{
 		if($request->isMethod('post')){
             Product::where(['id'=>$id])->delete();
             return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil');
+        }
+	}
+
+    public function terima(Request $request, $id=null)
+	{
+		if($request->isMethod('post')){
+            $data = $request->all();
+            CallMechanic::where(['id'=>$id])->update([
+                'mechanic'=>$data['mechanic'],
+                'status'=>"perjalanan",
+            ]);
+            return redirect()->back()->with('diky_success', 'Update Berhasil');
         }
 	}
 }

@@ -7,6 +7,9 @@ use App\Http\Controllers\DataUserController;
 
 Route::get('/', [AuthController::class, 'index'])->name('welcome');
 
+// Route::get('/', [AuthController::class, 'index'])->name('index');
+// Route::post('/', [AuthController::class, 'loginStore'])->name('loginPost');
+
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginStore'])->name('loginPost');
 
@@ -37,3 +40,10 @@ Route::post('/hapusk/{id}', [HalamanController::class, 'hapusk']);
 
 Route::post('/editp/{id}', [HalamanController::class, 'editp']);
 Route::post('/hapusp/{id}', [HalamanController::class, 'hapusp']);
+
+Route::post('/tambahproduk/{id}', [HalamanController::class, 'tambahproduk']);
+
+Route::post('/terima/{id}', [HalamanController::class, 'terima']);
+
+
+

@@ -117,41 +117,56 @@
                                     <div class="col-md-7 d-flex justify-content-end align-items-center">
                                         <h6>Rp. -</h6>
                                     </div>
-
+                                    <h5 class="modal-title" id="staticBackdropLabel">Part yang DIganti</h5>
+                                    @foreach ($dataproduk as $datap)
+                                    <form action="{{url('tambahproduk/'.$datap->id)}}" method="POST">
+                                         {{ csrf_field() }}
                                     <div class="row">
                                         <!-- Nama Produk -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-2">
                                             <div class="form-group">
-                                                <label for="example-text-input" class="form-control-label">Nama Produk</label>
-                                                <div class="input-group mb-3">
-                                                    <select class="form-select" name="produk" id="inputGroupSelect01">
-                                                        @foreach ($dataproduk as $datap)
-                                                        <option selected>Choose...</option>
-                                                        <option value="{{$datap->product_name}}">{{$datap->product_name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                                <input class="form-control" name="idproduk" id="idproduk" readonly type="number" value="{{$datap->id}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input class="form-control" name="produkname" id="produkname" readonly type="text" value="{{$datap->product_name}}">
                                             </div>
                                         </div>
 
                                         <!-- Jumlah -->
+                                        
+
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label for="example-text-input" class="form-control-label">Jumlah</label>
-                                                <input class="form-control" type="email" value="1">
+                                                <input class="form-control" name="harga" readonly type="number" value="{{$datap->price}}">
                                             </div>
                                         </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <input class="form-control" name="jumlah" type="number" placeholder="Jumlah">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                        <div class="form-group">
+                                            <button class="btn btn-warning btn-sm ms-auto" type="submit">TAMBAH</button>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
+                                    </form>
+                                @endforeach
 
-                                <!-- Button -->
+                                <!-- Button
                                 <div class="row mt-5">
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <button class="btn btn-warning btn-sm ms-auto">TAMBAH</button>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <hr class="horizontal dark mt-2 mb-4">
 

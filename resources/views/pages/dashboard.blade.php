@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                <a href="{{ url('/data_user') }}"><i class="fas fa-users text-lg opacity-10" aria-hidden="true"></i></a>
+                                <a href="{{ url('/data_user') }}"><i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                <a href="{{ url('/data_karyawan') }}"><i class="fas fa-id-badge text-lg opacity-10" aria-hidden="true"></i></a>
+                                <a href="{{ url('/data_karyawan') }}"><i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-dark shadow-dark text-center rounded-circle">
-                                <a href="{{ url('/profil') }}"><i class="fas fa-user-headset text-lg opacity-10" aria-hidden="true"></i></a>
+                                <a href="{{ url('/profil') }}"><i class="ni ni-circle-08 text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
