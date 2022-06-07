@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Transaksi;
 use App\Models\Location;
 use App\Models\CallMechanic;
+use App\Models\TransactionItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,14 +54,15 @@ class HalamanController extends Controller
     public function transaksi(){
         $transaksi = DB::table('transaksi')->count();
         $title = 'Transaksi';
-        return view('pages.transaksi', compact('transaksi'))->with('title', $title);
+        return view('pages.transaksi', compact('transaksi'), ['dataproduk'=>TransactionItem::all(), 'dataproduk2'=>Product::all()])->with('title', $title);
     }
     public function dataservice(){
         $dataservice = DB::table('transaksi')->where('status','proses')->get();
         $dataproduk = DB::table('products')->get();
+        $produkitem = DB::table('transaction_items')->get();
         $test = DB::table('transaksi')->where('status','done')->get();
         $title = 'Data Service';
-        return view('pages.data_service', ['dataservice'=>$dataservice, 'test'=>$test,'dataproduk'=>$dataproduk])->with('title', $title);
+        return view('pages.data_service', ['produkitem'=>$produkitem,'dataservice'=>$dataservice, 'test'=>$test,'dataproduk'=>$dataproduk, 'product'=>TransactionItem::all()])->with('title', $title);
     }
     public function profil(){
         $dataadmin = DB::table('users')->where('roles','ADMIN')->get();
@@ -169,15 +171,13 @@ class HalamanController extends Controller
     public function tambahproduk(Request $request)
 	{
         {
-            $datap = $request->all();
-            $data = $request ->validate([
-                'product_id' => $datap['idproduk'],
-                'product_name' => $datap['produkname'],
-                'transaction_id' => $datap['idproduk'],
-                'quantity' => $datap['jumlah'],
+            DB::table('transaction_items')->insert([
+                'product_id' => $request->idproduk,
+                'product_name' => $request->produkname,
+                'transaction_id' => $request->nota,
+                'quantity' => $request->jumlah,
             ]);
-            DB::table('transaction_items')->insert($data);
-            return redirect()->back()->with('diky_success', 'Berhasil');
+            return redirect()->back()->with('diky_success', 'Produk Berhasil Ditambahkan');
         }
 	}
     public function hapusp(Request $request, $id)
