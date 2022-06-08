@@ -21,7 +21,7 @@ class LocationController extends Controller
         }
 
         return ResponseFormatter::success(
-            $location->paginate($limit)->where('user_id', '=', Auth::user()->id),
+            $location->where('user_id', '=', Auth::user()->id)->paginate($limit),
             'Data list lokasi user berhasil diambil'
         );
     }
