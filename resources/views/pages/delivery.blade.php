@@ -5,6 +5,7 @@
 <div class="container-fluid py-4">
 
     <!-- Data New -->
+    
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
@@ -25,55 +26,61 @@
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Action</th>
                                 </tr>
                             </thead>
+                                     @php
+                                     $nomer = 1;
+                                    @endphp
+                            @foreach ($datadelivery as $data)
                             <tbody>
                                 <tr>
                                     <!-- NO -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">1.</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{$nomer ++}}.</p>
                                     </td>
 
                                     <!-- ID Delivery Service -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">139822</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{$data->id}}</p>
                                     </td>
 
                                     <!-- Nama User -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">Afris Nurfal Aziz</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{$data->user->fullname}}</p>
                                     </td>
 
                                     <!-- Nomor Telepon -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">08686789689</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{$data->user->phone_number}}</p>
                                     </td>
 
                                     <!-- Lokasi -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">Jl. Tawang mangu depan mie ayam jamur</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{$data->location->address}}</p>
                                     </td>
 
                                     <!-- Kendala -->
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">Brebet dan tiba-tiba mati</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{$data->detail_problem}}</p>
                                     </td>
 
                                     <!-- Action -->
                                     <td class="align-middle text-center text-sm">
-                                        <button type="button" class="btn btn-success text-xs font-weight mb-0" data-bs-toggle="modal" data-bs-target="#modalnew">
+                                        <button type="button" class="btn btn-success text-xs font-weight mb-0" data-bs-toggle="modal" data-bs-target="#modalnew-{{$data->id}}">
                                             Terima & Proses
                                         </button>
-                                        <button type="button" class="btn btn-danger text-xs font-weight mb-0" data-bs-toggle="modal" data-bs-target="#modalnew">
+                                        <button type="button" class="btn btn-danger text-xs font-weight mb-0" data-bs-toggle="modal" data-bs-target="">
                                             Batal
                                         </button>
                                     </td>
                                 </tr>
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
 
 
     <div class="row">
@@ -168,7 +175,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalnew" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+@foreach ($datadelivery as $data)
+<div class="modal fade" id="modalnew-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -176,52 +184,61 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+            <form action="{{url('terima/'.$data->id)}}" method="POST">
+                    {{ csrf_field() }}
                 <div class="row">
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="example-text-input" class="form-control-label">ID Delivery Service</label>
-                            <input class="form-control" type="text" value="Isinya" aria-label="Isinya" disabled readonly>
+                            <input class="form-control" type="text" value="{{$data->id}}" aria-label="Isinya" disabled readonly>
                         </div>
                     </div>
 
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="example-text-input" class="form-control-label">Nama User</label>
-                            <input class="form-control" type="text" value="Isinya" aria-label="Isinya" disabled readonly>
+                            <input class="form-control" type="text" value="{{$data->user->fullname}}" aria-label="Isinya" disabled readonly>
                         </div>
                     </div>
 
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="example-text-input" class="form-control-label">Momor Telepon</label>
-                            <input class="form-control" type="text" value="Isinya" aria-label="Isinya" disabled readonly>
+                            <input class="form-control" type="text" value="{{$data->user->phone_number}}" aria-label="Isinya" disabled readonly>
                         </div>
                     </div>
 
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="example-text-input" class="form-control-label">Lokasi</label>
-                            <input class="form-control" type="text" value="Isinya" aria-label="Isinya" disabled readonly>
+                            <input class="form-control" type="text" value="{{$data->location->address}}" aria-label="Isinya" disabled readonly>
                         </div>
                     </div>
 
                     <div class="col-md-5">
                         <div class="form-group">
                             <label for="example-text-input" class="form-control-label">Kendala</label>
-                            <input class="form-control" type="text" value="Isinya" aria-label="Isinya" disabled readonly>
+                            <input class="form-control" type="text" value="{{$data->detail_problem}}" aria-label="Isinya" disabled readonly>
                         </div>
                     </div>
 
                     <div class="col-md-5">
                         <div class="form-group">
+                            <label for="example-text-input" class="form-control-label">Status</label>
+                            <input class="form-control" type="text" name="status2" value="perjalanan" aria-label="Isinya" disabled readonly>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-5">
+                        <div class="form-group">
                             <label for="example-text-input" class="form-control-label">Nama Mekanik</label>
                             <div class="input-group mb-3">
-                                <select class="form-select" id="inputGroupSelect01">
+                                <select class="form-select" name="mechanic" id="inputGroupSelect01">
                                     <option selected>Choose...</option>
-                                    <option value="1">Ari</option>
-                                    <option value="2">Bowo</option>
-                                    <option value="2">Bagio</option>
-                                    <option value="3">Joko</option>
+                                    @foreach ($mechanic as $datam)
+                                    <option value="{{$datam->fullname}}">{{$datam->fullname}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -230,9 +247,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Terima & Proses</button>
+                <button type="submit" class="btn btn-primary">Terima & Proses</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
+@endforeach
 @endsection

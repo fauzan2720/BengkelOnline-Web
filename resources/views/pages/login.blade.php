@@ -12,7 +12,7 @@
     @include('pages.core');
 
     <!-- CSS Files -->
-    <link id="pagestyle" href="../assets/css/login.css?v=2.0.2" rel="stylesheet" />
+    <link id="pagestyle" href="assets/css/login.css?v=2.0.2" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -24,7 +24,7 @@
                 <nav class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid">
                         <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ url('/') }}">
-                            <img src="../assets/img/DAG.png" alt="DAG" style="width: 50px;">
+                            <img src="assets/img/DAG.png" alt="DAG" style="width: 50px;">
                             Bengkel Online
                         </a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,8 +80,8 @@
                             <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://user-images.githubusercontent.com/74905155/165243311-93d1d93e-0536-4369-93a0-53c9e133c842.jpg');
                                 background-size: cover;">
                                 <span class="mask bg-gradient-primary opacity-6"></span>
-                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"</h4>
-                                <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
+                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Welcome Admin Bengkel Online"</h4>
+                                <p class="text-white position-relative">Silahkan Login untuk memulai.</p>
                             </div>
                         </div>
                     </div>
@@ -92,10 +92,10 @@
     <!-- End Content -->
 
     <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -108,7 +108,7 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/dashboard.min.js?v=2.0.2"></script>
+    <script src="assets/js/dashboard.min.js?v=2.0.2"></script>
 </body>
 
 </html>
