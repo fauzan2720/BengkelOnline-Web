@@ -44,7 +44,10 @@ Route::post('/hapusp/{id}', [HalamanController::class, 'hapusp']);
 Route::post('/tambahproduk/{id}', [HalamanController::class, 'tambahproduk']);
 
 Route::post('/terima/{id}', [HalamanController::class, 'terima']);
+<<<<<<< HEAD
 Route::post('/dselesai/{id}', [HalamanController::class, 'selesai']);
+=======
+>>>>>>> 7e2352791e9e4198649d082d9185f55680bb8739
 
 
 

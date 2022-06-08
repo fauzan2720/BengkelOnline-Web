@@ -242,6 +242,7 @@
     </div>
 </div>
 @endforeach
+<<<<<<< HEAD
 
 <!-- Perjalanan - Selesai -->
 @foreach ($datadelivery2 as $datadelivery2)
@@ -266,4 +267,6 @@
     </div>
 </div>
 @endforeach
+=======
+>>>>>>> 7e2352791e9e4198649d082d9185f55680bb8739
 @endsection
