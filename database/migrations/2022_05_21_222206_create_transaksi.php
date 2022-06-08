@@ -27,6 +27,7 @@ class CreateTransaksi extends Migration
             $table->string('warna');
             $table->string('nproduk');
             $table->string('notes')->nullable();
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }

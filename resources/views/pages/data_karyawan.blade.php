@@ -122,22 +122,22 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">Karyawann</label>
-                                <input class="form-control" type="text" id="name" name="name" value="{{$data->fullname}}">
+                                <label for="example-text-input" class="form-control-label">Karyawan</label>
+                                <input class="form-control" type="text" id="name" name="name" value="{{$data->fullname}}" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">No. Telepon</label>
-                                <input class="form-control" type="text" id="phone" name="phone" value="{{$data->phone_number}}">
+                                <input class="form-control" type="text" id="phone" name="phone" value="{{$data->phone_number}}" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Status</label>
-                                <input class="form-control" type="text" id="status" name="status" value="{{$data->roles}}">
+                                <input class="form-control" type="text" id="status" name="status" value="{{$data->roles}}" required>
                             </div>
                         </div>
 

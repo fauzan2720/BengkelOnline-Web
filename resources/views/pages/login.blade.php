@@ -61,13 +61,23 @@
                                     <p class="mb-0">Enter your email and password to login</p>
                                 </div>
                                 <div class="card-body">
-                                    <form action="" method="POST">
+                                    <form action="/login" method="POST">
                                         @csrf
                                         <div class="mb-3">
-                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email">
+                                            <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" 
+                                            placeholder="Email" aria-label="Email" autofocus required value="{{old('email')}}">
+                                            <input type="text" name='roles' value="ADMIN" hidden readonly onclick="document.forms[0].submit(); return false;">
+                                        </div>
+                                        @error('email')
+                                        <div class="invalid-feedback">
+                                            <p>Erorr</p>
+                                        </div>
+                                        @enderror
+                                        <div class="mb-3">
+                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" value="onetopstore">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
+                                            <input type="text" hidden readonly name="roles" class="form-control form-control-lg" value="ADMIN">
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Login</button>

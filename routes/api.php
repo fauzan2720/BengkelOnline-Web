@@ -32,7 +32,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('transactions', [TransactionsController::class, 'all']);
     Route::post('transactions', [TransactionsController::class, 'checkout']);
 
-    Route::get('call', [CallMechanicController::class, 'all']);
+    Route::get('call', [CallMechanicController::class, 'all']);    Route::get('show-order', [CallMechanicController::class, 'showOrder']);
     Route::post('call', [CallMechanicController::class, 'callMechanic']);
 });
 

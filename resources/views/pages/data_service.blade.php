@@ -22,7 +22,7 @@
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                             <div class="d-flex flex-column">
                                 <h6 class="mb-3 text-sm">{{$data->fullname}}</h6>
-                                <span class="mb-2 text-xs">No Antrian: <span class="text-dark font-weight-bold ms-sm-2">{{$data->no_antrian}}</span></span>
+                                <span class="mb-2 text-xs">No Antrian: <span class="text-dark font-weight-bold ms-sm-2">{{$data->transaction_id}}</span></span>
                                 <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$data->id}}</span></span>
                                 <span class="mb-2 text-xs">No Polisi: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->nopol}}</span></span>
                                 <span class="mb-2 text-xs">No Telepon: <span class="text-dark ms-sm-2 font-weight-bold"></span>{{$data->phone}}</span>
@@ -55,31 +55,27 @@
                         <div class="col-md-6">
                             <h6 class="mb-0">Selesai</h6>
                         </div>
-                        <div class="col-md-6 d-flex justify-content-end align-items-center">
-                            <i class="far fa-calendar-alt me-2"></i>
-                            <small>23 - 30 March 2020</small>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Newest -->
-                @foreach ($test as $t)
+                @foreach ($test as $datas)
                 <div class="card-body pt-4 p-3">
-                    <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6>
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-check"></i></button>
                                 <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm">{{$t->fullname}}</h6>
-                                    <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$t->id}}</span></span>
+                                    <h6 class="mb-1 text-dark text-sm">{{$datas->fullname}}</h6>
+                                    <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$datas->id}}</span></span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center">
-                                <a class="btn btn-link bg-gradient-info px-3 mb-0" href="javascript:;" data-bs-toggle="modal" data-bs-target="#detailmodal">Detail</a>
+                                <a class="btn btn-link bg-gradient-info px-3 mb-0" href="javascript:;" data-bs-toggle="modal" data-bs-target="#bayardulu-{{$datas->id}}">Detail</a>
                             </div>
                         </li>
                     </ul>
+                    <p>--</p>
                 </div>
                 @endforeach
             </div>
@@ -97,7 +93,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
+                <form action="{{url('bayardulu/'.$data->id)}}" method="POST">
+                    {{ csrf_field() }}
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-4">
@@ -123,12 +120,14 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7 d-flex justify-content-end align-items-center">
-                                        <h6>Rp.</h6>
+                                        <h6>Rp.</h6> <h6 name="price" id="price">{{$data->price}}</h6>
                                     </div> 
                                     <h5 class="modal-title" id="staticBackdropLabel">Part yang DIganti</h5>
                                     @foreach ($dataproduk as $datap)
                                     <form action="{{url('tambahproduk/'.$data->id)}}" method="POST">
                                         {{ csrf_field() }}
+                                    
+                                    <input class="form-control" hidden name="price" id="price" readonly type="text" value="{{$data->price}}">
                                     <div class="row">
                                         <!-- Nama Produk -->
                                         <div class="col-md-0">
@@ -172,19 +171,9 @@
                                 </div>
                             </form>
                                 @endforeach
-
-                                <!-- Button
-                                <div class="row mt-5">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <button class="btn btn-warning btn-sm ms-auto">TAMBAH</button>
-                                        </div>
-                                    </div>
-                                </div> -->
-
                                 <hr class="horizontal dark mt-2 mb-4">
 
-                                <!-- Tabel Daftar Produk yang Diganti -->
+                                {{-- <!-- Tabel Daftar Produk yang Diganti -->
                                 <p class="text-uppercase text-sm">Daftar Produk yang DIganti</p>
                                 <div class="row">
                                     <div class="col-12">
@@ -228,7 +217,7 @@
 
                                                                 <!-- Harga -->
                                                                 <td class="align-middle text-center text-sm">
-                                                                    <p class="text-xs font-weight-bold mb-0">{{{$datai->product->price}}}</p>
+                                                                    <p class="text-xs font-weight-bold mb-0">{{$datai->product->price}}</p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -239,11 +228,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Bayar</button>
+                                <button type="submit" class="btn btn-primary">Bayar</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -251,11 +241,10 @@
         </div>
     </div>
 </div>
-@endforeach
 
-
+@foreach ($test as $datas)
 <!-- Detail Modal -->
-<div class="modal fade" id="detailmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="bayardulu-{{$datas->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -269,21 +258,20 @@
                             <ul class="list-group">
                                 <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                                     <div class="d-flex flex-column">
-                                        <h6 class="mb-3 text-sm">Usman</h6>
-                                        <span class="mb-2 text-xs">No Antrian: <span class="text-dark font-weight-bold ms-sm-2">2</span></span>
-                                        <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">6453</span></span>
-                                        <span class="mb-2 text-xs">No Polisi: <span class="text-dark ms-sm-2 font-weight-bold">N 6769 OK</span></span>
-                                        <span class="mb-2 text-xs">No Telepon: <span class="text-dark ms-sm-2 font-weight-bold">083718378</span></span>
-                                        <span class="mb-2 text-xs">No Rangka: <span class="text-dark ms-sm-2 font-weight-bold">7389173</span></span>
-                                        <span class="mb-2 text-xs">No Mesiin: <span class="text-dark ms-sm-2 font-weight-bold">2907</span></span>
-                                        <span class="mb-2 text-xs">Tahun Terbit: <span class="text-dark ms-sm-2 font-weight-bold">2019</span></span>
-                                        <span class="mb-2 text-xs">Type: <span class="text-dark ms-sm-2 font-weight-bold">A</span></span>
-                                        <span class="mb-2 text-xs">KM: <span class="text-dark ms-sm-2 font-weight-bold">1444</span></span>
-                                        <span class="mb-2 text-xs">Warna: <span class="text-dark ms-sm-2 font-weight-bold">Hitam</span></span>
-                                        <span class="mb-2 text-xs">Jenis Service: <span class="text-dark ms-sm-2 font-weight-bold">Service Ringan</span></span>
-                                        <span class="mb-2 text-xs">Keluhan: <span class="text-dark ms-sm-2 font-weight-bold">-</span></span>
-                                        <span class="mb-2 text-xs">Part yang Diganti: <span class="text-dark ms-sm-2 font-weight-bold">-</span></span>
-                                        <span class="text-xs">Total Bayar: <span class="text-dark ms-sm-2 font-weight-bold">Rp. </span></span>
+                                        <h6 class="mb-3 text-sm">{{$datas->fullname}}</h6>
+                                        <span class="mb-2 text-xs">Nota No. <span class="text-dark font-weight-bold ms-sm-2">{{$datas->transaction_id}}</span></span>
+                                        <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$datas->id}}</span></span>
+                                        <span class="mb-2 text-xs">No Polisi: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->nopol}}</span></span>
+                                        <span class="mb-2 text-xs">No Telepon: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->phone}}</span></span>
+                                        <span class="mb-2 text-xs">No Rangka: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->norangka}}</span></span>
+                                        <span class="mb-2 text-xs">No Mesiin: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->nomesin}}</span></span>
+                                        <span class="mb-2 text-xs">Tahun Terbit: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->trakit}}</span></span>
+                                        <span class="mb-2 text-xs">Type: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->type}}</span></span>
+                                        <span class="mb-2 text-xs">KM: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->km}}</span></span>
+                                        <span class="mb-2 text-xs">Warna: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->warna}}</span></span>
+                                        <span class="mb-2 text-xs">Jenis Service: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->nproduk}}</span></span>
+                                        <span class="mb-2 text-xs">Keluhan: <span class="text-dark ms-sm-2 font-weight-bold">{{$datas->notes}}</span></span>
+                                        <span class="text-xs">Total Bayar: <span class="text-dark ms-sm-2 font-weight-bold">Rp. {{$datas->price}}</span></span>
                                     </div>
                                 </li>
                             </ul>
@@ -291,7 +279,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Cetak Nota</button>
@@ -299,4 +286,6 @@
         </div>
     </div>
 </div>
-@endsection
+@endforeach
+@endforeach
+ @endsection

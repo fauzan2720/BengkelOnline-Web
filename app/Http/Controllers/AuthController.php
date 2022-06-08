@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class AuthController extends Controller
@@ -49,13 +50,14 @@ class AuthController extends Controller
 
     public function loginStore(Request $request)
     {
+        $role= array('ADMIN');
         $data = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
+            'email' => 'required|email:dns',
+            'password' => 'required',
+            'roles' => 'required'
         ]);
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
-
             return redirect()->intended('/dashboard');
         }
 

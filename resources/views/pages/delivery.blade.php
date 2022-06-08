@@ -71,8 +71,8 @@
                                         <button type="button" class="btn btn-success text-xs font-weight mb-0" data-bs-toggle="modal" data-bs-target="#modalnew-{{$data->id}}">
                                             Terima & Proses
                                         </button>
-                                        <button type="button" class="btn btn-danger text-xs font-weight mb-0" data-bs-toggle="modal" data-bs-target="">
-                                            Batal
+                                        <button type="button" class="btn btn-danger text-xs font-weight mb-0" data-bs-toggle="modal" data-bs-target="#tolakmodal-{{$data->id}}">
+                                            Tolak
                                         </button>
                                     </td>
                                 </tr>
@@ -84,6 +84,30 @@
             </div>
         </div>
     </div>
+
+    <!-- Tolak -->
+@foreach ($datadelivery as $data)
+<div class="modal fade" id="tolakmodal-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Yakin Hapus Data?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url('tolak/'.$data->id)}}" method="POST">
+                    {{ csrf_field() }}
+                    Apakah anda Menolak Pesanan {{ $data->user->fullname }} ?
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Tolak</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
     
 
 
@@ -108,7 +132,7 @@
                                 <span class="text-xs">Nama Mekanik: <span class="text-dark ms-sm-2 font-weight-bold">{{$dataperjalanan->mechanic}}</span></span>
                             </div>
                             <div class="ms-auto text-end">
-                                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-times-circle me-2"></i>Cancel</a>
+                                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;" data-bs-toggle="modal" data-bs-target="#modalcancel-{{$dataperjalanan->id}}"><i class="far fa-times-circle me-2"></i>Cancel</a>
                                 <a class="btn btn-link text-success px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modalselesai-{{$dataperjalanan->id}}"><i class="far fa-check-circle me-2" aria-hidden="true"></i>Selesai</a>
                             </div>
                         </li>
@@ -136,7 +160,7 @@
                 <!-- Newest -->
                 @foreach ($datadelivery3 as $selesai)
                 <div class="card-body pt-4 p-3">
-                    <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Nota: {{$nomer ++}}.</h6>
+                    <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">No: {{$nomer ++}}.</h6>
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                             <div class="d-flex align-items-center">
@@ -152,6 +176,48 @@
                             </div>
                             <div class="d-flex align-items-center">
                                 <span class="badge badge-sm bg-gradient-success">Selesai</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        
+        <!-- Data Tolak -->
+        <div class="col-md-8 mt-4">
+            <div class="card h-100 mb-4">
+                <div class="card-header pb-0 px-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="mb-0">Tolak</h6>
+                        </div>
+                    </div>
+                </div>
+                @php
+                    $nomer= 1;
+                @endphp
+
+                <!-- Newest -->
+                @foreach ($datadelivery4 as $tolak)
+                <div class="card-body pt-4 p-3">
+                    <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">No: {{$nomer ++}}.</h6>
+                    <ul class="list-group">
+                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-times"></i></i></button>
+                                <div class="d-flex flex-column">
+                                <h6 class="mb-3 text-sm">{{$tolak->user->fullname}}</h6>
+                                <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$tolak->id}}</span></span>
+                                <span class="mb-2 text-xs">No. Telepon: <span class="text-dark font-weight-bold ms-sm-2">{{$tolak->user->phone_number}}</span></span>
+                                <span class="mb-2 text-xs">Lokasi: <span class="text-dark ms-sm-2 font-weight-bold">{{$tolak->location->address}}</span></span>
+                                <span class="mb-2 text-xs">Kendala: <span class="text-dark ms-sm-2 font-weight-bold">{{$tolak->detail_problem}}</span></span>
+                                <span class="text-xs">Nama Mekanik: <span class="text-dark ms-sm-2 font-weight-bold">{{$tolak->mechanic}}</span></span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge badge-sm bg-gradient-danger">Ditolak</span>
                             </div>
                         </li>
                     </ul>
@@ -242,7 +308,6 @@
     </div>
 </div>
 @endforeach
-<<<<<<< HEAD
 
 <!-- Perjalanan - Selesai -->
 @foreach ($datadelivery2 as $datadelivery2)
@@ -266,7 +331,27 @@
         </div>
     </div>
 </div>
+
+<!-- Perjalanan - Tolak -->
+<div class="modal fade" id="modalcancel-{{$datadelivery2->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url('tolak/'.$datadelivery2->id)}}" method="POST">
+                    {{ csrf_field() }}
+                    Apakah Pesanan {{$datadelivery2->user->fullname}} Di Cancel?
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Iya</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endforeach
-=======
->>>>>>> 7e2352791e9e4198649d082d9185f55680bb8739
 @endsection

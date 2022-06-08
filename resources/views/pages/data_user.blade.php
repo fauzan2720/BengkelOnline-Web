@@ -136,7 +136,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">User</label>
-                                <input class="form-control" name="name" id="name" type="text" value="{{$data->fullname}}">
+                                <input class="form-control" name="name" id="name" type="text" value="{{$data->fullname}}" required>
                             </div>
                         </div>
 
@@ -150,14 +150,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Email</label>
-                                <input class="form-control" name="email" id="email" type="text" value="{{$data->email}}">
+                                <input class="form-control" name="email" id="email" type="text" value="{{$data->email}}" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">No. Telepon</label>
-                                <input class="form-control" name="phone" id="phone" type="text" value="{{$data->phone_number}}">
+                                <input class="form-control" name="phone" id="phone" type="text" value="{{$data->phone_number}}" required>
                             </div>
                         </div>
 
@@ -171,7 +171,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Password</label>
-                                <input class="form-control" name="password" id="password" type="text" value="{{$data->password}}">
+                                <input class="form-control" name="password" id="password" type="text" value="{{$data->password}}" required>
                             </div>
                         </div>
 

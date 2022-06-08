@@ -10,7 +10,7 @@ class Transaksi extends Model
     use HasFactory;
     protected $table = 'transaksi'; 
     protected $fillable = [
-        'no_antrian',
+        'transaction_id',
         'nopol',
         'phone',
         'norangka',

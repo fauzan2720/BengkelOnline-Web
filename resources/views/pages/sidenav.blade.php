@@ -88,19 +88,13 @@
                     <span class="nav-link-text ms-1">Profil</span>
                 </a>
             </li>
-
-            <li class="nav-item">
-                <form action="/logout" method="POST">
-                    @csrf
-                 <a class="nav-link {{ ($title === "Logout") ? 'active' : '' }}" href="{{ url('/login') }}" name="logout">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-power-off text-danger text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Logout</span>
-                 </a>
-                </form>
-            </li>
         </ul>
     </div>
+    <li class="nav-item">
+        <form action="/logout" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-sl btn-success btn-sl w-100 mt-1 mb-0"> <i class="fas fa-power-off text-danger text-sm opacity-10"></i>  Logout</button>
+        </form>
+    </li>
 </aside>
 <!-- End Sidenav -->

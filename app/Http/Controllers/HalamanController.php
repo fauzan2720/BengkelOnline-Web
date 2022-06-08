@@ -13,11 +13,13 @@ use App\Models\TransactionItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class HalamanController extends Controller
 {
     public function dashboard()
     {
+        if(Auth::check()){
         $countDU = DB::table('users')->where('roles','USER')->count();
         $countDK = DB::table('users')->where('roles','MEKANIK')->count();
         $countDP = DB::table('products')->count();
@@ -25,8 +27,10 @@ class HalamanController extends Controller
         $countDT = DB::table('transaksi')->count();
         $countDDT = DB::table('transaksi')->where('status','done')->count();
         $title = 'Dashboard';
-        return view('pages.dashboard', compact('countDU', 'countDK', 'countDP', 'countDD', 'countDT', 'countDDT'))->with('title', $title);
         
+        return view('pages.dashboard', compact('countDU', 'countDK', 'countDP', 'countDD', 'countDT', 'countDDT'))->with('title', $title);
+        }
+        return redirect('/login');
     }
     public function datauser()
     {
@@ -49,7 +53,7 @@ class HalamanController extends Controller
         $datad = DB::table('call_mechanics')->where('status','proses')->get();
         $mechanic = DB::table('users')->where('roles','MEKANIK')->get();
         $title = 'Delivery';
-        return view('pages.delivery', ['datadelivery'=>CallMechanic::all()->where('status','proses'),'datadelivery3'=>CallMechanic::all()->where('status','diselesaikan'),'datadelivery2'=>CallMechanic::all()->where('status','perjalanan'), 'location'=>Location::all(), 'mechanic'=>$mechanic])->with('title', $title);
+        return view('pages.delivery', ['datadelivery'=>CallMechanic::all()->where('status','proses'),'datadelivery3'=>CallMechanic::all()->where('status','diselesaikan'),'datadelivery2'=>CallMechanic::all()->where('status','perjalanan'), 'datadelivery4'=>CallMechanic::all()->where('status','ditolak'), 'location'=>Location::all(), 'mechanic'=>$mechanic])->with('title', $title);
     }
     public function transaksi(){
         $transaksi = DB::table('transaksi')->count();
@@ -135,7 +139,6 @@ class HalamanController extends Controller
             Product::where(['id'=>$id])->update([
                 'product_name'=>$data['produk'],
                 'price'=>$data['harga'],
-                'trends'=>$data['trend']
             ]);
             return redirect()->back()->with('diky_success', 'Update Berhasil');
         }
@@ -167,15 +170,31 @@ class HalamanController extends Controller
             return redirect()->back()->with('diky_success', 'Berhasil');
         }
 	}
-
-    public function tambahproduk(Request $request)
+    public function bayardulu(Request $request, $id=null)
 	{
+        if($request->isMethod('post')){
+            Transaksi::where(['id'=>$id])->update([
+                'status'=>"done",
+            ]);
+            return redirect()->back()->with('diky_success', 'Pembayaran Berhasil');
+        }
+	}
+
+    public function tambahproduk(Request $request, $id=null)
+	{
+        $bayar = $request->harga;
+        $price = $request->price;
+        $jumlah = $request->jumlah;
+        $total = ($jumlah * $bayar) + $price;
         {
             DB::table('transaction_items')->insert([
                 'product_id' => $request->idproduk,
                 'product_name' => $request->produkname,
                 'transaction_id' => $request->nota,
-                'quantity' => $request->jumlah,
+                'quantity' => "1",
+            ]);
+            DB::table('transaksi')->where(['id'=>$id])->update([
+                'price' => $total,
             ]);
             return redirect()->back()->with('diky_success', 'Produk Berhasil Ditambahkan');
         }
@@ -207,6 +226,15 @@ class HalamanController extends Controller
                 'status'=>"diselesaikan",
             ]);
             return redirect()->back()->with('diky_success', 'Pesanan Selesai');
+        }
+	}
+    public function tolak(Request $request, $id=null)
+	{
+        if($request->isMethod('post')){
+            CallMechanic::where(['id'=>$id])->update([
+                'status'=>"ditolak",
+            ]);
+            return redirect()->back()->with('diky_success', 'Penolakan Berhasil');
         }
 	}
 }

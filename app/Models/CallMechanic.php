@@ -11,6 +11,7 @@ class CallMechanic extends Model
 
     protected $fillable = [
         'user_id',
+        'mechanic',
         'vehicle_id',
         'location_id',
         'product_id',

@@ -26,7 +26,6 @@
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">ID</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Produk</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Harga</th>
-                                    <th class="text-center text-uppercase text-xxs font-weight-bolder">Trends</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Action</th>
                                 </tr>
                             </thead>
@@ -56,10 +55,6 @@
                                         <p class="text-xs font-weight-bold mb-0">{{ $dp->price }}</p>
                                     </td>
 
-                                    <!-- Trends -->
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $dp->trends }}</p>
-                                    </td>
 
                                     <!-- Action -->
                                     <td class="align-middle text-center text-sm">
@@ -132,13 +127,6 @@
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Harga</label>
                                 <input class="form-control" type="text" id="harga" name="harga" value="{{$data->price}}">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">Trends</label>
-                                <input class="form-control" type="text" id="trend" name="trend" value="{{$data->trends}}">
                             </div>
                         </div>
                     </div>
