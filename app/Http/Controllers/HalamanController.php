@@ -49,11 +49,7 @@ class HalamanController extends Controller
         $datad = DB::table('call_mechanics')->where('status','proses')->get();
         $mechanic = DB::table('users')->where('roles','MEKANIK')->get();
         $title = 'Delivery';
-<<<<<<< HEAD
         return view('pages.delivery', ['datadelivery'=>CallMechanic::all()->where('status','proses'),'datadelivery3'=>CallMechanic::all()->where('status','diselesaikan'),'datadelivery2'=>CallMechanic::all()->where('status','perjalanan'), 'location'=>Location::all(), 'mechanic'=>$mechanic])->with('title', $title);
-=======
-        return view('pages.delivery', ['datadelivery'=>CallMechanic::all()->where('status','proses'), 'location'=>Location::all(), 'mechanic'=>$mechanic])->with('title', $title);
->>>>>>> 7e2352791e9e4198649d082d9185f55680bb8739
     }
     public function transaksi(){
         $transaksi = DB::table('transaksi')->count();
@@ -200,7 +196,6 @@ class HalamanController extends Controller
                 'mechanic'=>$data['mechanic'],
                 'status'=>"perjalanan",
             ]);
-<<<<<<< HEAD
             return redirect()->back()->with('diky_success', 'Pesanan DiTerima');
         }
 	}
@@ -212,9 +207,6 @@ class HalamanController extends Controller
                 'status'=>"diselesaikan",
             ]);
             return redirect()->back()->with('diky_success', 'Pesanan Selesai');
-=======
-            return redirect()->back()->with('diky_success', 'Update Berhasil');
->>>>>>> 7e2352791e9e4198649d082d9185f55680bb8739
         }
 	}
 }
