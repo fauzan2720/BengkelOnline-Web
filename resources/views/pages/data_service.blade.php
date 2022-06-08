@@ -2,15 +2,21 @@
 <div class="min-height-300 bg-primary position-absolute w-100"></div>
 
 @section('container')
+@if (session('diky_success'))
+<div class="alert alert-success">
+    {{ session('diky_success') }}
+</div>
+@endif
 <div class="container-fluid py-4">
     <div class="row">
         <!-- Data Proses -->
-        @foreach ($dataservice as $data)
+        
         <div class="col-md-7 mt-4">
             <div class="card">
                 <div class="card-header pb-0 px-3">
                     <h6 class="mb-0">Proses</h6>
                 </div>
+                @foreach ($dataservice as $data)
                 <div class="card-body pt-4 p-3">
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
@@ -36,9 +42,10 @@
                         </li>
                     </ul>
                 </div>
+                @endforeach
             </div>
         </div>
-        @endforeach
+       
 
         <!-- Data Selesai -->
         <div class="col-md-5 mt-4">
@@ -90,6 +97,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-4">
@@ -115,43 +123,64 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7 d-flex justify-content-end align-items-center">
-                                        <h6>Rp. -</h6>
-                                    </div>
-
+                                        <h6>Rp.</h6>
+                                    </div> 
+                                    <h5 class="modal-title" id="staticBackdropLabel">Part yang DIganti</h5>
+                                    @foreach ($dataproduk as $datap)
+                                    <form action="{{url('tambahproduk/'.$data->id)}}" method="POST">
+                                        {{ csrf_field() }}
                                     <div class="row">
                                         <!-- Nama Produk -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-0">
                                             <div class="form-group">
-                                                <label for="example-text-input" class="form-control-label">Nama Produk</label>
-                                                <div class="input-group mb-3">
-                                                    <select class="form-select" name="produk" id="inputGroupSelect01">
-                                                        @foreach ($dataproduk as $datap)
-                                                        <option selected>Choose...</option>
-                                                        <option value="{{$datap->product_name}}">{{$datap->product_name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                                <input class="form-control" hidden name="nota" id="nota" readonly type="number" value="{{$data->id}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <input class="form-control" name="idproduk" id="idproduk" readonly type="number" value="{{$datap->id}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input class="form-control" name="produkname" id="produkname" readonly type="text" value="{{$datap->product_name}}">
                                             </div>
                                         </div>
 
                                         <!-- Jumlah -->
+                                        
+
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label for="example-text-input" class="form-control-label">Jumlah</label>
-                                                <input class="form-control" type="email" value="1">
+                                                <input class="form-control" name="harga" readonly type="number" value="{{$datap->price}}">
                                             </div>
                                         </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <input class="form-control" name="jumlah" type="number" placeholder="Jumlah">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                        <div class="form-group">
+                                            <button class="btn btn-warning btn-sm ms-auto" type="submit">TAMBAH</button>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
+                            </form>
+                                @endforeach
 
-                                <!-- Button -->
+                                <!-- Button
                                 <div class="row mt-5">
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <button class="btn btn-warning btn-sm ms-auto">TAMBAH</button>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <hr class="horizontal dark mt-2 mb-4">
 
@@ -168,32 +197,42 @@
                                                                 <th class="text-center text-uppercase text-xxs font-weight-bolder">No.</th>
                                                                 <th class="text-center text-uppercase text-xxs font-weight-bolder">ID</th>
                                                                 <th class="text-center text-uppercase text-xxs font-weight-bolder">Produk</th>
+                                                                <th class="text-center text-uppercase text-xxs font-weight-bolder">Jumlah</th>
                                                                 <th class="text-center text-uppercase text-xxs font-weight-bolder">Harga</th>
                                                             </tr>
                                                         </thead>
+                                                        @php
+                                                        $nomor = 1;
+                                                        @endphp
+                                                        @foreach ($product as $datai)
                                                         <tbody>
                                                             <tr>
                                                                 <!-- NO -->
                                                                 <td class="align-middle text-center text-sm">
-                                                                    <p class="text-xs font-weight-bold mb-0">1.</p>
+                                                                    <p class="text-xs font-weight-bold mb-0">{{ $nomor ++}}.</p>
                                                                 </td>
 
                                                                 <!-- ID -->
                                                                 <td class="align-middle text-center text-sm">
-                                                                    <p class="text-xs font-weight-bold mb-0">0989</p>
+                                                                    <p class="text-xs font-weight-bold mb-0">{{$datai->id}}</p>
                                                                 </td>
 
                                                                 <!-- Produk -->
                                                                 <td class="align-middle text-center text-sm">
-                                                                    <p class="text-xs font-weight-bold mb-0">Karbu</p>
+                                                                    <p class="text-xs font-weight-bold mb-0">{{$datai->product_name}}</p>
+                                                                </td>
+
+                                                                <td class="align-middle text-center text-sm">
+                                                                    <p class="text-xs font-weight-bold mb-0">{{$datai->quantity}}</p>
                                                                 </td>
 
                                                                 <!-- Harga -->
                                                                 <td class="align-middle text-center text-sm">
-                                                                    <p class="text-xs font-weight-bold mb-0">Rp. 200.000</p>
+                                                                    <p class="text-xs font-weight-bold mb-0">{{{$datai->product->price}}}</p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
+                                                        @endforeach
                                                     </table>
                                                 </div>
                                             </div>
@@ -201,13 +240,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Bayar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Bayar</button>
             </div>
         </div>
     </div>

@@ -33,7 +33,7 @@ class CallMechanicController extends Controller
         $callMechanic = CallMechanic::with(['vehicle', 'location', 'product'])->orderBy('id', 'desc');
 
         return ResponseFormatter::success(
-            $callMechanic->paginate($limit),
+            $callMechanic->where('user_id', '=', Auth::user()->id)->paginate($limit),
             'Data list panggil mekanik berhasil diambil'
         );
     }

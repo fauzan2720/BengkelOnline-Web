@@ -31,7 +31,7 @@ class VehicleController extends Controller
         }
 
         return ResponseFormatter::success(
-            $vehicle->paginate($limit),
+            $vehicle->where('user_id', '=', Auth::user()->id)->paginate($limit),
             'Data list kendaraan berhasil diambil'
         );
     }

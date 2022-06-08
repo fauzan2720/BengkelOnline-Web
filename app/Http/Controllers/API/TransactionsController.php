@@ -39,7 +39,7 @@ class TransactionsController extends Controller
         }
 
         return ResponseFormatter::success(
-            $transaction->paginate($limit),
+            $transaction->where('user_id', '=', Auth::user()->id)->paginate($limit),
             'Data list transaksi berhasil diambil'
         );
     }

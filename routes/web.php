@@ -13,8 +13,8 @@ Route::get('/', [AuthController::class, 'index'])->name('welcome');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginStore'])->name('loginPost');
 
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'registerStore'])->name('registerPost');
+// Route::get('/register', [AuthController::class, 'register'])->name('register');
+// Route::post('/register', [AuthController::class, 'registerStore'])->name('registerPost');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logoutPost');
 
@@ -41,39 +41,10 @@ Route::post('/hapusk/{id}', [HalamanController::class, 'hapusk']);
 Route::post('/editp/{id}', [HalamanController::class, 'editp']);
 Route::post('/hapusp/{id}', [HalamanController::class, 'hapusp']);
 
+Route::post('/tambahproduk/{id}', [HalamanController::class, 'tambahproduk']);
+
+Route::post('/terima/{id}', [HalamanController::class, 'terima']);
+Route::post('/dselesai/{id}', [HalamanController::class, 'selesai']);
 
 
 
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/', function () {
-//     return view('pages/login');
-// });
-
-// Route::get('/register', function () {
-//     return view('pages/register');
-// });
-
-// Route::get('/dashboard', function () {
-//     return view('pages/dashboard', [
-//         "title" => "Dashboard",
-//         "nama_halaman" => "Dashboard"
-//     ]);
-// });
-
-// Route::get('/dashboard/data_user', function () {
-//     return view('pages/data_user', [
-//         "title" => "Data User",
-//         "nama_halaman" => "Data User"
-//     ]);
-// });
-
-// Route::get('/dashboard/profil', function () {
-//     return view('pages/profil', [
-//         "title" => "Profil",
-//         "nama_halaman" => "Profil"
-//     ]);
-// });

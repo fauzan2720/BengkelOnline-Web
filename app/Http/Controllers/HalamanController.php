@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\Karyawan;
 use App\Models\Product;
 use App\Models\Transaksi;
+use App\Models\Location;
+use App\Models\CallMechanic;
+use App\Models\TransactionItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,8 +21,11 @@ class HalamanController extends Controller
         $countDU = DB::table('users')->where('roles','USER')->count();
         $countDK = DB::table('users')->where('roles','MEKANIK')->count();
         $countDP = DB::table('products')->count();
+        $countDD = DB::table('call_mechanics')->count();
+        $countDT = DB::table('transaksi')->count();
+        $countDDT = DB::table('transaksi')->where('status','done')->count();
         $title = 'Dashboard';
-        return view('pages.dashboard', compact('countDU', 'countDK', 'countDP'))->with('title', $title);
+        return view('pages.dashboard', compact('countDU', 'countDK', 'countDP', 'countDD', 'countDT', 'countDDT'))->with('title', $title);
         
     }
     public function datauser()
@@ -40,20 +46,23 @@ class HalamanController extends Controller
         return view('pages.data_produk', ['dataproduk'=>$dataproduk])->with('title', $title);;
     }
     public function delivery(){
+        $datad = DB::table('call_mechanics')->where('status','proses')->get();
+        $mechanic = DB::table('users')->where('roles','MEKANIK')->get();
         $title = 'Delivery';
-        return view('pages.delivery')->with('title', $title);
+        return view('pages.delivery', ['datadelivery'=>CallMechanic::all()->where('status','proses'),'datadelivery3'=>CallMechanic::all()->where('status','diselesaikan'),'datadelivery2'=>CallMechanic::all()->where('status','perjalanan'), 'location'=>Location::all(), 'mechanic'=>$mechanic])->with('title', $title);
     }
     public function transaksi(){
         $transaksi = DB::table('transaksi')->count();
         $title = 'Transaksi';
-        return view('pages.transaksi', compact('transaksi'))->with('title', $title);
+        return view('pages.transaksi', compact('transaksi'), ['dataproduk'=>TransactionItem::all(), 'dataproduk2'=>Product::all()])->with('title', $title);
     }
     public function dataservice(){
         $dataservice = DB::table('transaksi')->where('status','proses')->get();
         $dataproduk = DB::table('products')->get();
+        $produkitem = DB::table('transaction_items')->get();
         $test = DB::table('transaksi')->where('status','done')->get();
         $title = 'Data Service';
-        return view('pages.data_service', ['dataservice'=>$dataservice, 'test'=>$test,'dataproduk'=>$dataproduk])->with('title', $title);
+        return view('pages.data_service', ['produkitem'=>$produkitem,'dataservice'=>$dataservice, 'test'=>$test,'dataproduk'=>$dataproduk, 'product'=>TransactionItem::all()])->with('title', $title);
     }
     public function profil(){
         $dataadmin = DB::table('users')->where('roles','ADMIN')->get();
@@ -139,6 +148,7 @@ class HalamanController extends Controller
     public function tambah(Request $request)
 	{
         {
+            
             $data = $request ->validate([
                 'no_antrian' => 'required|max:255',
                 'nopol' => 'required|max:255',
@@ -157,11 +167,46 @@ class HalamanController extends Controller
             return redirect()->back()->with('diky_success', 'Berhasil');
         }
 	}
+
+    public function tambahproduk(Request $request)
+	{
+        {
+            DB::table('transaction_items')->insert([
+                'product_id' => $request->idproduk,
+                'product_name' => $request->produkname,
+                'transaction_id' => $request->nota,
+                'quantity' => $request->jumlah,
+            ]);
+            return redirect()->back()->with('diky_success', 'Produk Berhasil Ditambahkan');
+        }
+	}
     public function hapusp(Request $request, $id)
 	{
 		if($request->isMethod('post')){
             Product::where(['id'=>$id])->delete();
             return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil');
+        }
+	}
+
+    public function terima(Request $request, $id=null)
+	{
+		if($request->isMethod('post')){
+            $data = $request->all();
+            CallMechanic::where(['id'=>$id])->update([
+                'mechanic'=>$data['mechanic'],
+                'status'=>"perjalanan",
+            ]);
+            return redirect()->back()->with('diky_success', 'Pesanan DiTerima');
+        }
+	}
+    public function selesai(Request $request, $id=null)
+	{
+		if($request->isMethod('post')){
+            $data = $request->all();
+            CallMechanic::where(['id'=>$id])->update([
+                'status'=>"diselesaikan",
+            ]);
+            return redirect()->back()->with('diky_success', 'Pesanan Selesai');
         }
 	}
 }
