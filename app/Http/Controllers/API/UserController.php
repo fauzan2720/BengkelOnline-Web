@@ -57,7 +57,7 @@ class UserController extends Controller
                 'fullname' => ['required', 'string', 'max:100'],
                 'email' => ['required', 'string', 'email', 'max:100', 'unique:users,email'],
                 'phone_number' => ['required', 'string', 'min:11', 'max:13', 'unique:users,phone_number'],
-                'pin_number' => ['required', 'string', 'min:6', 'max:6'],
+                // 'pin_number' => ['string', 'min:6', 'max:6'],
                 'password' => ['required', 'string', new Password],
             ]);
 
@@ -101,7 +101,7 @@ class UserController extends Controller
             'fullname' => ['required', 'string', 'max:100'],
             'email' => ['string', 'email', 'max:100', 'unique:users,email'],
             'phone_number' => ['required', 'string', 'min:11', 'max:13'],
-            'pin_number' => ['required', 'string', 'min:6', 'max:6'],
+            // 'pin_number' => ['required', 'string', 'min:6', 'max:6'],
             'roles' => ['string', 'in:USER,ADMIN,KARYAWAN'],
         ]);
 

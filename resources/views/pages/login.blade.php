@@ -61,7 +61,7 @@
                                     <p class="mb-0">Enter your email and password to login</p>
                                 </div>
                                 <div class="card-body">
-                                    <form action="/login" method="POST">
+                                    <form action="" method="POST">
                                         @csrf
                                         <div class="mb-3">
                                             <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" 
