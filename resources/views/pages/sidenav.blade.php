@@ -183,7 +183,7 @@
     </div>
 
 
-        <form action="/kel15/logout" method="POST">
+        <form action="{{url('logout')}}" method="POST">
 
             @csrf
 

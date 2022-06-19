@@ -253,6 +253,8 @@
             </div>
             <div class="modal-body">
                 <div class="row">
+                    <form action="{{url('invoice/'.$datas->id)}}" method="POST">
+                        {{ csrf_field() }}
                     <div class="col">
                         <div class="card-body pt-4 p-3">
                             <ul class="list-group">
@@ -281,8 +283,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Cetak Nota</button>
+                <button type="submit" class="btn btn-primary">Cetak Nota</button>
             </div>
+        </form>
         </div>
     </div>
 </div>

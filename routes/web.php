@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/editk/{id}', [HalamanController::class, 'editk']);
     Route::post('/hapusk/{id}', [HalamanController::class, 'hapusk']);
     Route::post('/editp/{id}', [HalamanController::class, 'editp']);
+    Route::post('/invoice/{id}', [HalamanController::class, 'invoice']);
     Route::post('/hapusp/{id}', [HalamanController::class, 'hapusp']);
     Route::post('/tambahproduk/{id}', [HalamanController::class, 'tambahproduk']);
     Route::post('/terima/{id}', [HalamanController::class, 'terima']);

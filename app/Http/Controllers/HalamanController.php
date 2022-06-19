@@ -414,6 +414,13 @@ class HalamanController extends Controller
 
 	}
 
+    public function invoice($id)
+    {
+        $invoice = Transaksi::where('id', $id)->first();
+        
+        return view ('pages.invoice', compact('invoice'));
+    }
+
 
 
     public function terima(Request $request, $id=null)
