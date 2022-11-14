@@ -2276,21 +2276,21 @@ ol {
 /*=============================
 	Deskripsi DAG CSS
 ===============================*/
-.dag {
+.bengkol {
   background-color: #f9f9f9;
 }
 
-.dag .section-title {
+.bengkol .section-title {
   margin-bottom: 50px;
 }
 
-.dag .section-title h2 {
+.bengkol .section-title h2 {
   color: #fb5454;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px),
 (max-width: 767px) {
-  .dag .section-title {
+  .bengkol .section-title {
     margin-bottom: 30px;
   }
 }
@@ -2395,7 +2395,6 @@ ol {
 .faq .accordion-body p {
   display: block;
   font-size: 0.80em;
-  font-weight: bold;
 }
 
 /*======================================
@@ -2441,11 +2440,12 @@ ol {
 }
 
 .goal-action .cta-content h2 {
-  color: #000;
-  line-height: 50px;
-  font-size: 38px;
-  font-weight: 700;
-  margin-bottom: 30px;
+  font-size: 34px;
+  margin-bottom: 25px;
+  line-height: 42px;
+  text-transform: capitalize;
+  position: relative;
+  font-weight: 800;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2484,13 +2484,13 @@ ol {
 }
 
 .goal-action .cta-content .button .btn {
-  background-color: #50221f;
+  background-color: #fb5454;
   color: #fff;
 }
 
 .goal-action .cta-content .button .btn:hover {
   color: #fff;
-  background-color: #cd4846;
+  background-color: #50221f;
 }
 
 /*======================================
