@@ -6,7 +6,9 @@
             <!-- <span class="ms-1 font-weight-bold">Bengkel Online</span> -->
         </a>
     </div>
+
     <hr class="horizontal dark mt-0 mb-0">
+
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -17,6 +19,7 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Data User") ? 'active' : '' }}" href="{{ url('/data_user') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -25,6 +28,7 @@
                     <span class="nav-link-text ms-1">Data User</span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Data Karyawan") ? 'active' : '' }}" href="{{ url('/data_karyawan') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -33,6 +37,7 @@
                     <span class="nav-link-text ms-1">Data Karyawan</span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Data Produk") ? 'active' : '' }}" href="{{ url('/data_produk') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -41,40 +46,46 @@
                     <span class="nav-link-text ms-1">Data Produk</span>
                 </a>
             </li>
+
             <hr class="horizontal dark mt-0 mb-0">
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Delivery Service Online") ? 'active' : '' }}" href="{{ url('/delivery') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-tools text-success text-sm opacity-10"></i>
+                        <i class="fas fa-tools text-primary text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Delivery Service Online</span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link {{ ($title === 'Manajemen Transaksi') ? 'active' : '' }}" href="{{ url('/orders') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-box text-success text-sm opacity-10"></i>
+                        <i class="fas fa-box text-info text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Manajemen Transaksi</span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Transaksi Service") ? 'active' : '' }}" href="{{ url('/transaksi') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-cog text-warning text-sm opacity-10"></i>
+                        <i class="fas fa-user-cog text-secondary text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Transaksi Service</span>
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Data Service") ? 'active' : '' }}" href="{{ url('/data_service') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-database text-info text-sm opacity-10"></i>
+                        <i class="fas fa-database text-danger text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Data Service</span>
                 </a>
             </li>
+
             <hr class="horizontal dark mt-0 mb-0">
+
             <li class="nav-item">
                 <a class="nav-link {{ ($title === "Profil") ? 'active' : '' }}" href="{{ url('/profil') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

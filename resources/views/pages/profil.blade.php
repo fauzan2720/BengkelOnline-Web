@@ -1,5 +1,5 @@
 @extends('pages.main')
-<div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://user-images.githubusercontent.com/74905155/165243311-93d1d93e-0536-4369-93a0-53c9e133c842.jpg'); background-position-y: 50%;">
+<div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('assets/img/ilustrasi.webp'); background-position-y: 60%; background-position-x: 50%;">
     <span class="mask bg-primary opacity-6"></span>
 </div>
 @section('container')
@@ -38,7 +38,7 @@
                     <div class="d-flex align-items-center">
                         <form action="{{url('editprofil/'.Auth::user()->id)}}" method="POST">
                             {{ csrf_field() }}
-                        <p class="mb-0">Edit Profile</p>
+                            <p class="mb-0">Edit Profile</p>
                     </div>
                 </div>
 
@@ -113,10 +113,10 @@
                                 <input class="form-control" type="text" id="kpos" name="kpos" value="{{ Auth::user()->kpos }}">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-sm ms-auto">Save</button>
+                        <button type="submit" class="btn btn-primary btn-sm ms-auto mt-3">Save</button>
                     </div>
                 </div>
-            </form>
+                </form>
             </div>
         </div>
     </div>

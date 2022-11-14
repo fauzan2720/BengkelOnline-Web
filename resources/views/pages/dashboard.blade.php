@@ -91,8 +91,31 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                            <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
                                 <a href="{{ url('/delivery') }}"><i class="fas fa-tools text-lg opacity-10" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manajemen Transaksi -->
+        <div class="col-xl-3 col-sm-5">
+            <div class="card">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="numbers">
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="">Manajemen Transaksi</a>
+                                <h5 class="font-weight-bolder">
+
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="col-4 text-end">
+                            <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                                <a href="{{ url('/delivery') }}"><i class="fas fa-box text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -114,7 +137,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                            <div class="icon icon-shape bg-gradient-secondary shadow-secondary text-center rounded-circle">
                                 <a href="{{ url('/transaksi') }}"><i class="fas fa-user-cog text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -123,7 +146,7 @@
             </div>
         </div>
 
-        <!-- Riwayat Service -->
+        <!-- Data Service -->
         <div class="col-xl-3 col-sm-6">
             <div class="card">
                 <div class="card-body p-3">
@@ -137,7 +160,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                            <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
                                 <a href="{{ url('/data_service') }}"><i class="fas fa-database text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>

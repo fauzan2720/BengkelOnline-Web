@@ -16,6 +16,23 @@
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
+
+            <!-- Card Title -->
+            <div class="card mb-3">
+                <div class="card-body p-3 fw-bold text-dark d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                            <i class="fas fa-users text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                        <xspan class="mx-3 fs-4">{{ $title }}</xspan>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-sl bg-gradient-success shadow-success btn-sl w-100 mt-1 mb-0" data-bs-toggle="modal" data-bs-target="#tambahData"> <i class="fas fa-plus-circle text-white text-sm opacity-10"></i> &nbsp Tambah Data</button>
+                    </div>
+                </div>
+            </div>
+            <!-- End Card Title -->
+
             <div class="card mb-4">
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -99,6 +116,56 @@
     </div>
 </div>
 
+<!-- Modal -->
+<!-- Tambah Data Modal -->
+<div class="modal fade" id="tambahData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tambahDataLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tambahDataLabel">Tambah Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ url('data_user') }}" method="POST">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Nama Karyawan</label>
+                                <input class="form-control" name="name" id="name" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">No. Telepon</label>
+                                <input class="form-control" name="email" id="email" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Status</label>
+                                <input class="form-control" name="phone" id="phone" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Alamat</label>
+                                <input class="form-control" name="pin" id="pin" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Edit Modal -->
 @foreach ($datakaryawan as $data)
