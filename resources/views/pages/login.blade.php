@@ -74,7 +74,7 @@
                                         </div>
                                         @enderror
                                         <div class="mb-3">
-                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" value="onetopstore">
+                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
                                         </div>
                                         <div class="mb-3">
                                             <input type="text" hidden readonly name="roles" class="form-control form-control-lg" value="ADMIN">

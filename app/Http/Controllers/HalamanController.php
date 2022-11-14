@@ -112,6 +112,14 @@ class HalamanController extends Controller
 
     }
 
+    public function orders(){
+        $title = 'Manajemen Transaksi';
+
+        return view('pages.orders')->with([
+            'title' => $title,
+        ]);
+    }
+
     public function transaksi(){
 
         $transaksi = DB::table('transaksi')->count();
