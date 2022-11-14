@@ -24,7 +24,7 @@
                 <nav class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid">
                         <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ url('/') }}">
-                            <img src="assets/img/DAG.png" alt="DAG" style="width: 50px;">
+                            <img src="assets/img/bengkol.png" alt="BENGKOL" style="width: 50px;">
                             Bengkel Online
                         </a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
                                 <div class="card-header pb-0 text-start">
                                     <h4 class="font-weight-bolder">Login</h4>
                                     @if (session()->has('error'))
-                                        <p class="text-danger">{{ session('error') }}</p>
+                                    <p class="text-danger">{{ session('error') }}</p>
                                     @endif
                                     {{-- @if (session()->has('success'))
                                         <p class="text-success">{{ session('success') }}</p>
@@ -64,8 +64,7 @@
                                     <form action="" method="POST">
                                         @csrf
                                         <div class="mb-3">
-                                            <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" 
-                                            placeholder="Email" aria-label="Email" autofocus required value="{{old('email')}}">
+                                            <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Email" aria-label="Email" autofocus required value="{{old('email')}}">
                                             <input type="text" name='roles' value="ADMIN" hidden readonly onclick="document.forms[0].submit(); return false;">
                                         </div>
                                         @error('email')

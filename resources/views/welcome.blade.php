@@ -9,7 +9,7 @@
 
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/DAG.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/bengkol.png" />
 
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -43,7 +43,7 @@
                         <!-- Navbar -->
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="{{ url('/') }}">
-                                <img src="assets/img/DAG.png" alt="DAG">
+                                <img src="assets/img/logo_bengkol.png" alt="Bengkol">
                             </a>
                             <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="toggler-icon"></span>
@@ -56,7 +56,7 @@
                                         <a href="#home" class="page-scroll active" aria-label="Toggle navigation">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#dag" class="page-scroll" aria-label="Toggle navigation">DAG</a>
+                                        <a href="#bengkol" class="page-scroll" aria-label="Toggle navigation">Bengkol</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#features" class="page-scroll" aria-label="Toggle navigation">Features</a>
@@ -86,17 +86,18 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 col-md-12 col-12">
                     <div class="hero-content">
-                        <h1 class="wow fadeInLeft" data-wow-delay=".4s">BENGKOL - Bengkel Online</h1>
+                        <h1 class="wow fadeInLeft" data-wow-delay=".4s">BENGKOL
+                            <br>Bengkel Online
+                        </h1>
                         <p class="wow fadeInLeft" data-wow-delay=".6s">
-                            Bengkol adalah sebuah aplikasi yang menyediakan fitur
-                            panggil mekanik, dimana ketika pengendara mengalami mogok di
-                            tengah jalan, maka dengan adanya aplikasi ini, pengendara bisa
-                            memanggil mekanik dengan memanfaatkan fitur panggil mekanik tersebut.</p>
+                            Bengkol adalah sebuah aplikasi yang menyediakan fitur yang dapat memanggil mekanik ketika pengendara mengalami mogok
+                            ditengah perjalanan. Maka dengan adanya aplikasi Bengkol pengendara tidak perlu untuk mendorong kendaraan roda
+                            dua sampai menemukan bengkel terdekat.</p>
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-12 col-12">
                     <div class="hero-image wow fadeInRight" data-wow-delay=".4s">
-                        <img src="assets/img/phone.png" alt="#">
+                        <img src="assets/img/phone2.png" alt="#">
                     </div>
                 </div>
             </div>
@@ -104,33 +105,35 @@
     </section>
     <!-- End Hero Area -->
 
-    <!-- Deskripsi DAG -->
-    <section id="dag" class="dag section">
+    <!-- Deskripsi Bengkol -->
+    <section id="bengkol" class="bengkol section">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
                         <div class="logo wow fadeInUp mb-5 mt-5" data-wow-delay=".4s">
                             <a href="{{ url('/') }}">
-                                <img src="assets/img/DAG.png" alt="#" width="300px">
+                                <img src="assets/img/logo_bengkol.png" alt="#" width="300px">
                             </a>
                         </div>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">Kebutuhan penggunaan kendaraan bermotor di Indonesia sangat tinggi, khususnya pada kendaraan roda dua yang sangat populer karena penggunaanya yang efisien dan harga yang lebih terjangkau.
-                            Dalam Buku Potret Lalu Lintas di Indonesia pada 2019, populasi kendaraan bermotor seluruh Indonesia pada 2018 berkisar 141.428.052 unit. Tingkat dominasi tersebut bisa meningkatkan risiko kecelakaan lalu lintas.
-                            Salah satu faktor yang jarang disadari oleh para pengendara adalah tidak baiknya kondisi kendaraan roda dua pada saat digunakan.
-                            Hal tersebut menjadi latar belakang semakin baik dan berkembangnya sistem perbengkelan di Indonesia. Namun, perkembangan tersebut masih tidak diiringi dengan perkembangan teknologi informasi yang kini justru menjadi pioner evolusi dunia.
-                            <br><br>
-                            Kami menghadirkan inovasi baru terhadap permasalahan yang timbul ditengah-tengah masyarakat tersebut, hadirnya "Bengkel-Online" diharapkan dapat menjadi pandangan baru tentang pentingnya menjaga kesehatan kendaraan Anda dimana saja dan kapan saja secara mudah dan sederhana.
-                            "Bengkel-Online" merupakan aplikasi pemesanan jasa mekanik berbasis mobile dan website yang dapat diakses secra online. Aplikasi ini juga menyediakan berbagai kebutuhan Anda dalam penggantian spare part kendaraan roda dua.
-                            Dalam pembuatan aplikasi tersebut, kami menjadi bagian dari Astra Honda Authorized Service Station (AHAS DAG Motor atau Dana Dipa Auto Garage) yang berlokasi di Jl Kalimantan No 13 Kabupaten Jember, Jawa Timur.
-                            Fitur utama kami adalah fitur panggil mekanik. Fitur ini sangat memudahkan pengguna ketika mengalami mogok kendaraan secara mendadak, karena pengguna dapat memanfaatkan fitur tersebut untuk memanggil mekanik datang ke lokasi Anda dan memperbaiki kendaraan Anda secara cepat, tepat, dan instan.
+                        <p class="wow fadeInUp" data-wow-delay=".6s">Kendaraan roda dua merupakan kendaraan yang sangat populer,
+                            di samping penggunaannya yang efisien, kendaraan roda dua memiliki harga yang lebih terjangkau dibandingkan
+                            dengan kendaraan yang lainnya. Seiring pemakaiannya, kendaraan roda dua akan mengalami penurunan performa
+                            atau dapat mengalami kerusakan yang mengharuskan kendaraan roda dua untuk melakukan perawatan atau perbaikan.
+                            Kendaraan roda dua yang membutuhkan perbaikan diharuskan untuk dibawa ke bengkel untuk diperbaiki. Tak jarang
+                            juga pada saat pemakaian di perjalanan kendaraan roda dua mengalami kerusakan yang mengharuskan pengendara
+                            berhenti dan mendorong kendaraan roda dua untuk menuju ke bengkel terdekat. Hal itu tentunya akan menguras
+                            tenaga serta waktu pengendara jika harus mendorong kendaraannya untuk menemukan bengkel terdekat. Tujuan
+                            dari penelitian ini adalah diciptakannya aplikasi mobile berbasis android untuk memudahkan pengendara
+                            untuk memanggil mekanik bengkel untuk menghampiri pengendara untuk memanggil mekanik bengkel terdekat
+                            yang akan menghampiri tempat dari kendaraan roda dua dari pengendara untuk diperbaiki.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- END DAG -->
+    <!-- END Bengkol -->
 
     <!-- Features -->
     <section id="features" class="features section">
@@ -195,55 +198,46 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="faq-item wow fadeInUp" data-wow-delay=".2s">
-                        <div class="accordion accordion-flush" id="accordionFlushfaqSatu">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq01" aria-expanded="false" aria-controls="faq01">
-                                        <h6>Bagaimana cara memanggil mekanik untuk memperbaiki motor?</h6>
-                                    </button>
-                                </h2>
-                                <div id="faq01" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushfaqSatu">
-                                    <div class="accordion-body">
-                                        <p>User dapat menekan tombol panggil mekanik pada navigasi bawah, atau pada halaman
-                                            home. Ketika ditekan, maka user memilih kendaraan
-                                            yang akan disevis, dan detail lokasi sekarang. Kemudian user dapat memilih
-                                            Servis Ringan, atau Servis Komplit. User juga dapat
-                                            mengganti oli, jika ingin sekaligus mengganti oli. Yang terakhir, user dapat
-                                            memilih beberapa metode pembayaran, seperti Tunai,
-                                            Ovo, dll. Jika mekanik berhasil ditemukan, user akan mendapatkan detail
-                                            informasi dari mekanik, seperti statusnya dalam perjalanan,
-                                            diproses, atau diselesaikan. Dan user juga dapat memanggil dengan nomor
-                                            telepon/whatsapp yang sudah tersedia.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item wow fadeInUp" data-wow-delay=".2s">
-                        <div class="accordion accordion-flush" id="accordionFlushfaqDua">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq02" aria-expanded="false" aria-controls="faq02">
-                                        <h6>Apa saja metode pembayaran yang tersedia?</h6>
-                                    </button>
-                                </h2>
-                                <div id="faq02" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushfaqDua">
-                                    <div class="accordion-body">
-                                        <p>Metode pembayaran cukup banyak nih, Anda bisa melakukan pembayaran Tunai (langsung bayar ke mekanik),
-                                            atau melalui dompet digital, seperti Ovo, GoPay, dan Dana. Jika tidak punya uang tunai, dan dompet digital
-                                            tenang saja, anda bisa menyuruh saudara atau teman dekat anda untuk melakukan pembayaran yang dapat dibayarkan
-                                            melalui indomart atau alfamart.</p>
-                                    </div>
+                <div class="faq-item wow fadeInUp" data-wow-delay=".2s">
+                    <div class="accordion accordion-flush" id="accordionFlushfaqSatu">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq01" aria-expanded="false" aria-controls="faq01">
+                                    <h6>Bagaimana cara memanggil mekanik untuk memperbaiki kendaraan?</h6>
+                                </button>
+                            </h2>
+                            <div id="faq01" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushfaqSatu">
+                                <div class="accordion-body">
+                                    <p>User dapat menekan tombol panggil mekanik pada navigasi bawah, atau pada halaman home. Selanjutnya user memilih
+                                        kendaraan yang mengalami permasalahan dan detail lokasi dari kendaraan user. Kemudian user dapat memilih Servis
+                                        Ringan, atau Servis Komplit. Selain memilih jenis servis user dapat menuliskan kendala atau masalah dalam kendaraan
+                                        yang sedang mogok. User juga dapat mengganti oli, jika ingin sekaligus mengganti oli. Jika mekanik berhasil
+                                        ditemukan, user akan mendapatkan detail informasi dari mekanik, seperti statusnya dalam perjalanan, diproses,
+                                        diselesaikan, dan nomor telepon dari mekanik.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="faq-item wow fadeInUp" data-wow-delay=".2s">
+                    <div class="accordion accordion-flush" id="accordionFlushfaqDua">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq02" aria-expanded="false" aria-controls="faq02">
+                                    <h6>Bagaimana metode pembayarannya?</h6>
+                                </button>
+                            </h2>
+                            <div id="faq02" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushfaqDua">
+                                <div class="accordion-body">
+                                    <p>Untuk pembayaran bisa melakukan pembayaran secara Tunai atau dapat melakukan pembayaran langsung ke mekanik yang bertugas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-lg-6">
                     <div class="faq-item wow fadeInUp" data-wow-delay=".2s">
                         <div class="accordion accordion-flush" id="accordionFlushfaqTiga">
                             <div class="accordion-item">
@@ -261,27 +255,27 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="faq-item wow fadeInUp" data-wow-delay=".2s">
-                        <div class="accordion accordion-flush" id="accordionFlushfaqEmpat">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq04" aria-expanded="false" aria-controls="faq04">
-                                        <h6>Bagaimana carra mendapatkan aplikasi ini?</h6>
-                                    </button>
-                                </h2>
-                                <div id="faq04" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushfaqEmpat">
-                                    <div class="accordion-body">
-                                        <p>Aplikasi ini tersedia pada google play store, silahkan cari dengan kata kunci
-                                            'Bengkol' di mesin pencarian. Atau bisa langsung klik link berikut <code>https://menyusul.com.</code></p>
-                                    </div>
+                <div class="faq-item wow fadeInUp" data-wow-delay=".2s">
+                    <div class="accordion accordion-flush" id="accordionFlushfaqEmpat">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq04" aria-expanded="false" aria-controls="faq04">
+                                    <h6>Bagaimana cara mendapatkan aplikasi Bengkol?</h6>
+                                </button>
+                            </h2>
+                            <div id="faq04" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushfaqEmpat">
+                                <div class="accordion-body">
+                                    <p>Aplikasi ini tersedia di google play store, silahkan cari dengan kata kunci "Bengkol" pada mesin pencarian google
+                                        play store atau bisa langsung klik link download yang sudah tersedia.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
     <!-- End FAQ -->
 
@@ -296,7 +290,7 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-12">
                     <div class="cta-content">
-                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Download Aplikasi Bengkol <br>Bengkel Online</h2>
+                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Download Aplikasi BENGKOL <br>Bengkel Online</h2>
                         <p class="wow fadeInUp" data-wow-delay=".2s">Nikmati Kemudahan Service Kendaraan Motor Anda</p>
                         <div class="button wow fadeInLeft" data-wow-delay=".4s">
                             <a href="javascript:void(0)" class="btn"><i class="lni lni-play-store"></i> Google
@@ -317,17 +311,17 @@
                     <div class="single-footer f-about">
                         <div class="logo">
                             <a href="{{ url('/') }}">
-                                <img src="assets/img/DAG.png" alt="#">
+                                <img src="assets/img/logo_bengkol2.png" alt="#">
                             </a>
                         </div>
                         <p>SERVICE KENDARAAN ANDA DENGAN MUDAH DAN CEPAT</p>
                         <ul class="social">
-                            <li><a href="https://web.facebook.com/AHASS-DAG-110610237459028/" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                            <li><a href="https://www.google.com/maps/place/AHASS+REYRAF+MOTOR/@-8.1643784,113.7103404,17z/data=!4m5!3m4!1s0x2dd694345eb35963:0x54b292813a4ee9cc!8m2!3d-8.1643784!4d113.7125291" target="_blank"><i class="fas fa-map-marker-alt"></i></a></li>
-                            <li><a href="https://www.instagram.com/ahass_dag/?hl=id" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="" target="_blank"><i class="fas fa-map-marker-alt"></i></a></li>
+                            <li><a href="" target="_blank"><i class="fab fa-instagram"></i></a></li>
                         </ul>
-                        <p>Contact Us - 0877-5575-4655</p>
-                        <p class="copyright-text">Developed by <a href="#" rel="nofollow" target="_blank">OneTop Team</a>
+                        <p>Contact Us - +62 823-3845-3446</p>
+                        <p class="copyright-text">Developed by <a href="#" rel="nofollow" target="_blank">DoubleTop Team</a>
                         </p>
                     </div>
                 </div>
