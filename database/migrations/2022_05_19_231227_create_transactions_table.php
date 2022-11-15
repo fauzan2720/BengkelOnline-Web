@@ -19,6 +19,8 @@ class CreateTransactionsTable extends Migration
             $table->bigInteger('location_id');
             $table->float('total');
             $table->float('shipping_price');
+            $table->string('shipping');
+            $table->string('no_resi');
             $table->float('total_payment');
             $table->string('status');
             $table->timestamps();

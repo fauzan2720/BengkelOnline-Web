@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model
+class Order extends Model
 {
     use HasFactory;
 
@@ -21,11 +20,6 @@ class Transaction extends Model
         'status',
     ];
 
-    public function getCreatedAtAttribute($value)
-    {
-        return Carbon::parse($value)->format('Y-m-d H:i:s');
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
@@ -34,10 +28,5 @@ class Transaction extends Model
     public function location()
     {
         return $this->belongsTo(Location::class, 'location_id', 'id');
-    }
-
-    public function items()
-    {
-        return $this->hasMany(TransactionItem::class, 'transaction_id', 'id');
     }
 }

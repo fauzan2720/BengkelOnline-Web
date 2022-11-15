@@ -35,6 +35,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/bayardulu/{id}', [HalamanController::class, 'bayardulu']);
     Route::post('/tolak/{id}', [HalamanController::class, 'tolak']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::post('/terimaorder/{id}', [HalamanController::class, 'terimaorder']);
+    Route::post('/tolakorder/{id}', [HalamanController::class, 'tolakorder']);
+    Route::post('/kirimorder/{id}', [HalamanController::class, 'kirimorder']);
 });
 
     

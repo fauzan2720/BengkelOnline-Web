@@ -19,7 +19,13 @@ use App\Models\Transaksi;
 use App\Models\Location;
 
 use App\Models\CallMechanic;
+<<<<<<< Updated upstream
 use App\Models\ProductGallery;
+=======
+
+use App\Models\Transaction;
+
+>>>>>>> Stashed changes
 use App\Models\TransactionItem;
 
 use Illuminate\Http\Request;
@@ -109,17 +115,89 @@ class HalamanController extends Controller
         return view('pages.delivery', ['datadelivery' => CallMechanic::all()->where('status', 'proses'), 'datadelivery3' => CallMechanic::all()->where('status', 'diselesaikan'), 'datadelivery2' => CallMechanic::all()->where('status', 'perjalanan'), 'datadelivery4' => CallMechanic::all()->where('status', 'ditolak'), 'location' => Location::all(), 'mechanic' => $mechanic])->with('title', $title);
     }
 
+<<<<<<< Updated upstream
     public function orders()
     {
+=======
+    public function orders(){
+
+        $datao = DB::table('transactions')->where('status','PENDING')->get();
+        $datao1 = DB::table('transactions')->where('status','DIKEMAS')->get();
+
+>>>>>>> Stashed changes
         $title = 'Manajemen Transaksi';
 
-        return view('pages.orders')->with([
-            'title' => $title,
-        ]);
+        return view('pages.orders', ['dataorders'=>Transaction::all()->where('status','PENDING'),'dataorders0'=>Transaction::all()->where('status','DIKEMAS'),'dataorders1'=>Transaction::all()->where('status','DIKIRIM'),'dataorders2'=>Transaction::all()->where('status','DITERIMA'),'dataorders3'=>Transaction::all()->where('status','DITOLAK'),'location'=>Location::all(), 'datao'=>$datao])->with('title', $title);
     }
 
+<<<<<<< Updated upstream
     public function transaksi()
     {
+=======
+    public function terimaorder(Request $request, $id=null)
+
+	{
+
+		if($request->isMethod('post')){
+
+            $data = $request->all();
+
+            Transaction::where(['id'=>$id])->update([
+
+                'status'=>"DIKEMAS",
+
+            ]);
+
+            return redirect()->back()->with('diky_success', 'Pesanan DiTerima');
+
+        }
+
+	}
+
+    public function kirimorder(Request $request, $id=null)
+
+	{
+
+		if($request->isMethod('post')){
+
+            $data = $request->all();
+
+            Transaction::where(['id'=>$id])->update([
+
+                'shipping'=>$data['shipping'],
+                'no_resi'=>$data['no_resi'],
+                'status'=>"DIKIRIM",
+
+            ]);
+
+            return redirect()->back()->with('diky_success', 'Pesanan Dikirim');
+
+        }
+
+	}
+
+    public function tolakorder(Request $request, $id=null)
+
+	{
+
+		if($request->isMethod('post')){
+
+            $data = $request->all();
+
+            Transaction::where(['id'=>$id])->update([
+
+                'status'=>"DITOLAK",
+
+            ]);
+
+            return redirect()->back()->with('diky_success', 'Pesanan Ditolak');
+
+        }
+
+	}
+
+    public function transaksi(){
+>>>>>>> Stashed changes
 
         $transaksi = DB::table('transaksi')->count();
 
