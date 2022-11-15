@@ -40,7 +40,6 @@
                             <thead>
                                 <tr>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">No.</th>
-                                    <th class="text-center text-uppercase text-xxs font-weight-bolder">ID</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Nama Karyawan</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">No. Telepon</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Status</th>
@@ -58,11 +57,6 @@
                                     <!-- NO -->
                                     <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0">{{ $nomer++ }}.</p>
-                                    </td>
-
-                                    <!-- NO -->
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $dk->id }}</p>
                                     </td>
 
                                     <!-- Karyawan -->

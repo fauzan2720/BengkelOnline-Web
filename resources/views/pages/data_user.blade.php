@@ -41,11 +41,9 @@
                             <thead>
                                 <tr>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">No.</th>
-                                    <th class="text-center text-uppercase text-xxs font-weight-bolder">ID</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">User</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Email</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">No. Telepon</th>
-                                    <th class="text-center text-uppercase text-xxs font-weight-bolder">PIN</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Password</th>
                                     <!-- <th class="text-center text-uppercase text-xxs font-weight-bolder">Balance</th> -->
                                     {{-- <th class="text-center text-uppercase text-xxs font-weight-bolder">Kendaraan</th> --}}
@@ -61,11 +59,6 @@
                                     <!-- NO -->
                                     <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0"> {{ $nomer++ }}. </p>
-                                    </td>
-
-                                    <!-- ID -->
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $du->id }}</p>
                                     </td>
 
                                     <!-- User -->
@@ -89,11 +82,6 @@
                                     <!-- No. Telepon -->
                                     <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0">{{ $du->phone_number }}</p>
-                                    </td>
-
-                                    <!-- PIN -->
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $du->pin_number }}</p>
                                     </td>
 
                                     <!-- Password -->

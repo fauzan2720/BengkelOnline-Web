@@ -26656,5 +26656,5 @@ pre[class*="language-"] {
 /* Scroll */
 .scroll {
   height: 1000px;
-  overflow-y: hiddden;
+  overflow-y: auto;
 }

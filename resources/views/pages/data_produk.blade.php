@@ -74,7 +74,7 @@
 
                                     <!-- Action -->
                                     <td class="align-middle text-center text-sm">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#galerymodal" data-original-title="Galery">
+                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#galerymodal-{{$dp->id}}" data-original-title="Galery">
                                             Galery
                                         </a>
 
@@ -96,6 +96,27 @@
                                     </td>
                                 </tr>
                             </tbody>
+
+                            @foreach ($datagaleriproduk->where('product_id', $dp->id) as $data)
+                            <!-- Galery Modal -->
+                            <div class="modal fade" id="galerymodal-{{$data->id}}" data-bs-backdrop=" static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Galery Produk</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="{{ url($data->url) }}" alt="">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                             @endforeach
                         </table>
                     </div>
@@ -141,8 +162,8 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">Foto</label>
-                                <input class="form-control" name="pin" id="pin" type="text">
+                                <label for="foto" class="form-control-label">Foto</label>
+                                <input class="form-control" name="pin" id="foto" type="file" accept="image/png, image/jpeg, image/jpg" multiple>
                             </div>
                         </div>
                     </div>
@@ -232,22 +253,4 @@
 </div>
 @endforeach
 
-<!-- Galery Modal -->
-<div class="modal fade" id="galerymodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Galery Produk</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ....
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

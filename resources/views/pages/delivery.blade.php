@@ -2,8 +2,6 @@
 
 <div class="min-height-300 bg-primary position-absolute w-100"></div>
 
-
-
 @section('container')
 
 <div class="container-fluid py-4">
@@ -11,208 +9,122 @@
     @if (session('diky_success'))
 
     <div class="alert alert-success">
-
         {{ session('diky_success') }}
-
     </div>
 
     @endif
 
-    <!-- Data New -->
-    <div class="row">
-
-        <div class="col-12">
-
-            <div class="card mb-4">
-
-                <div class="card-header pb-0">
-
-                    <h6>Orderan Baru</h6>
-
+    <!-- Card Title -->
+    <div class="card mb-3">
+        <div class="card-body p-3 fw-bold text-dark d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                    <i class="fas fa-tools text-lg opacity-10" aria-hidden="true"></i>
                 </div>
+                <xspan class="mx-3 fs-4">{{ $title }}</xspan>
+            </div>
+        </div>
+    </div>
+    <!-- End Card Title -->
 
+    <!-- Orderan Baru -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>Orderan Baru</h6>
+                </div>
                 <div class="card-body px-0 pt-0 pb-2">
-
                     <div class="table-responsive p-0">
-
                         <table class="table align-items-center mb-0">
-
                             <thead>
-
                                 <tr>
-
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">No.</th>
-
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">ID Service</th>
-
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Nama User</th>
-
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Nomor Telepon</th>
-
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Lokasi</th>
-
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Kendala</th>
-
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Action</th>
-
                                 </tr>
-
                             </thead>
-
                             @php
-
                             $nomer = 1;
-
                             @endphp
-
                             @foreach ($datadelivery as $data)
-
                             <tbody>
-
                                 <tr>
-
                                     <!-- NO -->
-
                                     <td class="align-middle text-center text-sm">
-
                                         <p class="text-xs font-weight-bold mb-0">{{$nomer ++}}.</p>
-
                                     </td>
-
-
 
                                     <!-- ID Delivery Service -->
-
                                     <td class="align-middle text-center text-sm">
-
                                         <p class="text-xs font-weight-bold mb-0">{{$data->id}}</p>
-
                                     </td>
-
-
 
                                     <!-- Nama User -->
-
                                     <td class="align-middle text-center text-sm">
-
                                         <p class="text-xs font-weight-bold mb-0">{{$data->user->fullname}}</p>
-
                                     </td>
-
-
 
                                     <!-- Nomor Telepon -->
-
                                     <td class="align-middle text-center text-sm">
-
                                         <p class="text-xs font-weight-bold mb-0">{{$data->user->phone_number}}</p>
-
                                     </td>
-
-
 
                                     <!-- Lokasi -->
-
                                     <td class="align-middle text-center text-sm">
-
                                         <p class="text-xs font-weight-bold mb-0">{{$data->location->address}}</p>
-
                                     </td>
-
-
 
                                     <!-- Kendala -->
-
                                     <td class="align-middle text-center text-sm">
-
                                         <p class="text-xs font-weight-bold mb-0">{{$data->detail_problem}}</p>
-
                                     </td>
-
-
 
                                     <!-- Action -->
-
                                     <td class="align-middle text-center text-sm">
-
                                         <button type="button" class="btn btn-success text-xs font-weight mb-0" data-bs-toggle="modal" data-bs-target="#modalnew-{{$data->id}}">
-
                                             Terima & Proses
-
                                         </button>
-
                                         <button type="button" class="btn btn-danger text-xs font-weight mb-0" data-bs-toggle="modal" data-bs-target="#tolakmodal-{{$data->id}}">
-
                                             Tolak
-
                                         </button>
-
                                     </td>
-
                                 </tr>
-
                             </tbody>
-
                             @endforeach
-
                         </table>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
-
 
     <!-- Tolak -->
-
     @foreach ($datadelivery as $data)
-
     <div class="modal fade" id="tolakmodal-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-
         <div class="modal-dialog modal-sm" role="document">
-
             <div class="modal-content">
-
                 <div class="modal-header">
-
                     <h5 class="modal-title" id="staticBackdropLabel">Yakin Hapus Data?</h5>
-
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
                 </div>
-
                 <div class="modal-body">
-
                     <form action="{{url('tolak/'.$data->id)}}" method="POST">
-
                         {{ csrf_field() }}
-
                         Apakah anda Menolak Pesanan {{ $data->user->fullname }} ?
-
                 </div>
-
                 <div class="modal-footer">
-
                     <button type="submit" class="btn btn-primary">Tolak</button>
-
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-
                 </div>
-
                 </form>
-
             </div>
-
         </div>
-
     </div>
-
     @endforeach
 
 
@@ -227,7 +139,7 @@
 
 
 
-        <div class="col-md-7 mt-4">
+        <div class="col-md-7">
 
             <div class="card">
 
@@ -287,9 +199,9 @@
 
         <!-- Data Selesai -->
 
-        <div class="col-md-5 mt-4 ps ps--active-y">
+        <div class="col-md-5">
 
-            <div class="card h-100 mb-4 w-auto ps">
+            <div class="card h-100 mb-4 w-auto scroll ps--active-y">
 
                 <div class="card-header pb-0 px-3">
 
@@ -371,7 +283,7 @@
 
         <!-- Data Tolak -->
 
-        <div class="col-md-8 mt-4">
+        <div class="col-md-8">
 
             <div class="card h-100 mb-4">
 

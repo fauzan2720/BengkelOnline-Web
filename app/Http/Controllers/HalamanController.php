@@ -19,7 +19,7 @@ use App\Models\Transaksi;
 use App\Models\Location;
 
 use App\Models\CallMechanic;
-
+use App\Models\ProductGallery;
 use App\Models\TransactionItem;
 
 use Illuminate\Http\Request;
@@ -90,10 +90,11 @@ class HalamanController extends Controller
     {
 
         $dataproduk = DB::table('products')->get();
+        $datagaleriproduk = ProductGallery::all();
 
         $title = 'Data Produk';
 
-        return view('pages.data_produk', ['dataproduk' => $dataproduk])->with('title', $title);;
+        return view('pages.data_produk', ['dataproduk' => $dataproduk, 'datagaleriproduk' => $datagaleriproduk])->with('title', $title);;
     }
 
     public function delivery()
