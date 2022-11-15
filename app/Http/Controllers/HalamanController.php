@@ -24,6 +24,8 @@ use App\Models\ProductGallery;
 
 use App\Models\TransactionItem;
 
+use App\Models\Transaction;
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -116,7 +118,7 @@ class HalamanController extends Controller
 
         $title = 'Manajemen Transaksi';
 
-        return view('pages.orders', ['dataorders'=>Transaction::all()->where('status','PENDISNG'),'dataorders0'=>Transaction::all()->where('status','DIKEMAS'),'dataorders1'=>Transaction::all()->where('status','DIKIRIM'),'dataorders2'=>Transaction::all()->where('status','DITERIMA'),'dataorders3'=>Transaction::all()->where('status','DITOLAK'),'location'=>Location::all(), 'datao'=>$datao])->with('title', $title);
+        return view('pages.orders', ['dataorders'=>Transaction::all()->where('status','PENDING'),'dataorders0'=>Transaction::all()->where('status','DIKEMAS'),'dataorders1'=>Transaction::all()->where('status','DIKIRIM'),'dataorders2'=>Transaction::all()->where('status','DITERIMA'),'dataorders3'=>Transaction::all()->where('status','DITOLAK'),'location'=>Location::all()])->with('title', $title);
     }
 
     public function tolakorder(Request $request, $id = null)
