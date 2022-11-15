@@ -25,4 +25,9 @@ class Location extends Model
     {
         return $this->hasMany(CallMechanic::class, 'location_id', 'id');
     }
+
+    public function orderss()
+    {
+        return $this->hasMany(Transaction::class, 'location_id', 'id');
+    }
 }
