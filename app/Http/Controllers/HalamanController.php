@@ -113,9 +113,63 @@ class HalamanController extends Controller
 
     public function orders()
     {
+
         $title = 'Manajemen Transaksi';
 
-        return view('pages.orders', ['dataorders'=>Transaction::all()->where('status','PENDING'),'dataorders0'=>Transaction::all()->where('status','DIKEMAS'),'dataorders1'=>Transaction::all()->where('status','DIKIRIM'),'dataorders2'=>Transaction::all()->where('status','DITERIMA'),'dataorders3'=>Transaction::all()->where('status','DITOLAK'),'location'=>Location::all(), 'datao'=>$datao])->with('title', $title);
+        return view('pages.orders', ['dataorders'=>Transaction::all()->where('status','PENDISNG'),'dataorders0'=>Transaction::all()->where('status','DIKEMAS'),'dataorders1'=>Transaction::all()->where('status','DIKIRIM'),'dataorders2'=>Transaction::all()->where('status','DITERIMA'),'dataorders3'=>Transaction::all()->where('status','DITOLAK'),'location'=>Location::all(), 'datao'=>$datao])->with('title', $title);
+    }
+
+    public function tolakorder(Request $request, $id = null)
+
+    {
+
+        if ($request->isMethod('post')) {
+
+            Transaction::where(['id' => $id])->update([
+
+                'status' => "DITOLAK",
+
+            ]);
+
+            return redirect()->back()->with('diky_success', 'Penolakan Berhasil');
+        }
+    }
+
+    public function terimaorder(Request $request, $id = null)
+
+    {
+
+        if ($request->isMethod('post')) {
+
+            Transaction::where(['id' => $id])->update([
+
+                'status' => "DIKEMAS",
+
+            ]);
+
+            return redirect()->back()->with('diky_success', 'Terima Order Berhasil');
+        }
+    }
+
+    public function kirimorder(Request $request, $id = null)
+
+    {
+        if ($request->isMethod('post')) {
+
+            $data = $request->all();
+
+            Transaction::where(['id' => $id])->update([
+
+                'shipping' => $data['shipping'],
+
+                'no_resi' => $data['no_resi'],
+
+                'status' => "DIKIRIM",
+
+            ]);
+
+            return redirect()->back()->with('diky_success', 'Kirim Berhasil');;
+        }
     }
 
     public function transaksi()
