@@ -8,20 +8,17 @@
 
 <div class="container-fluid py-4">
 
-@if (session('diky_success'))
+    @if (session('diky_success'))
 
-<div class="alert alert-success">
+    <div class="alert alert-success">
 
-    {{ session('diky_success') }}
+        {{ session('diky_success') }}
 
-</div>
+    </div>
 
-@endif
+    @endif
 
     <!-- Data New -->
-
-    
-
     <div class="row">
 
         <div class="col-12">
@@ -30,7 +27,7 @@
 
                 <div class="card-header pb-0">
 
-                    <h6>New</h6>
+                    <h6>Orderan Baru</h6>
 
                 </div>
 
@@ -62,11 +59,11 @@
 
                             </thead>
 
-                                     @php
+                            @php
 
-                                     $nomer = 1;
+                            $nomer = 1;
 
-                                    @endphp
+                            @endphp
 
                             @foreach ($datadelivery as $data)
 
@@ -174,51 +171,51 @@
 
     <!-- Tolak -->
 
-@foreach ($datadelivery as $data)
+    @foreach ($datadelivery as $data)
 
-<div class="modal fade" id="tolakmodal-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="tolakmodal-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
-    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-dialog modal-sm" role="document">
 
-        <div class="modal-content">
+            <div class="modal-content">
 
-            <div class="modal-header">
+                <div class="modal-header">
 
-                <h5 class="modal-title" id="staticBackdropLabel">Yakin Hapus Data?</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Yakin Hapus Data?</h5>
 
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <form action="{{url('tolak/'.$data->id)}}" method="POST">
+
+                        {{ csrf_field() }}
+
+                        Apakah anda Menolak Pesanan {{ $data->user->fullname }} ?
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-primary">Tolak</button>
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+
+                </div>
+
+                </form>
 
             </div>
-
-            <div class="modal-body">
-
-                <form action="{{url('tolak/'.$data->id)}}" method="POST">
-
-                    {{ csrf_field() }}
-
-                    Apakah anda Menolak Pesanan {{ $data->user->fullname }} ?
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button type="submit" class="btn btn-primary">Tolak</button>
-
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-
-            </div>
-
-            </form>
 
         </div>
 
     </div>
 
-</div>
+    @endforeach
 
-@endforeach
 
-    
 
 
 
@@ -228,7 +225,7 @@
 
         <!-- Data Proses -->
 
-        
+
 
         <div class="col-md-7 mt-4">
 
@@ -284,15 +281,15 @@
 
         </div>
 
-        
+
 
 
 
         <!-- Data Selesai -->
 
-        <div class="col-md-5 mt-4">
+        <div class="col-md-5 mt-4 ps ps--active-y">
 
-            <div class="card h-100 mb-4">
+            <div class="card h-100 mb-4 w-auto ps">
 
                 <div class="card-header pb-0 px-3">
 
@@ -310,7 +307,7 @@
 
                 @php
 
-                    $nomer= 1;
+                $nomer= 1;
 
                 @endphp
 
@@ -334,17 +331,17 @@
 
                                 <div class="d-flex flex-column">
 
-                                <h6 class="mb-3 text-sm">{{$selesai->user->fullname}}</h6>
+                                    <h6 class="mb-3 text-sm">{{$selesai->user->fullname}}</h6>
 
-                                <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$selesai->id}}</span></span>
+                                    <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$selesai->id}}</span></span>
 
-                                <span class="mb-2 text-xs">No. Telepon: <span class="text-dark font-weight-bold ms-sm-2">{{$selesai->user->phone_number}}</span></span>
+                                    <span class="mb-2 text-xs">No. Telepon: <span class="text-dark font-weight-bold ms-sm-2">{{$selesai->user->phone_number}}</span></span>
 
-                                <span class="mb-2 text-xs">Lokasi: <span class="text-dark ms-sm-2 font-weight-bold">{{$selesai->location->address}}</span></span>
+                                    <span class="mb-2 text-xs">Lokasi: <span class="text-dark ms-sm-2 font-weight-bold">{{$selesai->location->address}}</span></span>
 
-                                <span class="mb-2 text-xs">Kendala: <span class="text-dark ms-sm-2 font-weight-bold">{{$selesai->detail_problem}}</span></span>
+                                    <span class="mb-2 text-xs">Kendala: <span class="text-dark ms-sm-2 font-weight-bold">{{$selesai->detail_problem}}</span></span>
 
-                                <span class="text-xs">Nama Mekanik: <span class="text-dark ms-sm-2 font-weight-bold">{{$selesai->mechanic}}</span></span>
+                                    <span class="text-xs">Nama Mekanik: <span class="text-dark ms-sm-2 font-weight-bold">{{$selesai->mechanic}}</span></span>
 
                                 </div>
 
@@ -370,7 +367,7 @@
 
 
 
-        
+
 
         <!-- Data Tolak -->
 
@@ -394,7 +391,7 @@
 
                 @php
 
-                    $nomer= 1;
+                $nomer= 1;
 
                 @endphp
 
@@ -418,17 +415,17 @@
 
                                 <div class="d-flex flex-column">
 
-                                <h6 class="mb-3 text-sm">{{$tolak->user->fullname}}</h6>
+                                    <h6 class="mb-3 text-sm">{{$tolak->user->fullname}}</h6>
 
-                                <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$tolak->id}}</span></span>
+                                    <span class="mb-2 text-xs">ID Service: <span class="text-dark font-weight-bold ms-sm-2">{{$tolak->id}}</span></span>
 
-                                <span class="mb-2 text-xs">No. Telepon: <span class="text-dark font-weight-bold ms-sm-2">{{$tolak->user->phone_number}}</span></span>
+                                    <span class="mb-2 text-xs">No. Telepon: <span class="text-dark font-weight-bold ms-sm-2">{{$tolak->user->phone_number}}</span></span>
 
-                                <span class="mb-2 text-xs">Lokasi: <span class="text-dark ms-sm-2 font-weight-bold">{{$tolak->location->address}}</span></span>
+                                    <span class="mb-2 text-xs">Lokasi: <span class="text-dark ms-sm-2 font-weight-bold">{{$tolak->location->address}}</span></span>
 
-                                <span class="mb-2 text-xs">Kendala: <span class="text-dark ms-sm-2 font-weight-bold">{{$tolak->detail_problem}}</span></span>
+                                    <span class="mb-2 text-xs">Kendala: <span class="text-dark ms-sm-2 font-weight-bold">{{$tolak->detail_problem}}</span></span>
 
-                                <span class="text-xs">Nama Mekanik: <span class="text-dark ms-sm-2 font-weight-bold">{{$tolak->mechanic}}</span></span>
+                                    <span class="text-xs">Nama Mekanik: <span class="text-dark ms-sm-2 font-weight-bold">{{$tolak->mechanic}}</span></span>
 
                                 </div>
 
@@ -478,125 +475,125 @@
 
             <div class="modal-body">
 
-            <form action="{{url('terima/'.$data->id)}}" method="POST">
+                <form action="{{url('terima/'.$data->id)}}" method="POST">
 
                     {{ csrf_field() }}
 
-                <div class="row">
+                    <div class="row">
 
-                    <div class="col-md-5">
+                        <div class="col-md-5">
 
-                        <div class="form-group">
+                            <div class="form-group">
 
-                            <label for="example-text-input" class="form-control-label">ID Delivery Service</label>
+                                <label for="example-text-input" class="form-control-label">ID Delivery Service</label>
 
-                            <input class="form-control" type="text" value="{{$data->id}}" aria-label="Isinya" disabled readonly>
+                                <input class="form-control" type="text" value="{{$data->id}}" aria-label="Isinya" disabled readonly>
 
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="col-md-5">
-
-                        <div class="form-group">
-
-                            <label for="example-text-input" class="form-control-label">Nama User</label>
-
-                            <input class="form-control" type="text" value="{{$data->user->fullname}}" aria-label="Isinya" disabled readonly>
+                            </div>
 
                         </div>
 
-                    </div>
 
 
+                        <div class="col-md-5">
 
-                    <div class="col-md-5">
+                            <div class="form-group">
 
-                        <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Nama User</label>
 
-                            <label for="example-text-input" class="form-control-label">Momor Telepon</label>
+                                <input class="form-control" type="text" value="{{$data->user->fullname}}" aria-label="Isinya" disabled readonly>
 
-                            <input class="form-control" type="text" value="{{$data->user->phone_number}}" aria-label="Isinya" disabled readonly>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="col-md-5">
-
-                        <div class="form-group">
-
-                            <label for="example-text-input" class="form-control-label">Lokasi</label>
-
-                            <input class="form-control" type="text" value="{{$data->location->address}}" aria-label="Isinya" disabled readonly>
+                            </div>
 
                         </div>
 
-                    </div>
 
 
+                        <div class="col-md-5">
 
-                    <div class="col-md-5">
+                            <div class="form-group">
 
-                        <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Momor Telepon</label>
 
-                            <label for="example-text-input" class="form-control-label">Kendala</label>
+                                <input class="form-control" type="text" value="{{$data->user->phone_number}}" aria-label="Isinya" disabled readonly>
 
-                            <input class="form-control" type="text" value="{{$data->detail_problem}}" aria-label="Isinya" disabled readonly>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="col-md-5">
-
-                        <div class="form-group">
-
-                            <label for="example-text-input" class="form-control-label">Status</label>
-
-                            <input class="form-control" type="text" name="status2" value="perjalanan" aria-label="Isinya" disabled readonly>
+                            </div>
 
                         </div>
 
-                    </div>
+
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+
+                                <label for="example-text-input" class="form-control-label">Lokasi</label>
+
+                                <input class="form-control" type="text" value="{{$data->location->address}}" aria-label="Isinya" disabled readonly>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+
+                                <label for="example-text-input" class="form-control-label">Kendala</label>
+
+                                <input class="form-control" type="text" value="{{$data->detail_problem}}" aria-label="Isinya" disabled readonly>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="col-md-5">
+
+                            <div class="form-group">
+
+                                <label for="example-text-input" class="form-control-label">Status</label>
+
+                                <input class="form-control" type="text" name="status2" value="perjalanan" aria-label="Isinya" disabled readonly>
+
+                            </div>
+
+                        </div>
 
 
 
 
 
-                    <div class="col-md-5">
+                        <div class="col-md-5">
 
-                        <div class="form-group">
+                            <div class="form-group">
 
-                            <label for="example-text-input" class="form-control-label">Nama Mekanik</label>
+                                <label for="example-text-input" class="form-control-label">Nama Mekanik</label>
 
-                            <div class="input-group mb-3">
+                                <div class="input-group mb-3">
 
-                                <select class="form-select" name="mechanic" id="inputGroupSelect01">
+                                    <select class="form-select" name="mechanic" id="inputGroupSelect01">
 
-                                    <option selected>Choose...</option>
+                                        <option selected>Choose...</option>
 
-                                    @foreach ($mechanic as $datam)
+                                        @foreach ($mechanic as $datam)
 
-                                    <option value="{{$datam->fullname}}">{{$datam->fullname}}</option>
+                                        <option value="{{$datam->fullname}}">{{$datam->fullname}}</option>
 
-                                    @endforeach
+                                        @endforeach
 
-                                </select>
+                                    </select>
+
+                                </div>
 
                             </div>
 
                         </div>
 
                     </div>
-
-                </div>
 
             </div>
 

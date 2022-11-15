@@ -40,79 +40,76 @@ class HalamanController extends Controller
 
     {
 
-        if(Auth::check()){
+        if (Auth::check()) {
 
-        $countDU = DB::table('users')->where('roles','USER')->count();
+            $countDU = DB::table('users')->where('roles', 'USER')->count();
 
-        $countDK = DB::table('users')->where('roles','MEKANIK')->count();
+            $countDK = DB::table('users')->where('roles', 'MEKANIK')->count();
 
-        $countDP = DB::table('products')->count();
+            $countDP = DB::table('products')->count();
 
-        $countDD = DB::table('call_mechanics')->count();
+            $countDD = DB::table('call_mechanics')->count();
 
-        $countDT = DB::table('transaksi')->count();
+            $countDT = DB::table('transaksi')->count();
 
-        $countDDT = DB::table('transaksi')->where('status','done')->count();
+            $countDDT = DB::table('transaksi')->where('status', 'done')->count();
 
-        $title = 'Dashboard';
+            $title = 'Dashboard';
 
-        
 
-        return view('pages.dashboard', compact('countDU', 'countDK', 'countDP', 'countDD', 'countDT', 'countDDT'))->with('title', $title);
 
+            return view('pages.dashboard', compact('countDU', 'countDK', 'countDP', 'countDD', 'countDT', 'countDDT'))->with('title', $title);
         }
 
         return redirect('/login');
-
     }
 
     public function datauser()
 
     {
 
-        $datauser = DB::table('users')->where('roles','USER')->get();
+        $datauser = DB::table('users')->where('roles', 'USER')->get();
 
         $title = 'Data User';
 
-        return view('pages.data_user', ['datauser'=>$datauser])->with('title', $title);;
-
+        return view('pages.data_user', ['datauser' => $datauser])->with('title', $title);;
     }
 
     public function karyawandata()
 
     {
 
-        $datakaryawan = DB::table('users')->where('roles','MEKANIK')->get();
+        $datakaryawan = DB::table('users')->where('roles', 'MEKANIK')->get();
 
         $title = 'Data Karyawan';
 
-        return view('pages.data_karyawan', ['datakaryawan'=>$datakaryawan])->with('title', $title);;
-
+        return view('pages.data_karyawan', ['datakaryawan' => $datakaryawan])->with('title', $title);;
     }
 
-    public function dataproduk(){
+    public function dataproduk()
+    {
 
         $dataproduk = DB::table('products')->get();
 
         $title = 'Data Produk';
 
-        return view('pages.data_produk', ['dataproduk'=>$dataproduk])->with('title', $title);;
-
+        return view('pages.data_produk', ['dataproduk' => $dataproduk])->with('title', $title);;
     }
 
-    public function delivery(){
+    public function delivery()
+    {
 
-        $datad = DB::table('call_mechanics')->where('status','proses')->get();
+        $datad = DB::table('call_mechanics')->where('status', 'proses')->get();
 
-        $mechanic = DB::table('users')->where('roles','MEKANIK')->get();
+        $mechanic = DB::table('users')->where('roles', 'MEKANIK')->get();
 
-        $title = 'Delivery';
+        $title = 'Delivery Service Online';
 
-        return view('pages.delivery', ['datadelivery'=>CallMechanic::all()->where('status','proses'),'datadelivery3'=>CallMechanic::all()->where('status','diselesaikan'),'datadelivery2'=>CallMechanic::all()->where('status','perjalanan'), 'datadelivery4'=>CallMechanic::all()->where('status','ditolak'), 'location'=>Location::all(), 'mechanic'=>$mechanic])->with('title', $title);
-
+        return view('pages.delivery', ['datadelivery' => CallMechanic::all()->where('status', 'proses'), 'datadelivery3' => CallMechanic::all()->where('status', 'diselesaikan'), 'datadelivery2' => CallMechanic::all()->where('status', 'perjalanan'), 'datadelivery4' => CallMechanic::all()->where('status', 'ditolak'), 'location' => Location::all(), 'mechanic' => $mechanic])->with('title', $title);
     }
 
-    public function orders(){
+    public function orders()
+    {
         $title = 'Manajemen Transaksi';
 
         return view('pages.orders')->with([
@@ -120,181 +117,169 @@ class HalamanController extends Controller
         ]);
     }
 
-    public function transaksi(){
+    public function transaksi()
+    {
 
         $transaksi = DB::table('transaksi')->count();
 
         $title = 'Transaksi';
 
-        return view('pages.transaksi', compact('transaksi'), ['dataproduk'=>TransactionItem::all(), 'dataproduk2'=>Product::all()])->with('title', $title);
-
+        return view('pages.transaksi', compact('transaksi'), ['dataproduk' => TransactionItem::all(), 'dataproduk2' => Product::all()])->with('title', $title);
     }
 
-    public function dataservice(){
+    public function dataservice()
+    {
 
-        $dataservice = DB::table('transaksi')->where('status','proses')->get();
+        $dataservice = DB::table('transaksi')->where('status', 'proses')->get();
 
         $dataproduk = DB::table('products')->get();
 
         $produkitem = DB::table('transaction_items')->get();
 
-        $test = DB::table('transaksi')->where('status','done')->get();
+        $test = DB::table('transaksi')->where('status', 'done')->get();
 
         $title = 'Data Service';
 
-        return view('pages.data_service', ['produkitem'=>$produkitem,'dataservice'=>$dataservice, 'test'=>$test,'dataproduk'=>$dataproduk, 'product'=>TransactionItem::all()])->with('title', $title);
-
+        return view('pages.data_service', ['produkitem' => $produkitem, 'dataservice' => $dataservice, 'test' => $test, 'dataproduk' => $dataproduk, 'product' => TransactionItem::all()])->with('title', $title);
     }
 
-    public function profil(){
+    public function profil()
+    {
 
-        $dataadmin = DB::table('users')->where('roles','ADMIN')->get();
+        $dataadmin = DB::table('users')->where('roles', 'ADMIN')->get();
 
-        $title = 'Data Profil';
+        $title = 'Profil';
 
-        return view('pages.profil', ['dataadmin'=>$dataadmin])->with('title', $title);
-
+        return view('pages.profil', ['dataadmin' => $dataadmin])->with('title', $title);
     }
 
-    
 
-    public function editprofil(Request $request, $id=null)
 
-	{
+    public function editprofil(Request $request, $id = null)
 
-		if($request->isMethod('post')){
+    {
+
+        if ($request->isMethod('post')) {
 
             $data = $request->all();
 
-            User::where(['id'=>$id])->update([
+            User::where(['id' => $id])->update([
 
-                'fullname'=>$data['fullname'],
+                'fullname' => $data['fullname'],
 
-                'roles'=>$data['roles'],
+                'roles' => $data['roles'],
 
-                'phone_number'=>$data['phone_number'],
+                'phone_number' => $data['phone_number'],
 
-                'alamat'=>$data['alamat'],
+                'alamat' => $data['alamat'],
 
-                'kecamatan'=>$data['kecamatan'],
+                'kecamatan' => $data['kecamatan'],
 
-                'kabupaten'=>$data['kabupaten'],
+                'kabupaten' => $data['kabupaten'],
 
-                'kpos'=>$data['kpos']
+                'kpos' => $data['kpos']
 
             ]);
 
             return redirect()->back()->with('diky_success', 'Update Berhasil');;
-
         }
+    }
 
-	}
+    public function edit(Request $request, $id = null)
 
-    public function edit(Request $request, $id=null)
+    {
 
-	{
-
-		if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
 
             $data = $request->all();
 
-            User::where(['id'=>$id])->update([
+            User::where(['id' => $id])->update([
 
-                'fullname'=>$data['name'],
+                'fullname' => $data['name'],
 
-                'email'=>$data['email'],
+                'email' => $data['email'],
 
-                'phone_number'=>$data['phone'],
+                'phone_number' => $data['phone'],
 
-                'pin_number'=>$data['pin'],
+                'pin_number' => $data['pin'],
 
-                'password'=>bcrypt($data['password']),
+                'password' => bcrypt($data['password']),
 
                 //'kendaraan'=>$data['kendaraan']
 
             ]);
 
             return redirect()->back()->with('diky_success', 'Update Berhasil');
-
         }
-
-	}
+    }
 
     public function hapus(Request $request, $id)
 
-	{
+    {
 
-		if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
 
-            User::where(['id'=>$id])->delete();
+            User::where(['id' => $id])->delete();
 
             return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil');
-
         }
+    }
 
-	}
+    public function editk(Request $request, $id = null)
 
-    public function editk(Request $request, $id=null)
+    {
 
-	{
-
-		if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
 
             $data = $request->all();
 
-            User::where(['id'=>$id])->update([
+            User::where(['id' => $id])->update([
 
-                'fullname'=>$data['name'],
+                'fullname' => $data['name'],
 
-                'phone_number'=>$data['phone'],
+                'phone_number' => $data['phone'],
 
-                'roles'=>$data['status'],
+                'roles' => $data['status'],
 
-                'alamat'=>$data['alamat']
+                'alamat' => $data['alamat']
 
             ]);
 
             return redirect()->back()->with('diky_success', 'Update Berhasil');
-
         }
-
-	}
+    }
 
     public function hapusk(Request $request, $id)
 
-	{
+    {
 
-		if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
 
-            User::where(['id'=>$id])->delete();
+            User::where(['id' => $id])->delete();
 
             return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil')->with('diky_hapus', 'Gagal');
-
         }
+    }
 
-	}
+    public function editp(Request $request, $id = null)
 
-    public function editp(Request $request, $id=null)
+    {
 
-	{
-
-		if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
 
             $data = $request->all();
 
-            Product::where(['id'=>$id])->update([
+            Product::where(['id' => $id])->update([
 
-                'product_name'=>$data['produk'],
+                'product_name' => $data['produk'],
 
-                'price'=>$data['harga'],
+                'price' => $data['harga'],
 
             ]);
 
             return redirect()->back()->with('diky_success', 'Update Berhasil');
-
         }
-
-	}
+    }
 
     /**
 
@@ -308,13 +293,11 @@ class HalamanController extends Controller
 
     public function tambah(Request $request)
 
-	{
+    { {
 
-        {
 
-            
 
-            $data = $request ->validate([
+            $data = $request->validate([
 
                 'transaction_id' => 'required|max:255',
 
@@ -345,34 +328,30 @@ class HalamanController extends Controller
             DB::table('transaksi')->insert($data);
 
             return redirect()->back()->with('diky_success', 'Berhasil');
-
         }
+    }
 
-	}
+    public function bayardulu(Request $request, $id = null)
 
-    public function bayardulu(Request $request, $id=null)
+    {
 
-	{
+        if ($request->isMethod('post')) {
 
-        if($request->isMethod('post')){
+            Transaksi::where(['id' => $id])->update([
 
-            Transaksi::where(['id'=>$id])->update([
-
-                'status'=>"done",
+                'status' => "done",
 
             ]);
 
             return redirect()->back()->with('diky_success', 'Pembayaran Berhasil');
-
         }
-
-	}
-
+    }
 
 
-    public function tambahproduk(Request $request, $id=null)
 
-	{
+    public function tambahproduk(Request $request, $id = null)
+
+    {
 
         $bayar = $request->harga;
 
@@ -380,9 +359,7 @@ class HalamanController extends Controller
 
         $jumlah = $request->jumlah;
 
-        $total = ($jumlah * $bayar) + $price;
-
-        {
+        $total = ($jumlah * $bayar) + $price; {
 
             DB::table('transaction_items')->insert([
 
@@ -396,100 +373,88 @@ class HalamanController extends Controller
 
             ]);
 
-            DB::table('transaksi')->where(['id'=>$id])->update([
+            DB::table('transaksi')->where(['id' => $id])->update([
 
                 'price' => $total,
 
             ]);
 
             return redirect()->back()->with('diky_success', 'Produk Berhasil Ditambahkan');
-
         }
-
-	}
+    }
 
     public function hapusp(Request $request, $id)
 
-	{
+    {
 
-		if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
 
-            Product::where(['id'=>$id])->delete();
+            Product::where(['id' => $id])->delete();
 
             return redirect()->back()->with('diky_hapus', 'Hapus Data Berhasil');
-
         }
-
-	}
+    }
 
     public function invoice($id)
     {
         $invoice = Transaksi::where('id', $id)->first();
-        
-        return view ('pages.invoice', compact('invoice'));
+
+        return view('pages.invoice', compact('invoice'));
     }
 
 
 
-    public function terima(Request $request, $id=null)
+    public function terima(Request $request, $id = null)
 
-	{
+    {
 
-		if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
 
             $data = $request->all();
 
-            CallMechanic::where(['id'=>$id])->update([
+            CallMechanic::where(['id' => $id])->update([
 
-                'mechanic'=>$data['mechanic'],
+                'mechanic' => $data['mechanic'],
 
-                'status'=>"perjalanan",
+                'status' => "perjalanan",
 
             ]);
 
             return redirect()->back()->with('diky_success', 'Pesanan DiTerima');
-
         }
+    }
 
-	}
+    public function selesai(Request $request, $id = null)
 
-    public function selesai(Request $request, $id=null)
+    {
 
-	{
-
-		if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
 
             $data = $request->all();
 
-            CallMechanic::where(['id'=>$id])->update([
+            CallMechanic::where(['id' => $id])->update([
 
-                'status'=>"diselesaikan",
+                'status' => "diselesaikan",
 
             ]);
 
             return redirect()->back()->with('diky_success', 'Pesanan Selesai');
-
         }
+    }
 
-	}
+    public function tolak(Request $request, $id = null)
 
-    public function tolak(Request $request, $id=null)
+    {
 
-	{
+        if ($request->isMethod('post')) {
 
-        if($request->isMethod('post')){
+            CallMechanic::where(['id' => $id])->update([
 
-            CallMechanic::where(['id'=>$id])->update([
-
-                'status'=>"ditolak",
+                'status' => "ditolak",
 
             ]);
 
             return redirect()->back()->with('diky_success', 'Penolakan Berhasil');
-
         }
-
-	}
-
+    }
 }
-

@@ -1143,7 +1143,7 @@ ol {
   width: 45px;
   height: 45px;
   line-height: 45px;
-  background: #50221f;
+  background: #e53f44;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1170,7 +1170,7 @@ ol {
   box-shadow: 0 1rem 3rem rgba(35, 38, 45, 0.15) !important;
   -webkit-transform: translate3d(0, -5px, 0);
   transform: translate3d(0, -5px, 0);
-  background-color: #ffafa6;
+  background-color: #da343c;
 }
 
 /* Overlay */
@@ -2490,7 +2490,7 @@ ol {
 
 .goal-action .cta-content .button .btn:hover {
   color: #fff;
-  background-color: #50221f;
+  background-color: #da343c;
 }
 
 /*======================================

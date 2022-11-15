@@ -9753,8 +9753,8 @@ fieldset:disabled .btn {
 }
 
 .px-0 {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
 }
 
 .px-1 {
@@ -9883,7 +9883,7 @@ fieldset:disabled .btn {
 }
 
 .pt-0 {
-  padding-top: 0 !important;
+  padding-top: 1rem !important;
 }
 
 .pt-1 {
@@ -26653,14 +26653,8 @@ pre[class*="language-"] {
   text-align: left;
 }
 
-/* .form-control-plaintext {
-  font-size: 0.75rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: #344767;
-  margin-left: 0.25rem;
-} */
-
-/* .input-group-sm {
-  width: 30%;
-} */
+/* Scroll */
+.scroll {
+  height: 1000px;
+  overflow-y: hiddden;
+}
