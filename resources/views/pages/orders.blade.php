@@ -91,6 +91,40 @@
                             </tbody>
                             @endforeach
                         </table>
+
+                        @if (count($dataorders) == 0)
+                        <small class="d-flex justify-content-center py-2 text-dark"><i class="far fa-times-circle py-1"></i> &nbsp Data kosong</small>
+                        @endif
+
+                        @if ($dataorders->total() > 10)
+                        <nav>
+                            <ul class="pagination d-flex justify-content-end mt-3">
+                                {{-- Previous Page Link --}}
+                                @if ($dataorders->onFirstPage())
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
+                                    <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                                </li>
+                                @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $dataorders->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                                </li>
+                                @endif
+
+                                <li class="page-item active"><a class="page-link" href="#">{{ $dataorders->currentPage() }}</a></li>
+
+                                {{-- Next Page Link --}}
+                                @if ($dataorders->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $dataorders->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                                </li>
+                                @else
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
+                                    <span class="page-link" aria-hidden="true">&rsaquo;</span>
+                                </li>
+                                @endif
+                            </ul>
+                        </nav>
+                        @endif
                     </div>
                 </div>
             </div>

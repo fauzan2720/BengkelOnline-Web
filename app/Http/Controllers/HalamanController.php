@@ -61,8 +61,14 @@ class HalamanController extends Controller
             $title = 'Dashboard';
 
             return view('pages.dashboard', compact(
-                'countDU', 'countDK', 'countDP', 'countDD', 'countDTransactions', 'countDT', 'countDDT'
-                ))->with('title', $title);
+                'countDU',
+                'countDK',
+                'countDP',
+                'countDD',
+                'countDTransactions',
+                'countDT',
+                'countDDT'
+            ))->with('title', $title);
         }
         return redirect('/login');
     }
@@ -71,7 +77,7 @@ class HalamanController extends Controller
     {
         $datauser = User::where('roles', 'USER')->orderBy('updated_at', 'desc')->paginate(10);
         $title = 'Data User';
-        
+
         return view('pages.data_user', ['datauser' => $datauser])->with('title', $title);
     }
 
@@ -126,7 +132,14 @@ class HalamanController extends Controller
 
         $title = 'Delivery Service Online';
 
-        return view('pages.delivery', ['datadelivery' => CallMechanic::all()->where('status', 'proses'), 'datadelivery3' => CallMechanic::all()->where('status', 'diselesaikan'), 'datadelivery2' => CallMechanic::all()->where('status', 'perjalanan'), 'datadelivery4' => CallMechanic::all()->where('status', 'ditolak'), 'location' => Location::all(), 'mechanic' => $mechanic])->with('title', $title);
+        return view('pages.delivery', [
+            'datadelivery' => CallMechanic::where('status', 'proses')->orderBy('updated_at', 'desc')->paginate(10),
+            'datadelivery3' => CallMechanic::where('status', 'diselesaikan')->orderBy('updated_at', 'desc')->get(),
+            'datadelivery2' => CallMechanic::where('status', 'perjalanan')->orderBy('updated_at', 'desc')->get(),
+            'datadelivery4' => CallMechanic::where('status', 'ditolak')->orderBy('updated_at', 'desc')->get(),
+            'location' => Location::all(),
+            'mechanic' => $mechanic
+        ])->with('title', $title);
     }
 
     public function orders()
@@ -134,19 +147,21 @@ class HalamanController extends Controller
 
         $title = 'Manajemen Transaksi';
 
-        return view('pages.orders', ['dataorders' => Transaction::all()->where('status', 'PENDING'), 'dataorders0' => Transaction::all()->where('status', 'DIKEMAS'), 'dataorders1' => Transaction::all()->where('status', 'DIKIRIM'), 'dataorders2' => Transaction::all()->where('status', 'DITERIMA'), 'dataorders3' => Transaction::all()->where('status', 'DITOLAK'), 'location' => Location::all()])->with('title', $title);
+        return view('pages.orders', [
+            'dataorders' => Transaction::where('status', 'PENDING')->orderBy('updated_at', 'desc')->paginate(10),
+            'dataorders0' => Transaction::where('status', 'DIKEMAS')->orderBy('updated_at', 'desc')->get(),
+            'dataorders1' => Transaction::where('status', 'DIKIRIM')->orderBy('updated_at', 'desc')->get(),
+            'dataorders2' => Transaction::where('status', 'DITERIMA')->orderBy('updated_at', 'desc')->get(),
+            'dataorders3' => Transaction::where('status', 'DITOLAK')->orderBy('updated_at', 'desc')->get(),
+            'location' => Location::all()
+        ])->with('title', $title);
     }
 
     public function tolakorder(Request $request, $id = null)
-
     {
-
         if ($request->isMethod('post')) {
-
             Transaction::where(['id' => $id])->update([
-
                 'status' => "DITOLAK",
-
             ]);
 
             return redirect()->back()->with('diky_success', 'Penolakan Berhasil');
@@ -197,23 +212,26 @@ class HalamanController extends Controller
 
         $title = 'Transaksi Service';
 
-        return view('pages.transaksi', compact('transaksi'), ['dataproduk' => TransactionItem::all(), 'dataproduk2' => Product::all()])->with('title', $title);
+        return view('pages.transaksi', compact('transaksi'), [
+            'dataproduk' => TransactionItem::all(),
+            'dataproduk2' => Product::all()
+        ])->with('title', $title);
     }
 
     public function dataservice()
     {
-
-        $dataservice = DB::table('transaksi')->where('status', 'proses')->get();
-
-        $dataproduk = DB::table('products')->get();
-
-        $produkitem = DB::table('transaction_items')->get();
-
-        $test = DB::table('transaksi')->where('status', 'done')->get();
-
+        $dataservice = DB::table('transaksi')->where('status', 'proses')->orderBy('id', 'desc')->get();
+        $dataproduk = DB::table('products')->orderBy('updated_at', 'desc')->get();
+        $produkitem = DB::table('transaction_items')->orderBy('updated_at', 'desc')->get();
+        $test = DB::table('transaksi')->where('status', 'done')->orderBy('updated_at', 'desc')->get();
         $title = 'Data Service';
 
-        return view('pages.data_service', ['produkitem' => $produkitem, 'dataservice' => $dataservice, 'test' => $test, 'dataproduk' => $dataproduk, 'product' => TransactionItem::all()])->with('title', $title);
+        return view('pages.data_service', [
+            'produkitem' => $produkitem,
+            'dataservice' => $dataservice,
+            'test' => $test, 'dataproduk' => $dataproduk,
+            'product' => TransactionItem::orderBy('updated_at', 'desc')->get()
+            ])->with('title', $title);
     }
 
     public function profil()

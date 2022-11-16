@@ -30,7 +30,7 @@
     <!-- Orderan Baru -->
     <div class="row">
         <div class="col-12">
-            <div class="card mb-4 scroll">
+            <div class="card mb-4">
                 <div class="card-header pb-0">
                     <h6>Orderan Baru</h6>
                 </div>
@@ -51,8 +51,8 @@
                             @php
                             $nomer = 1;
                             @endphp
-                            @foreach ($datadelivery as $data)
                             <tbody>
+                                @foreach ($datadelivery as $data)
                                 <tr>
                                     <!-- NO -->
                                     <td class="align-middle text-center text-sm">
@@ -94,9 +94,43 @@
                                         </button>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
-                            @endforeach
                         </table>
+
+                        @if (count($datadelivery) == 0)
+                        <small class="d-flex justify-content-center py-2 text-dark"><i class="far fa-times-circle py-1"></i> &nbsp Data kosong</small>
+                        @endif
+
+                        @if ($datadelivery->total() > 10)
+                        <nav>
+                            <ul class="pagination d-flex justify-content-end mt-3">
+                                {{-- Previous Page Link --}}
+                                @if ($datadelivery->onFirstPage())
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
+                                    <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                                </li>
+                                @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $datadelivery->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                                </li>
+                                @endif
+
+                                <li class="page-item active"><a class="page-link" href="#">{{ $datadelivery->currentPage() }}</a></li>
+
+                                {{-- Next Page Link --}}
+                                @if ($datadelivery->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $datadelivery->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                                </li>
+                                @else
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
+                                    <span class="page-link" aria-hidden="true">&rsaquo;</span>
+                                </li>
+                                @endif
+                            </ul>
+                        </nav>
+                        @endif
                     </div>
                 </div>
             </div>
