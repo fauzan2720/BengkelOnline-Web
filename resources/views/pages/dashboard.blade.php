@@ -84,9 +84,12 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/delivery') }}">Delivery Service Online</a>
-                                <h5 class="font-weight-bolder">
-                                    {{ $countDD }}
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/delivery') }}">Delivery Service</a>
+                                <h5 class="">
+                                    <span class="font-weight-bolder">
+                                        {{ $countDD }}
+                                    </span>
+                                    <small class="wont-weight-normal" style="font-size: 12px;">{{ '(' . date('M') . ', ' . date('Y') . ')' }}</small>
                                 </h5>
                             </div>
                         </div>
@@ -100,16 +103,19 @@
             </div>
         </div>
 
-        <!-- Manajemen Transaksi -->
+        <!-- Pesanan Diterima -->
         <div class="col-xl-3 col-sm-5">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
                         <div class="col-8">
                             <div class="numbers">
-                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="">Manajemen Transaksi</a>
-                                <h5 class="font-weight-bolder">
-
+                                <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/orders') }}">Pesanan Diterima</a>
+                                <h5 class="">
+                                    <span class="font-weight-bolder">
+                                        {{ $countDTransactions }}
+                                    </span>
+                                    <small class="wont-weight-normal" style="font-size: 12px;">{{ '(' . date('M') . ', ' . date('Y') . ')' }}</small>
                                 </h5>
                             </div>
                         </div>
@@ -131,8 +137,11 @@
                         <div class="col-8">
                             <div class="numbers">
                                 <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/transaksi') }}">Transaksi Service</a>
-                                <h5 class="font-weight-bolder">
-                                    {{ $countDT }}
+                                <h5 class="">
+                                    <span class="font-weight-bolder">
+                                        {{ $countDT }}
+                                    </span>
+                                    <small class="wont-weight-normal" style="font-size: 12px;">{{ '(' . date('M') . ', ' . date('Y') . ')' }}</small>
                                 </h5>
                             </div>
                         </div>
@@ -154,8 +163,11 @@
                         <div class="col-8">
                             <div class="numbers">
                                 <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/data_service') }}">Data Service</a>
-                                <h5 class="font-weight-bolder">
-                                    {{ $countDDT }}
+                                <h5 class="">
+                                    <span class="font-weight-bolder">
+                                        {{ $countDDT }}
+                                    </span>
+                                    <small class="wont-weight-normal" style="font-size: 12px;">{{ '(' . date('M') . ', ' . date('Y') . ')' }}</small>
                                 </h5>
                             </div>
                         </div>
@@ -178,7 +190,7 @@
                             <div class="numbers">
                                 <a class="text-sm mb-0 text-uppercase font-weight-bold" style="color: inherit;" href="{{ url('/profil') }}">Profil</a>
                                 <h5 class="font-weight-bolder">
-                                    {{ Auth::user()->fullname }}
+                                    <small>{{ Auth::user()->fullname }}</small>
                                 </h5>
                             </div>
                         </div>

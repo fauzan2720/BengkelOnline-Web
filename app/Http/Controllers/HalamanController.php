@@ -1,90 +1,82 @@
 <?php
 
-
-
 namespace App\Http\Controllers;
 
-
-
-use App\Models\Juser;
-
 use App\Models\User;
-
-use App\Models\Karyawan;
-
 use App\Models\Product;
-
 use App\Models\Transaksi;
-
 use App\Models\Location;
-
 use App\Models\CallMechanic;
-
 use App\Models\ProductGallery;
-
 use App\Models\TransactionItem;
-
 use App\Models\Transaction;
-
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\DB;
 
-use Illuminate\Support\Facades\Session;
-
-
-
 class HalamanController extends Controller
-
 {
-
     public function dashboard()
-
     {
+        $countDD = 0;
+        $countDTransactions = 0;
+        $countDT = 0;
+        $countDDT = 0;
 
         if (Auth::check()) {
-
             $countDU = DB::table('users')->where('roles', 'USER')->count();
-
             $countDK = DB::table('users')->where('roles', 'MEKANIK')->count();
-
             $countDP = DB::table('products')->count();
 
-            $countDD = DB::table('call_mechanics')->count();
+            $alldeliveryservice = CallMechanic::all();
+            $alltransaction = Transaction::all();
+            $alltransactionservice = Transaksi::all();
+            $alldataservice = Transaksi::where('status', 'done')->get();
+            foreach ($alldeliveryservice as $data) {
+                if (date('Y-m', strtotime($data->updated_at)) == date('Y-m')) {
+                    $countDD++;
+                }
+            }
+            foreach ($alltransaction as $data) {
+                if (date('Y-m', strtotime($data->updated_at)) == date('Y-m')) {
+                    $countDTransactions++;
+                }
+            }
+            foreach ($alltransactionservice as $data) {
+                if (date('Y-m', strtotime($data->updated_at)) == date('Y-m')) {
+                    $countDT++;
+                }
+            }
+            foreach ($alldataservice as $data) {
+                if (date('Y-m', strtotime($data->updated_at)) == date('Y-m')) {
+                    $countDDT++;
+                }
+            }
 
-            $countDT = DB::table('transaksi')->count();
-
-            $countDDT = DB::table('transaksi')->where('status', 'done')->count();
+            // $countDD = DB::table('call_mechanics')->count();
+            // $countDTransactions = DB::table('transactions')->count();
+            // $countDT = DB::table('transaksi')->count();
+            // $countDDT = DB::table('transaksi')->where('status', 'done')->count();
 
             $title = 'Dashboard';
 
-
-
-            return view('pages.dashboard', compact('countDU', 'countDK', 'countDP', 'countDD', 'countDT', 'countDDT'))->with('title', $title);
+            return view('pages.dashboard', compact(
+                'countDU', 'countDK', 'countDP', 'countDD', 'countDTransactions', 'countDT', 'countDDT'
+                ))->with('title', $title);
         }
-
         return redirect('/login');
     }
 
     public function datauser()
-
     {
-
         $datauser = DB::table('users')->where('roles', 'USER')->get();
-
         $title = 'Data User';
-
         return view('pages.data_user', ['datauser' => $datauser])->with('title', $title);;
     }
 
     public function karyawandata()
-
     {
-
         $datakaryawan = DB::table('users')->where('roles', 'MEKANIK')->get();
-
         $title = 'Data Karyawan';
 
         return view('pages.data_karyawan', ['datakaryawan' => $datakaryawan])->with('title', $title);;
