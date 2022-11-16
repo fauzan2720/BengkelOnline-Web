@@ -146,7 +146,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-secondary shadow-secondary text-center rounded-circle">
+                            <div class="icon icon-shape bg-gradient-dark shadow-dark text-center rounded-circle">
                                 <a href="{{ url('/transaksi') }}"><i class="fas fa-user-cog text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -195,7 +195,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-dark shadow-dark text-center rounded-circle">
+                            <div class="icon icon-shape bg-gradient-secondary shadow-secondary text-center rounded-circle">
                                 <a href="{{ url('/profil') }}"><i class="fas fa-user-circle text-lg opacity-10" aria-hidden="true"></i></a>
                             </div>
                         </div>

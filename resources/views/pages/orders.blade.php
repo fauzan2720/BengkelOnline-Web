@@ -11,6 +11,19 @@
     </div>
     @endif
 
+    <!-- Card Title -->
+    <div class="card mb-3">
+        <div class="card-body p-3 fw-bold text-dark d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+                <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                    <i class="fas fa-tools text-lg opacity-10" aria-hidden="true"></i>
+                </div>
+                <xspan class="mx-3 fs-4">{{ $title }}</xspan>
+            </div>
+        </div>
+    </div>
+    <!-- End Card Title -->
+
     <!-- Data New -->
     <div class="row">
         <div class="col-12">
@@ -34,7 +47,7 @@
                             </thead>
 
                             @php
-                                $nomer = 1;
+                            $nomer = 1;
                             @endphp
                             @foreach ($dataorders as $data)
                             <tbody>
@@ -89,20 +102,20 @@
     <div class="modal fade" id="terimamodal-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
-            <form action="{{url('terimaorder/'.$data->id)}}" method="POST">
-                <div class="modal-header">
-                    <h5 class="modal-title">Terima Pesanan?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{url('tolak/'.$data->id)}}" method="POST">
-                        {{ csrf_field() }}
-                        Terima Pesanan Atas Nama {{ $data->user->fullname }} ?
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Terima</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                </div>
+                <form action="{{url('terimaorder/'.$data->id)}}" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Terima Pesanan?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{url('tolak/'.$data->id)}}" method="POST">
+                            {{ csrf_field() }}
+                            Terima Pesanan Atas Nama {{ $data->user->fullname }} ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Terima</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    </div>
                 </form>
             </div>
             </form>
@@ -144,7 +157,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                
+
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
@@ -182,7 +195,7 @@
 
     <div class="row">
         <!-- Data Proses -->
-        <div class="col-md-7 mt-4">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-header pb-0 px-3">
                     <h6 class="mb-0">Sedang Dikemas</h6>
@@ -195,12 +208,12 @@
                                 <h6 class="mb-3 text-sm">{{ $data->user->fullname }}</h6>
                                 <span class="mb-2 text-xs">No. Telepon: <span class="text-dark font-weight-bold ms-sm-2">{{$data->user->phone_number}}</span></span>
                                 <span class="mb-2 text-xs">Alamat: <span class="text-dark ms-sm-2 font-weight-bold">
-                                @if ($data->location != null)
-                                            {{$data->location->address}}
-                                            @else
-                                            id: {{$data->id}}, Alamat tidak ditemukan
-                                            @endif
-                                </span></span>
+                                        @if ($data->location != null)
+                                        {{$data->location->address}}
+                                        @else
+                                        id: {{$data->id}}, Alamat tidak ditemukan
+                                        @endif
+                                    </span></span>
                                 <span class="mb-2 text-xs">Total Pembayaran: <span class="text-dark ms-sm-2 font-weight-bold">Rp.{{$data->total_payment}}</span></span>
                             </div>
                             <div class="ms-auto text-end">
@@ -213,56 +226,56 @@
 
                 <!-- Data List dikemas -->
                 <div class="modal fade" id="lihatPesanan-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="dynamBackdropLabel">Daftar Orderan {{ $data->user->fullname }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center text-uppercase text-xxs font-weight-bolder">No.</th>
-                                        <th class="text-center text-uppercase text-xxs font-weight-bolder">Nama Produk</th>
-                                        <th class="text-center text-uppercase text-xxs font-weight-bolder">Quantity</th>
-                                    </tr>
-                                </thead>
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="dynamBackdropLabel">Daftar Orderan {{ $data->user->fullname }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center text-uppercase text-xxs font-weight-bolder">No.</th>
+                                            <th class="text-center text-uppercase text-xxs font-weight-bolder">Nama Produk</th>
+                                            <th class="text-center text-uppercase text-xxs font-weight-bolder">Quantity</th>
+                                        </tr>
+                                    </thead>
 
-                                @php
-                                $nomer = 1;
-                                @endphp
-                                <tbody>
-                                    <tr>
-                                        <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0">{{$nomer ++}}.</p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0">{{$data->user->fullname}}</p>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0">{{$data->quantity}}</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    @php
+                                    $nomer = 1;
+                                    @endphp
+                                    <tbody>
+                                        <tr>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0">{{$nomer ++}}.</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0">{{$data->user->fullname}}</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0">{{$data->quantity}}</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-                    <!-- Kirim -->
-                    <div class="modal fade" id="kirimorder-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Masukkan Nomor Resi {{$data->user->fullname}}</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
+                <!-- Kirim -->
+                <div class="modal fade" id="kirimorder-{{$data->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Masukkan Nomor Resi {{$data->user->fullname}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
                                 <form action="{{url('kirimorder/'.$data->id)}}" method="POST">
                                     {{ csrf_field() }}
                                     <div class="mb-3">
@@ -280,21 +293,27 @@
                                         <label for="no_resi">Nomor Resi</label>
                                         <input type="text" id="no_resi" name="no_resi" class="form-control">
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                                    <button type="submit" class="btn btn-primary">Kirim</button>
-                                </div>
-                                </form>
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
+                            </div>
+                            </form>
                         </div>
                     </div>
+                </div>
                 @endforeach
+
+                @if(count($dataorders0) == 0)
+                <div class="card-body pt-4 p-3">
+                    <p>Data Kosong!!</p>
+                </div>
+                @endif
             </div>
         </div>
 
         <!-- Data Dikirim -->
-        <div class="col-md-5 mt-4">
+        <div class="col-md-5">
             <div class="card h-100 mb-4">
                 <div class="card-header pb-0 px-3">
                     <div class="row">
@@ -313,12 +332,12 @@
                                     <h6 class="mb-3 text-sm">{{$data->user->fullname}}</h6>
                                     <span class="mb-2 text-xs">No. Telepon: <span class="text-dark font-weight-bold ms-sm-2">{{$data->user->phone_number}}</span></span>
                                     <span class="mb-2 text-xs">Alamat: <span class="text-dark ms-sm-2 font-weight-bold">
-                                    @if ($data->location != null)
+                                            @if ($data->location != null)
                                             {{$data->location->address}}
                                             @else
                                             id: {{$data->id}}, Alamat tidak ditemukan
                                             @endif
-                                    </span></span>
+                                        </span></span>
                                     <span class="mb-2 text-xs">Total Pembayaran: <span class="text-dark ms-sm-2 font-weight-bold">Rp.{{$data->total_payment}}</span></span>
                                     <span class="mb-2 text-xs">Expedisi: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->shipping}}</span></span>
                                     <span class="mb-2 text-xs">No Resi: <span class="text-dark ms-sm-2 font-weight-bold">{{$data->no_resi}}</span></span>
@@ -331,11 +350,17 @@
                     </ul>
                 </div>
                 @endforeach
+
+                @if(count($dataorders0) == 0)
+                <div class="card-body pt-4 p-3">
+                    <p>Data Kosong!!</p>
+                </div>
+                @endif
             </div>
         </div>
 
         <!-- Data Diterima -->
-        <div class="col-md-8 mt-4">
+        <div class="col-md-8">
             <div class="card h-100 mb-4">
                 <div class="card-header pb-0 px-3">
                     <div class="row">
@@ -356,15 +381,15 @@
                             <div class="d-flex align-items-center">
                                 <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-check"></i></button>
                                 <div class="d-flex flex-column">
-                                <h6 class="mb-3 text-sm">{{ $data->user->fullname }}</h6>
-                                <span class="mb-2 text-xs">No. Telepon: <span class="text-dark font-weight-bold ms-sm-2">{{$data->user->phone_number}}</span></span>
-                                <span class="mb-2 text-xs">Alamat: <span class="text-dark ms-sm-2 font-weight-bold">
-                                @if ($data->location != null)
+                                    <h6 class="mb-3 text-sm">{{ $data->user->fullname }}</h6>
+                                    <span class="mb-2 text-xs">No. Telepon: <span class="text-dark font-weight-bold ms-sm-2">{{$data->user->phone_number}}</span></span>
+                                    <span class="mb-2 text-xs">Alamat: <span class="text-dark ms-sm-2 font-weight-bold">
+                                            @if ($data->location != null)
                                             {{$data->location->address}}
                                             @else
                                             id: {{$data->id}}, Alamat tidak ditemukan
                                             @endif
-                                </span></span>
+                                        </span></span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center">
@@ -374,11 +399,17 @@
                     </ul>
                 </div>
                 @endforeach
+
+                @if(count($dataorders0) == 0)
+                <div class="card-body pt-4 p-3">
+                    <p>Data Kosong!!</p>
+                </div>
+                @endif
             </div>
         </div>
-        
+
         <!-- Data Ditolak -->
-        <div class="col-md-8 mt-4">
+        <div class="col-md-8">
             <div class="card h-100 mb-4">
                 <div class="card-header pb-0 px-3">
                     <div class="row">
@@ -417,6 +448,12 @@
                     </ul>
                 </div>
                 @endforeach
+
+                @if(count($dataorders0) == 0)
+                <div class="card-body pt-4 p-3">
+                    <p>Data Kosong!!</p>
+                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -426,4 +463,4 @@
 
 
 
-@endsection 
+@endsection

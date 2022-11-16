@@ -5649,6 +5649,7 @@ fieldset:disabled .btn {
   margin-bottom: 0;
   background-color: #fff;
   border-bottom: 0 solid rgba(0, 0, 0, 0.125);
+  border-radius: 1rem;
 }
 
 .card-header:first-child {
@@ -26655,6 +26656,25 @@ pre[class*="language-"] {
 
 /* Scroll */
 .scroll {
-  height: 1000px;
+  height: 800px;
   overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 18px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
 }

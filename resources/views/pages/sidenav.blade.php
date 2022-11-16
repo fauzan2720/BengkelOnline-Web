@@ -96,9 +96,11 @@
             </li>
         </ul>
     </div>
-    <form action="{{url('logout')}}" method="POST" class="mx-3">
+    <form action="{{url('logout')}}" method="POST" class="mx-2">
         @csrf
-        <button type="submit" class="btn btn-sl btn-danger btn-sl w-100 mt-1 mb-0"> <i class="fas fa-power-off text-white text-sm opacity-10"></i> Logout</button>
+        <div class="d-flex align-items-center">
+            <button type="submit" class="btn btn-primary btn-sl btn-sl w-100 mt-3 mb-0"> <i class="fas fa-power-off text-white text-sm opacity-10"></i> Logout</button>
+        </div>
     </form>
 </aside>
 <!-- End Sidenav -->

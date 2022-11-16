@@ -134,7 +134,7 @@ class HalamanController extends Controller
 
         $title = 'Manajemen Transaksi';
 
-        return view('pages.orders', ['dataorders'=>Transaction::all()->where('status','PENDING'),'dataorders0'=>Transaction::all()->where('status','DIKEMAS'),'dataorders1'=>Transaction::all()->where('status','DIKIRIM'),'dataorders2'=>Transaction::all()->where('status','DITERIMA'),'dataorders3'=>Transaction::all()->where('status','DITOLAK'),'location'=>Location::all()])->with('title', $title);
+        return view('pages.orders', ['dataorders' => Transaction::all()->where('status', 'PENDING'), 'dataorders0' => Transaction::all()->where('status', 'DIKEMAS'), 'dataorders1' => Transaction::all()->where('status', 'DIKIRIM'), 'dataorders2' => Transaction::all()->where('status', 'DITERIMA'), 'dataorders3' => Transaction::all()->where('status', 'DITOLAK'), 'location' => Location::all()])->with('title', $title);
     }
 
     public function tolakorder(Request $request, $id = null)
@@ -195,7 +195,7 @@ class HalamanController extends Controller
 
         $transaksi = DB::table('transaksi')->count();
 
-        $title = 'Transaksi';
+        $title = 'Transaksi Service';
 
         return view('pages.transaksi', compact('transaksi'), ['dataproduk' => TransactionItem::all(), 'dataproduk2' => Product::all()])->with('title', $title);
     }
