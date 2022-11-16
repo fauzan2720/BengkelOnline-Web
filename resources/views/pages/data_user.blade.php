@@ -44,8 +44,6 @@
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">User</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Email</th>
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">No. Telepon</th>
-                                    <th class="text-center text-uppercase text-xxs font-weight-bolder">Password</th>
-                                    <!-- <th class="text-center text-uppercase text-xxs font-weight-bolder">Balance</th> -->
                                     {{-- <th class="text-center text-uppercase text-xxs font-weight-bolder">Kendaraan</th> --}}
                                     <th class="text-center text-uppercase text-xxs font-weight-bolder">Action</th>
                                 </tr>
@@ -84,11 +82,6 @@
                                         <p class="text-xs font-weight-bold mb-0">{{ $du->phone_number }}</p>
                                     </td>
 
-                                    <!-- Password -->
-                                    <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $du->password }}</p>
-                                    </td>
-
                                     <!-- Kendaraan -->
                                     {{-- <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0">{{ $du->kendaraan }}</p>
@@ -102,7 +95,7 @@
                                         <a class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
                                             |
                                         </a>
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#hapusmodal-{{ $du->id }}" data-original-title="Hapus user">
+                                        <a href="javascript:;" class="text-danger font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#hapusmodal-{{ $du->id }}" data-original-title="Hapus user">
                                             Delete
                                         </a>
                                     </td>
@@ -110,6 +103,34 @@
                             </tbody>
                             @endforeach
                         </table>
+                        
+                        <nav>
+                            <ul class="pagination d-flex justify-content-end">
+                                {{-- Previous Page Link --}}
+                                @if ($datauser->onFirstPage())
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
+                                    <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                                </li>
+                                @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $datauser->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                                </li>
+                                @endif
+
+                                <li class="page-item active"><a class="page-link" href="#">{{ $datauser->currentPage() }}</a></li>
+
+                                {{-- Next Page Link --}}
+                                @if ($datauser->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $datauser->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                                </li>
+                                @else
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
+                                    <span class="page-link" aria-hidden="true">&rsaquo;</span>
+                                </li>
+                                @endif
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -148,13 +169,6 @@
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">No. Telepon</label>
                                 <input class="form-control" name="phone" id="phone" type="text" required>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">PIN</label>
-                                <input class="form-control" name="pin" id="pin" type="text">
                             </div>
                         </div>
 
@@ -225,15 +239,9 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">PIN</label>
-                                <input class="form-control" name="pin" id="pin" type="text" value="{{$data->pin_number}}">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">Password</label>
-                                <input class="form-control" name="password" id="password" type="text" value="{{$data->password}}" required>
+                                <label for="password" class="form-control-label">Password</label>
+                                <input class="form-control" name="password" id="password" type="text">
+                                <div id="password" class="form-text text-danger" style="font-size: 10px;">* Opsional</div>
                             </div>
                         </div>
                     </div>

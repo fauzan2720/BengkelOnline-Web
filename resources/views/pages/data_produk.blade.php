@@ -74,7 +74,7 @@
 
                                     <!-- Action -->
                                     <td class="align-middle text-center text-sm">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#galerymodal-{{$dp->id}}" data-original-title="Galery">
+                                        <a href="javascript:;" class="text-info font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#galerymodal-{{$dp->id}}" data-original-title="Galery">
                                             Galery
                                         </a>
 
@@ -90,7 +90,7 @@
                                             |
                                         </a>
 
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#hapusmodal-{{$dp->id}}" data-original-title="Hapus user">
+                                        <a href="javascript:;" class="text-danger font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#hapusmodal-{{$dp->id}}" data-original-title="Hapus user">
                                             Delete
                                         </a>
                                     </td>
@@ -119,6 +119,33 @@
                             @endforeach
                             @endforeach
                         </table>
+                        <nav>
+                            <ul class="pagination d-flex justify-content-end">
+                                {{-- Previous Page Link --}}
+                                @if ($dataproduk->onFirstPage())
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
+                                    <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                                </li>
+                                @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $dataproduk->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                                </li>
+                                @endif
+
+                                <li class="page-item active"><a class="page-link" href="#">{{ $dataproduk->currentPage() }}</a></li>
+
+                                {{-- Next Page Link --}}
+                                @if ($dataproduk->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $dataproduk->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                                </li>
+                                @else
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
+                                    <span class="page-link" aria-hidden="true">&rsaquo;</span>
+                                </li>
+                                @endif
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>

@@ -69,14 +69,38 @@ class HalamanController extends Controller
 
     public function datauser()
     {
-        $datauser = DB::table('users')->where('roles', 'USER')->get();
+        $datauser = User::where('roles', 'USER')->orderBy('updated_at', 'desc')->paginate(10);
         $title = 'Data User';
-        return view('pages.data_user', ['datauser' => $datauser])->with('title', $title);;
+        
+        return view('pages.data_user', ['datauser' => $datauser])->with('title', $title);
+    }
+
+    public function createdatauser(Request $request)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $request->validate([
+            'fullname' => ['required'],
+            'email' => ['required'],
+            'phone_number' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        $data = User::create([
+            'fullname' => $request->fullname,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'password' => $request->password,
+        ]);
+
+        return redirect('data_user' . $request->product_id)->with([
+            'success', 'Data berhasil ditambahkan',
+            $data
+        ]);
     }
 
     public function karyawandata()
     {
-        $datakaryawan = DB::table('users')->where('roles', 'MEKANIK')->get();
+        $datakaryawan = DB::table('users')->where('roles', 'MEKANIK')->orderBy('updated_at', 'desc')->paginate(10);
         $title = 'Data Karyawan';
 
         return view('pages.data_karyawan', ['datakaryawan' => $datakaryawan])->with('title', $title);;
@@ -85,7 +109,7 @@ class HalamanController extends Controller
     public function dataproduk()
     {
 
-        $dataproduk = DB::table('products')->get();
+        $dataproduk = DB::table('products')->orderBy('updated_at', 'desc')->paginate(10);
         $datagaleriproduk = ProductGallery::all();
 
         $title = 'Data Produk';

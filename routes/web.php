@@ -12,6 +12,7 @@ Route::post('/login', [AuthController::class, 'loginStore'])->name('loginPost');
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HalamanController::class, 'dashboard'])->name('dashboard');
     Route::get('/data_user', [HalamanController::class, 'datauser'])->name('datauser');
+    Route::post('/data_user', [HalamanController::class, 'createdatauser'])->name('createdatauser');
     Route::get('/data_karyawan', [HalamanController::class, 'karyawandata'])->name('datakaryawan');
     Route::get('/data_produk', [HalamanController::class, 'dataproduk'])->name('dataproduk');
     Route::get('/delivery', [HalamanController::class, 'delivery'])->name('delivery');

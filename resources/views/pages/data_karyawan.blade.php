@@ -94,7 +94,7 @@
                                         <a class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
                                             |
                                         </a>
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#hapusmodal-{{ $dk->id }}" data-original-title="Hapus user">
+                                        <a href="javascript:;" class="text-danger font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#hapusmodal-{{ $dk->id }}" data-original-title="Hapus user">
                                             Delete
                                         </a>
                                     </td>
@@ -103,6 +103,34 @@
                             </tbody>
                             @endforeach
                         </table>
+
+                        <nav>
+                            <ul class="pagination d-flex justify-content-end">
+                                {{-- Previous Page Link --}}
+                                @if ($datakaryawan->onFirstPage())
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
+                                    <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                                </li>
+                                @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $datakaryawan->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                                </li>
+                                @endif
+
+                                <li class="page-item active"><a class="page-link" href="#">{{ $datakaryawan->currentPage() }}</a></li>
+
+                                {{-- Next Page Link --}}
+                                @if ($datakaryawan->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $datakaryawan->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                                </li>
+                                @else
+                                <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
+                                    <span class="page-link" aria-hidden="true">&rsaquo;</span>
+                                </li>
+                                @endif
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -133,21 +161,21 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">No. Telepon</label>
-                                <input class="form-control" name="email" id="email" type="text" required>
+                                <input class="form-control" name="telp" id="telp" type="text" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Status</label>
-                                <input class="form-control" name="phone" id="phone" type="text" required>
+                                <input class="form-control" name="status" id="status" type="text" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Alamat</label>
-                                <input class="form-control" name="pin" id="pin" type="text">
+                                <input class="form-control" name="alamat" id="alamat" type="text">
                             </div>
                         </div>
                     </div>
