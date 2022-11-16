@@ -26,7 +26,7 @@
     <!-- End Card Title -->
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-12">
             <div class="card mb-4">
                 <form action="" method="POST">
                     {{ csrf_field() }}
@@ -56,7 +56,7 @@
 
                             <div class="row">
                                 <!-- No Polisi -->
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">No Polisi</label>
                                         <input class="form-control" id="nopol" name="nopol" type="text" placeholder="ON 333 TOP" required>
@@ -64,7 +64,7 @@
                                 </div>
 
                                 <!-- Nama -->
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama</label>
                                         <input class="form-control" id="fullname" name="fullname" type="text" placeholder="Syaifudin Ilma" required>
@@ -72,7 +72,7 @@
                                 </div>
 
                                 <!-- No. HP -->
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">No HP</label>
                                         <input class="form-control" id="phone" name="phone" type="text" placeholder="086837632" required>
@@ -80,7 +80,7 @@
                                 </div>
 
                                 <!-- No Rangka -->
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">No Rangka</label>
                                         <input class="form-control" id="norangka" name="norangka" type="text" placeholder="JGADJJHA" required>
@@ -88,7 +88,7 @@
                                 </div>
 
                                 <!-- No Mesin -->
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">No Mesin</label>
                                         <input class="form-control" id="nomesin" name="nomesin" type="text" placeholder="6769GHJGH" required>
@@ -96,7 +96,7 @@
                                 </div>
 
                                 <!-- Tahun Terbit -->
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tahun Rakit</label>
                                         <input class="form-control" id="trakit" name="trakit" type="text" placeholder="2020" required>
@@ -104,7 +104,7 @@
                                 </div>
 
                                 <!-- Type -->
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Type</label>
                                         <input class="form-control" id="type" name="type" type="text" placeholder="NC62817" required>
@@ -112,7 +112,7 @@
                                 </div>
 
                                 <!-- KM -->
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">KM</label>
                                         <input class="form-control" id="km" name="km" type="text" placeholder="4000" required>
@@ -120,7 +120,7 @@
                                 </div>
 
                                 <!-- Warna -->
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Warna</label>
                                         <input class="form-control" id="warna" name="warna" type="text" placeholder="Hitam" required>
@@ -132,7 +132,7 @@
 
                             <p class="text-uppercase text-sm">Jenis Pekerjaan yang Di Kerjakan</p>
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama Produk</label>
                                         <div class="input-group mb-3">
