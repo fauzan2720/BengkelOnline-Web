@@ -113,7 +113,9 @@
                                 <input class="form-control" type="text" id="kpos" name="kpos" value="{{ Auth::user()->kpos }}">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-sm ms-auto mt-3">Save</button>
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="btn btn-primary btn-sm ms-auto mt-3">Save</button>
+                        </div>
                     </div>
                 </div>
                 </form>
