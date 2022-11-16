@@ -154,7 +154,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">User</label>
-                                <input class="form-control" name="name" id="name" type="text" required>
+                                <input class="form-control" name="fullname" id="fullname" type="text" required>
                             </div>
                         </div>
 
@@ -168,14 +168,21 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">No. Telepon</label>
-                                <input class="form-control" name="phone" id="phone" type="text" required>
+                                <input class="form-control" name="phone_number" id="phone_number" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Alamat</label>
+                                <input class="form-control" name="alamat" id="alamat" type="text" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Password</label>
-                                <input class="form-control" name="password" id="password" type="text" required>
+                                <input class="form-control" name="password" id="password" type="password" required>
                             </div>
                         </div>
                     </div>

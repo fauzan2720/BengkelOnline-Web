@@ -88,6 +88,7 @@ class HalamanController extends Controller
             'fullname' => ['required'],
             'email' => ['required'],
             'phone_number' => ['required'],
+            'alamat' => ['required'],
             'password' => ['required'],
         ]);
 
@@ -95,11 +96,40 @@ class HalamanController extends Controller
             'fullname' => $request->fullname,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
-            'password' => $request->password,
+            'alamat' => $request->alamat,
+            'password' => bcrypt($request->password),
         ]);
 
         return redirect('data_user' . $request->product_id)->with([
-            'success', 'Data berhasil ditambahkan',
+            'diky_success', 'Data berhasil ditambahkan',
+            $data
+        ]);
+    }
+
+    public function createdatakaryawan(Request $request)
+    {
+
+        date_default_timezone_set('Asia/Jakarta');
+        $request->validate([
+            'fullname' => ['required'],
+            'email' => ['required'],
+            'phone_number' => ['required'],
+            'password' => ['required'],
+            'alamat' => ['required'],
+            'roles' => ['required'],
+        ]);
+
+        $data = User::create([
+            'fullname' => $request->fullname,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'alamat' => $request->alamat,
+            'password' => bcrypt($request->password),
+            'roles' => $request->roles,
+        ]);
+
+        return redirect('data_karyawan')->with([
+            'diky_success', 'Data berhasil ditambahkan',
             $data
         ]);
     }
@@ -548,4 +578,5 @@ class HalamanController extends Controller
             return redirect()->back()->with('diky_success', 'Penolakan Berhasil');
         }
     }
+
 }

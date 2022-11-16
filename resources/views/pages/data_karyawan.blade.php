@@ -147,35 +147,49 @@
                 <h5 class="modal-title" id="tambahDataLabel">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ url('data_user') }}" method="POST">
+            <form action="{{ url('data_karyawan') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-6">
+                    <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Nama Karyawan</label>
-                                <input class="form-control" name="name" id="name" type="text" required>
+                                <input class="form-control" name="fullname" id="fullname" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Email</label>
+                                <input class="form-control" name="email" id="email" type="email" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">No. Telepon</label>
-                                <input class="form-control" name="telp" id="telp" type="text" required>
+                                <input class="form-control" name="phone_number" id="phone_number" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Password</label>
+                                <input class="form-control" name="password" id="password" type="password" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Status</label>
-                                <input class="form-control" name="status" id="status" type="text" required>
+                                <input class="form-control" name="roles" id="roles" value="MEKANIK" type="text" readonly>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Alamat</label>
-                                <input class="form-control" name="alamat" id="alamat" type="text">
+                                <input class="form-control" name="alamat" id="alamat" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -226,7 +240,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Status</label>
-                                <input class="form-control" type="text" id="status" name="status" value="{{$data->roles}}" required>
+                                <input class="form-control" type="text" id="status" name="status" value="{{$data->roles}}" readonly>
                             </div>
                         </div>
 

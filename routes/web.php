@@ -14,7 +14,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/data_user', [HalamanController::class, 'datauser'])->name('datauser');
     Route::post('/data_user', [HalamanController::class, 'createdatauser'])->name('createdatauser');
     Route::get('/data_karyawan', [HalamanController::class, 'karyawandata'])->name('datakaryawan');
+    Route::post('/data_karyawan', [HalamanController::class, 'createdatakaryawan'])->name('createdatakaryawan');
     Route::get('/data_produk', [HalamanController::class, 'dataproduk'])->name('dataproduk');
+    Route::post('/data_produk/upload', [HalamanController::class, 'uploadproduk'])->name('uploadproduk');
     Route::get('/delivery', [HalamanController::class, 'delivery'])->name('delivery');
     Route::get('/orders', [HalamanController::class, 'orders'])->name('orders');
     Route::get('/transaksi', [HalamanController::class, 'transaksi'])->name('transaksi');

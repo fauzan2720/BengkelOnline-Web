@@ -162,42 +162,48 @@
                 <h5 class="modal-title" id="tambahDataLabel">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ url('data_user') }}" method="POST">
-                {{ csrf_field() }}
                 <div class="modal-body">
+                <form action="{{ url('/data_produk/upload') }}" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Nama Produk</label>
-                                <input class="form-control" name="name" id="name" type="text" required>
+                                <input class="form-control" name="product_name" id="product_name" type="text" required>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Kategori</label>
-                                <input class="form-control" name="email" id="email" type="text" required>
+                                <input class="form-control" name="product_category" id="product_category" type="text" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Harga</label>
-                                <input class="form-control" name="phone" id="phone" type="text" required>
+                                <input class="form-control" name="price" id="price" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Stock</label>
+                                <input class="form-control" name="Stock" id="Stock" type="text" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="foto" class="form-control-label">Foto</label>
-                                <input class="form-control" name="pin" id="foto" type="file" accept="image/png, image/jpeg, image/jpg" multiple>
+                                <input class="form-control" name="file" id="file" type="file" accept="image/png, image/jpeg, image/jpg" multiple>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" value="upload" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
